@@ -8,13 +8,13 @@ namespace Tests.Task
     [Category("TaskTest")]
     public class WaitTask
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void WaitOneTaskTest()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitOne.xml");
@@ -26,7 +26,7 @@ namespace Tests.Task
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitOneTaskTest1()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitOne.xml");
@@ -40,7 +40,7 @@ namespace Tests.Task
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitOneTaskTest2()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitOne.xml");
@@ -55,7 +55,7 @@ namespace Tests.Task
             Assert.AreEqual(0, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitZeroTaskTest()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitZero.xml");
@@ -69,7 +69,7 @@ namespace Tests.Task
             Assert.AreEqual(0, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitTwoTaskTest()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
@@ -81,7 +81,7 @@ namespace Tests.Task
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitTwoTaskTest1()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
@@ -95,7 +95,7 @@ namespace Tests.Task
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitTwoTaskTest2()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
@@ -110,7 +110,7 @@ namespace Tests.Task
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void WaitTwoTaskTest3()
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");

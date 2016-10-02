@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class DirectionNodeTest
     {
-        [Test()]
+        [Test]
         public void CreatedDirectionNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirection.xml");
@@ -20,7 +20,7 @@ namespace Tests.Node
             Assert.IsNotNull(pattern.RootNode);
         }
 
-        [Test()]
+        [Test]
         public void CreatedDirectionNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirection.xml");
@@ -37,7 +37,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode);
         }
 
-        [Test()]
+        [Test]
         public void CreatedDirectionNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirection.xml");
@@ -55,7 +55,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.GetChild(NodeName.direction) as DirectionNode);
         }
 
-        [Test()]
+        [Test]
         public void DirectionNodeDefaultValue()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirection.xml");
@@ -76,7 +76,7 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.aim, testDirectionNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void DirectionNodeAim()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirectionAim.xml");
@@ -97,7 +97,7 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.aim, testDirectionNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void DirectionNodeAbsolute()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirectionAbsolute.xml");
@@ -118,7 +118,7 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.absolute, testDirectionNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void DirectionNodeSequence()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirectionSequence.xml");
@@ -139,7 +139,7 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.sequence, testDirectionNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void DirectionNodeSequence2()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirectionSequence2.xml");
@@ -166,7 +166,7 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.sequence, directionNode2.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void DirectionNodeRelative()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirectionRelative.xml");

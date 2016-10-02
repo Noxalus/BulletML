@@ -11,13 +11,13 @@ namespace Tests.Task.FireTask
     [Category("FireTaskTest")]
     public class FireTaskSpeedTest
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void BulletCreated()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -32,7 +32,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(TestUtils.Manager.Movers.Count, 2);
         }
 
-        [Test()]
+        [Test]
         public void BulletDefaultSpeed()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -49,7 +49,7 @@ namespace Tests.Task.FireTask
             Assert.IsNull(fireTask.DirectionTask);
         }
 
-        [Test()]
+        [Test]
         public void BulletDefaultSpeed1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -73,7 +73,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(100.0f, fireTask2.FireSpeed);
         }
 
-        [Test()]
+        [Test]
         public void BulletDefaultSpeed2()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -90,7 +90,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(100.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void SpeedDefault()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -107,7 +107,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(5.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void AbsSpeedDefault()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedAbsolute.xml");
@@ -123,7 +123,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(5.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void RelSpeedDefault()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedRelative.xml");
@@ -141,7 +141,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(105.0f, fireTask.FireSpeed);
         }
 
-        [Test()]
+        [Test]
         public void RelSpeedDefault1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedRelative.xml");
@@ -158,7 +158,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(105.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void RightInitSpeed()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedBulletSpeed.xml");
@@ -175,7 +175,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(5.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void IgnoreSequenceInitSpeed()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -192,7 +192,7 @@ namespace Tests.Task.FireTask
             Assert.IsNull(fireTask.SpeedTask);
         }
 
-        [Test()]
+        [Test]
         public void IgnoreSequenceInitSpeed1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -209,7 +209,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(NodeType.sequence, fireTask.SpeedTask.Node.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void IgnoreSequenceInitSpeed2()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -228,7 +228,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(5.0f, fireTask.SpeedTask.Node.GetValue(fireTask));
         }
 
-        [Test()]
+        [Test]
         public void IgnoreSequenceInitSpeed23()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -249,7 +249,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(5.0f, fireTask.SpeedTask.Node.GetValue(fireTask));
         }
 
-        [Test()]
+        [Test]
         public void IgnoreSequenceInitSpeed3()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -266,7 +266,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(100.0f, fireTask.FireSpeed);
         }
 
-        [Test()]
+        [Test]
         public void IgnoreSequenceInitSpeed4()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -283,7 +283,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(100.0f, testDude.Speed);
         }
 
-        [Test()]
+        [Test]
         public void FireAbsSpeed()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedAbsolute.xml");
@@ -300,7 +300,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(5.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void FireRelSpeed()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedRelative.xml");
@@ -317,7 +317,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(105.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void NestedBullets()
         {
             var filename = TestUtils.GetFilePath(@"Content\NestedBulletsSpeed.xml");
@@ -334,7 +334,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(10.0f, bullet.Speed);
         }
 
-        [Test()]
+        [Test]
         public void NestedBullets1()
         {
             var filename = TestUtils.GetFilePath(@"Content\NestedBulletsSpeed.xml");
@@ -348,7 +348,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(3, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void NestedBullets2()
         {
             var filename = TestUtils.GetFilePath(@"Content\NestedBulletsSpeed.xml");

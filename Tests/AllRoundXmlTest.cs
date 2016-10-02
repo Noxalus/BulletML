@@ -10,13 +10,13 @@ namespace Tests
 	[TestFixture()]
 	public class AllRoundXmlTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void TestOneTop()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -26,7 +26,7 @@ namespace Tests
 			Assert.IsNotNull(testNode);
 		}
 
-		[Test()]
+		[Test]
 		public void TestNoRepeatNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -36,7 +36,7 @@ namespace Tests
 			Assert.IsNull(testNode.ParentRepeatNode);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -49,7 +49,7 @@ namespace Tests
 			Assert.IsNotNull(mover.Tasks[0].Node is ActionNode);
 		}
 
-		[Test()]
+		[Test]
 		public void RepeatOnce()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -63,7 +63,7 @@ namespace Tests
 			Assert.AreEqual(1, testNode.RepeatNum(myAction, mover));
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectAction()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -75,7 +75,7 @@ namespace Tests
 			Assert.AreEqual(1, myTask.ChildTasks.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionRefTask()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -86,7 +86,7 @@ namespace Tests
 			Assert.IsNotNull(testTask);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionRefTask1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -98,7 +98,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.actionRef, testTask.Node.Name);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionRefTask2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -110,7 +110,7 @@ namespace Tests
 			Assert.AreEqual("circle", testTask.Node.Label);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -121,7 +121,7 @@ namespace Tests
 			Assert.AreEqual(1, testTask.ChildTasks.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -132,7 +132,7 @@ namespace Tests
 			Assert.IsNotNull(testTask.ChildTasks[0]);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -144,7 +144,7 @@ namespace Tests
 			Assert.IsNotNull(testActionTask);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask3()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -156,7 +156,7 @@ namespace Tests
 			Assert.IsNotNull(testActionTask.Node);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask4()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -168,7 +168,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.action, testActionTask.Node.Name);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask5()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -180,7 +180,7 @@ namespace Tests
 			Assert.AreEqual("circle", testActionTask.Node.Label);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedActionTask10()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");
@@ -191,7 +191,7 @@ namespace Tests
 			Assert.IsNotNull(testTask);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNumberOfBullets()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\AllRound.xml");

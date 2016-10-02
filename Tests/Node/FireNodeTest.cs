@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
 	public class FireNodeTest
 	{
-		[Test()]
+		[Test]
 		public void CreatedFireNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -21,7 +21,7 @@ namespace Tests.Node
             Assert.AreEqual(1, pattern.RootNode.ChildNodes.Count);
         }
 
-        [Test()]
+        [Test]
 		public void CreatedFireNode1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -35,7 +35,7 @@ namespace Tests.Node
 			Assert.IsNotNull(testActionNode.GetChild(NodeName.fire));
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedFireNode2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -53,7 +53,7 @@ namespace Tests.Node
             Assert.AreEqual("test", testFireNode.Label);
         }
 
-		[Test()]
+		[Test]
 		public void GotBulletNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -70,7 +70,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.BulletDescriptionNode);
 		}
 
-		[Test()]
+		[Test]
 		public void CreatedTopLevelFireNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireEmpty.xml");

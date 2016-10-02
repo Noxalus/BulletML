@@ -9,13 +9,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class BulletRefTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectBullets()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -32,7 +32,7 @@ namespace Tests.Task
 			Assert.AreEqual("test", mover.Label);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectParams()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");
@@ -46,7 +46,7 @@ namespace Tests.Task
 			Assert.IsNotNull(bulletRefTask);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectParams1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");
@@ -60,7 +60,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, bulletRefTask.Params.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectParams3()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");
@@ -74,7 +74,7 @@ namespace Tests.Task
 			Assert.AreEqual(15.0f, bulletRefTask.Params[0]);
 		}
 
-		[Test()]
+		[Test]
 		public void FireTaskCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");
@@ -88,7 +88,7 @@ namespace Tests.Task
 			Assert.IsNotNull(fireTask);
 		}
 
-		[Test()]
+		[Test]
 		public void FireTaskCorrect1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");
@@ -103,7 +103,7 @@ namespace Tests.Task
 			Assert.IsNotNull(fireTask.SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeedFromParam()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");

@@ -13,13 +13,13 @@ namespace Tests.Task.FireTask
     [Category("FireTaskTest")]
     public class FireTaskTest
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void CorrectNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -33,7 +33,7 @@ namespace Tests.Task.FireTask
             Assert.IsNotNull(mover.Tasks[0].Node is ActionNode);
         }
 
-        [Test()]
+        [Test]
         public void RepeatOnce()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -49,7 +49,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(1, topNode.RepeatNum(myAction, mover));
         }
 
-        [Test()]
+        [Test]
         public void CorrectAction()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -63,7 +63,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(1, myTask.ChildTasks.Count);
         }
 
-        [Test()]
+        [Test]
         public void CorrectAction1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -78,7 +78,7 @@ namespace Tests.Task.FireTask
             Assert.IsTrue(myTask.ChildTasks[0] is BulletML.Tasks.FireTask);
         }
 
-        [Test()]
+        [Test]
         public void CorrectAction2()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -97,7 +97,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual("test", fireTask.Node.Label);
         }
 
-        [Test()]
+        [Test]
         public void NoSubTasks()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -114,7 +114,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(1, fireTask.ChildTasks.Count);
         }
 
-        [Test()]
+        [Test]
         public void NoSubTasks1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedBulletSpeed.xml");
@@ -131,7 +131,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(1, fireTask.ChildTasks.Count);
         }
 
-        [Test()]
+        [Test]
         public void FireDirectionInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -149,7 +149,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(direction, 180.0f);
         }
 
-        [Test()]
+        [Test]
         public void FireDirectionInitCorrect1()
         {
             TestUtils.Player.Position.Y = -100.0f;
@@ -169,7 +169,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(direction, 0.0f);
         }
 
-        [Test()]
+        [Test]
         public void FireDirectionInitCorrect2()
         {
             TestUtils.Player.Position.X = 100.0f;
@@ -190,7 +190,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(direction, 90.0f);
         }
 
-        [Test()]
+        [Test]
         public void FireDirectionInitCorrect3()
         {
             TestUtils.Player.Position.X = -100.0f;
@@ -210,7 +210,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(-90f, direction);
         }
 
-        [Test()]
+        [Test]
         public void FireSpeedInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -226,7 +226,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(0f, fireTask.FireSpeed);
         }
 
-        [Test()]
+        [Test]
         public void FireInitialRunInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -243,7 +243,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(false, fireTask.InitialRun);
         }
 
-        [Test()]
+        [Test]
         public void FireBulletRefInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -260,7 +260,7 @@ namespace Tests.Task.FireTask
             Assert.IsNotNull(fireTask.BulletTask);
         }
 
-        [Test()]
+        [Test]
         public void FireInitDirInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -276,7 +276,7 @@ namespace Tests.Task.FireTask
             Assert.IsNull(fireTask.DirectionTask);
         }
 
-        [Test()]
+        [Test]
         public void FireSpeedInitInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -292,7 +292,7 @@ namespace Tests.Task.FireTask
             Assert.IsNull(fireTask.SpeedTask);
         }
 
-        [Test()]
+        [Test]
         public void FireDirSeqInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -308,7 +308,7 @@ namespace Tests.Task.FireTask
             Assert.IsNull(fireTask.DirectionTask);
         }
 
-        [Test()]
+        [Test]
         public void FireDirectionSequence()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireDirectionSequence2.xml");
@@ -335,7 +335,7 @@ namespace Tests.Task.FireTask
             Assert.AreEqual(MathHelper.ToDegrees(bullet1.Direction), MathHelper.ToDegrees(bullet2.Direction));
         }
 
-        [Test()]
+        [Test]
         public void FireSpeedSeqInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireActionEmpty.xml");
@@ -352,7 +352,7 @@ namespace Tests.Task.FireTask
             Assert.IsNull(fireTask.DirectionTask);
         }
 
-        [Test()]
+        [Test]
         public void FoundBullet()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -369,7 +369,7 @@ namespace Tests.Task.FireTask
             Assert.IsNotNull(fireTask.BulletTask);
         }
 
-        [Test()]
+        [Test]
         public void FoundBulletNoSubTasks()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");

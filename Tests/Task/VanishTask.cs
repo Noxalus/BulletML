@@ -8,13 +8,13 @@ namespace Tests.Task
     [Category("TaskTest")]
     public class VanishTask
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void VanishTaskTest()
         {
             var filename = TestUtils.GetFilePath(@"Content\Vanish.xml");
@@ -28,7 +28,7 @@ namespace Tests.Task
             Assert.AreEqual(0, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void NestedVanish()
         {
             var filename = TestUtils.GetFilePath(@"Content\NestedVanish.xml");

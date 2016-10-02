@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class ParamNodeTest
     {
-        [Test()]
+        [Test]
         public void CreatedParamNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRefParam.xml");
@@ -20,7 +20,7 @@ namespace Tests.Node
             Assert.IsNotNull(pattern.RootNode);
         }
 
-        [Test()]
+        [Test]
         public void GotParamNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRefParam.xml");
@@ -32,7 +32,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.GetChild(NodeName.param));
         }
 
-        [Test()]
+        [Test]
         public void GotParamNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRefParam.xml");
@@ -44,7 +44,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.GetChild(NodeName.param) as ParamNode);
         }
 
-        [Test()]
+        [Test]
         public void GotParamNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRefParam.xml");
@@ -57,7 +57,7 @@ namespace Tests.Node
             Assert.IsNotNull(refNode.GetChild(NodeName.param) as ParamNode);
         }
 
-        [Test()]
+        [Test]
         public void GotParamNode3()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefParam.xml");

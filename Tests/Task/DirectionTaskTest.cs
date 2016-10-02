@@ -9,13 +9,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class DirectionTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNumberOfBullets()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -28,7 +28,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNumberOfBullets1()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -42,7 +42,7 @@ namespace Tests.Task
 			Assert.AreEqual(2, TestUtils.Manager.Movers.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNumberOfBullets2()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -63,7 +63,7 @@ namespace Tests.Task
 			Assert.AreEqual(11, TestUtils.Manager.Movers.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectDirection()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -88,7 +88,7 @@ namespace Tests.Task
 			}
 		}
 
-		[Test()]
+		[Test]
 		public void SpeedInitializedCorrect()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -107,7 +107,7 @@ namespace Tests.Task
 			Assert.IsNotNull(fireTask.SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void SpeedInitializedCorrect1()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -125,7 +125,7 @@ namespace Tests.Task
 			Assert.IsNotNull(fireTask.SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void SpeedInitializedCorrect2()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -143,7 +143,7 @@ namespace Tests.Task
 			Assert.AreEqual(1.0f, fireTask.SpeedTask.GetNodeValue(mover));
 		}
 
-		[Test()]
+		[Test]
 		public void SpeedInitializedCorrect3()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -161,7 +161,7 @@ namespace Tests.Task
             Assert.AreEqual(1, fireTask.NumTimesInitialized);
 		}
 
-		[Test()]
+		[Test]
 		public void SpeedInitializedCorrect4()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -179,7 +179,7 @@ namespace Tests.Task
 			Assert.AreEqual(1.0f, fireTask.FireSpeed);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed()
 		{
 			TestUtils.Player.Position.X = 100.0f;
@@ -204,7 +204,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, bullet.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed1()
 		{
 			TestUtils.Player.Position.X = 100.0f;

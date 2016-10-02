@@ -8,13 +8,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class ActionRefTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectBullets()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionRefParamChangeSpeed.xml");
@@ -30,7 +30,7 @@ namespace Tests.Task
 			Assert.AreEqual("test", mover.Label);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeedFromParam()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionRefParamChangeSpeed.xml");

@@ -8,13 +8,13 @@ namespace Tests.Task
     [Category("TaskTest")]
     public class FireRefTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectBullets()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -31,7 +31,7 @@ namespace Tests.Task
 			Assert.AreEqual("testBullet", mover.Label);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeedFromParam()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireRefParam.xml");

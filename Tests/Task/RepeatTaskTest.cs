@@ -9,13 +9,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class RepeatTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
@@ -27,7 +27,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, mover.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
@@ -41,7 +41,7 @@ namespace Tests.Task
 			Assert.AreEqual(10, mover.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
@@ -55,7 +55,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, mover.Speed);
 		}
 
-        [Test()]
+        [Test]
         public void RepeatDirectionSequence()
         {
             var filename = TestUtils.GetFilePath(@"Content\RepeatFireDirectionSequence.xml");
@@ -75,7 +75,7 @@ namespace Tests.Task
             }
         }
 
-        [Test()]
+        [Test]
         public void RepeatDirectionSequence2()
         {
             var filename = TestUtils.GetFilePath(@"Content\RepeatFireDirectionSequence2.xml");
@@ -104,7 +104,7 @@ namespace Tests.Task
             }
         }
 
-        [Test()]
+        [Test]
         public void CorrectNumberOfBullets()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -117,7 +117,7 @@ namespace Tests.Task
             Assert.AreEqual(20, TestUtils.Manager.Movers.Count);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedFirstSet()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -129,7 +129,7 @@ namespace Tests.Task
             Assert.AreEqual(TestUtils.Manager.Movers[0].Speed, 1);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedFirstSet1()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -141,7 +141,7 @@ namespace Tests.Task
             Assert.AreEqual(TestUtils.Manager.Movers[1].Speed, 2);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedFirstSet2()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -162,7 +162,7 @@ namespace Tests.Task
             Assert.AreEqual(TestUtils.Manager.Movers[9].Speed, 10);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedFirstSet3()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -177,7 +177,7 @@ namespace Tests.Task
             }
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedSecondSet()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -189,7 +189,7 @@ namespace Tests.Task
             Assert.AreEqual(1, TestUtils.Manager.Movers[10].Speed);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedSecondSet1()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
@@ -201,7 +201,7 @@ namespace Tests.Task
             Assert.AreEqual(2, TestUtils.Manager.Movers[11].Speed);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedAll()
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");

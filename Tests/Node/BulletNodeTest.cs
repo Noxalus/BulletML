@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class BulletNodeTest
     {
-        [Test()]
+        [Test]
         public void CreatedBulletNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\EmptyBullet.xml");
@@ -21,7 +21,7 @@ namespace Tests.Node
             Assert.AreEqual(1, pattern.RootNode.ChildNodes.Count);
         }
 
-        [Test()]
+        [Test]
         public void CreatedBulletNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\EmptyBullet.xml");
@@ -33,7 +33,7 @@ namespace Tests.Node
             Assert.IsNotNull(testBulletNode);
         }
 
-        [Test()]
+        [Test]
         public void SetBulletLabelNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\EmptyBullet.xml");

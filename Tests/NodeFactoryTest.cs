@@ -7,7 +7,7 @@ namespace Tests
 	[TestFixture()]
 	public class NodeFactoryTest
 	{
-		[Test()]
+		[Test]
 		public void BulletTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.bullet);
@@ -15,7 +15,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.bullet, testNode.Name);
 		}
 
-		[Test()]
+		[Test]
 		public void ActionTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.action);
@@ -23,7 +23,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.action, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void FireTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.fire);
@@ -31,7 +31,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.fire, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void ChangeDirectionTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.changeDirection);
@@ -39,7 +39,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.changeDirection, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void ChangeSpeedTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.changeSpeed);
@@ -47,7 +47,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.changeSpeed, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void AccelTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.accel);
@@ -55,7 +55,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.accel, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void WaitTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.wait);
@@ -63,7 +63,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.wait, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void RepeatTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.repeat);
@@ -71,7 +71,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.repeat, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void BulletRefTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.bulletRef);
@@ -79,7 +79,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.bulletRef, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void ActionRefTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.actionRef);
@@ -87,7 +87,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.actionRef, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void FireRefTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.fireRef);
@@ -95,7 +95,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.fireRef, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void VanishTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.vanish);
@@ -103,7 +103,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.vanish, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void HorizontalTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.horizontal);
@@ -111,7 +111,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.horizontal, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void VerticalTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.vertical);
@@ -119,7 +119,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.vertical, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void TermTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.term);
@@ -127,7 +127,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.term, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void TimesTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.times);
@@ -135,7 +135,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.times, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void DirectionTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.direction);
@@ -143,7 +143,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.direction, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void SpeedTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.speed);
@@ -151,7 +151,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.speed, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void ParamTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.param);
@@ -159,7 +159,7 @@ namespace Tests
 			Assert.AreEqual(NodeName.param, testNode.Name);
 		}
 		
-		[Test()]
+		[Test]
 		public void BulletMlTestCase()
 		{
 			var testNode = NodeFactory.CreateNode(NodeName.bulletml);

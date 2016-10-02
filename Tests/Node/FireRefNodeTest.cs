@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class FireRefNodeTest
     {
-        [Test()]
+        [Test]
         public void CreatedFireRefNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -20,7 +20,7 @@ namespace Tests.Node
             Assert.IsNotNull(pattern.RootNode);
         }
 
-        [Test()]
+        [Test]
         public void CreatedFireNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -33,7 +33,7 @@ namespace Tests.Node
             Assert.IsNotNull(testActionNode.GetChild(NodeName.fireRef));
         }
 
-        [Test()]
+        [Test]
         public void CreatedFireNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -46,7 +46,7 @@ namespace Tests.Node
             Assert.IsNotNull(testActionNode.GetChild(NodeName.fireRef) as FireRefNode);
         }
 
-        [Test()]
+        [Test]
         public void GotFireNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -60,7 +60,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.ReferencedFireNode);
         }
 
-        [Test()]
+        [Test]
         public void GotFireNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -74,7 +74,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.ReferencedFireNode as FireNode);
         }
 
-        [Test()]
+        [Test]
         public void GotCorrectFireNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");
@@ -89,7 +89,7 @@ namespace Tests.Node
             Assert.AreEqual("test", fireNode.Label);
         }
 
-        [Test()]
+        [Test]
         public void NoBulletNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireRef.xml");

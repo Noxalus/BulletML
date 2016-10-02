@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class BulletRefNodeTest
     {
-        [Test()]
+        [Test]
         public void ValidXml()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -20,7 +20,7 @@ namespace Tests.Node
             Assert.IsNotNull(pattern.RootNode);
         }
 
-        [Test()]
+        [Test]
         public void SetBulletLabelNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -32,7 +32,7 @@ namespace Tests.Node
             Assert.AreEqual("test", testBulletNode.Label);
         }
 
-        [Test()]
+        [Test]
         public void CreatedBulletRefNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -45,7 +45,7 @@ namespace Tests.Node
             Assert.IsNotNull(testActionNode.GetChild(NodeName.fire) as FireNode);
         }
 
-        [Test()]
+        [Test]
         public void CreatedBulletRefNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -59,7 +59,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.GetChild(NodeName.bulletRef));
         }
 
-        [Test()]
+        [Test]
         public void CreatedBulletRefNode3()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -74,7 +74,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode.GetChild(NodeName.bulletRef) as BulletRefNode);
         }
 
-        [Test()]
+        [Test]
         public void FoundBulletNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -90,7 +90,7 @@ namespace Tests.Node
             Assert.IsNotNull(refNode.ReferencedBulletNode);
         }
 
-        [Test()]
+        [Test]
         public void FoundBulletNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -106,7 +106,7 @@ namespace Tests.Node
             Assert.IsNotNull(refNode.ReferencedBulletNode);
         }
 
-        [Test()]
+        [Test]
         public void FoundBulletNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRef.xml");
@@ -124,7 +124,7 @@ namespace Tests.Node
             Assert.AreEqual("test", testBulletNode.Label);
         }
 
-        [Test()]
+        [Test]
         public void FoundCorrectBulletNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\BulletRefTwoBullets.xml");

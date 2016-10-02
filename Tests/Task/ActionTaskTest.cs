@@ -11,13 +11,13 @@ namespace Tests.Task
     [Category("TaskTest")]
     public class ActionTaskTest
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void CorrectNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -30,7 +30,7 @@ namespace Tests.Task
             Assert.IsNotNull(mover.Tasks[0].Node is ActionNode);
         }
 
-        [Test()]
+        [Test]
         public void RepeatOnce()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -44,7 +44,7 @@ namespace Tests.Task
             Assert.AreEqual(1, testNode.RepeatNum(myAction, mover));
         }
 
-        [Test()]
+        [Test]
         public void CorrectAction()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
@@ -56,7 +56,7 @@ namespace Tests.Task
             Assert.AreEqual(1, myTask.ChildTasks.Count);
         }
 
-        [Test()]
+        [Test]
         public void CorrectAction1()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
@@ -69,7 +69,7 @@ namespace Tests.Task
             Assert.IsTrue(myTask.ChildTasks[0] is ActionTask);
         }
 
-        [Test()]
+        [Test]
         public void CorrectAction2()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
@@ -85,7 +85,7 @@ namespace Tests.Task
             Assert.AreEqual(testTask.Node.Label, "test");
         }
 
-        [Test()]
+        [Test]
         public void RepeatNumInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
@@ -98,7 +98,7 @@ namespace Tests.Task
             Assert.AreEqual(0, testTask.RepeatNum);
         }
 
-        [Test()]
+        [Test]
         public void RepeatNumMaxInitCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
@@ -113,7 +113,7 @@ namespace Tests.Task
             Assert.AreEqual(1, actionNode.RepeatNum(testTask, mover));
         }
 
-        [Test()]
+        [Test]
         public void RepeatNumMaxCorrect()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatMany.xml");
@@ -125,7 +125,7 @@ namespace Tests.Task
             Assert.IsNotNull(testTask);
         }
 
-        [Test()]
+        [Test]
         public void RepeatNumMaxCorrect1()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatMany.xml");

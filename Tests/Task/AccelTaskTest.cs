@@ -11,13 +11,13 @@ namespace Tests.Task
     [Category("TaskTest")]
     public class AccelTaskTest
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedAbs()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelAbs.xml");
@@ -29,7 +29,7 @@ namespace Tests.Task
             Assert.AreEqual(40.0f, mover.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedAbs1()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelAbs.xml");
@@ -45,7 +45,7 @@ namespace Tests.Task
             Assert.AreEqual(38.0f, mover.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedAbs2()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelAbs.xml");
@@ -63,7 +63,7 @@ namespace Tests.Task
             Assert.AreEqual(20.0f, mover.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -78,7 +78,7 @@ namespace Tests.Task
             Assert.AreEqual(42.0f, mover.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel1()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -96,7 +96,7 @@ namespace Tests.Task
             Assert.AreEqual(60.0f, mover.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel2()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -109,7 +109,7 @@ namespace Tests.Task
             Assert.IsNotNull(myTask);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel3()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -122,7 +122,7 @@ namespace Tests.Task
             Assert.IsNotNull(myTask);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel4()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -136,7 +136,7 @@ namespace Tests.Task
             Assert.AreEqual(2.0f, myTask.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel5()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -150,7 +150,7 @@ namespace Tests.Task
             Assert.AreEqual(10.0f, myNode.GetValue(myTask));
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel6()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -164,7 +164,7 @@ namespace Tests.Task
             Assert.AreEqual(NodeType.relative, myNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel7()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -178,7 +178,7 @@ namespace Tests.Task
             Assert.AreEqual(NodeType.relative, myNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel8()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -192,7 +192,7 @@ namespace Tests.Task
             Assert.AreEqual(20.0f, myNode.GetValue(myTask));
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedRel9()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelRel.xml");
@@ -205,7 +205,7 @@ namespace Tests.Task
             Assert.AreEqual(10.0f, myTask.Duration);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedSeq()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelSeq.xml");
@@ -219,7 +219,7 @@ namespace Tests.Task
             Assert.AreEqual(2.0f, myTask.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedSeq1()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelSeq.xml");
@@ -234,7 +234,7 @@ namespace Tests.Task
             Assert.AreEqual(42.0f, mover.Acceleration.Y);
         }
 
-        [Test()]
+        [Test]
         public void CorrectSpeedSeq2()
         {
             var filename = TestUtils.GetFilePath(@"Content\AccelSeq.xml");

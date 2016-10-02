@@ -10,7 +10,7 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class ActionRefNodeTest
     {
-        [Test()]
+        [Test]
         public void ValidXml()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -20,7 +20,7 @@ namespace Tests.Node
             Assert.IsNotNull(pattern.RootNode);
         }
 
-        [Test()]
+        [Test]
         public void GotActionRefNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -31,7 +31,7 @@ namespace Tests.Node
             Assert.IsNotNull(testActionNode);
         }
 
-        [Test()]
+        [Test]
         public void GotActionRefNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -44,7 +44,7 @@ namespace Tests.Node
             Assert.IsNotNull(testFireNode);
         }
 
-        [Test()]
+        [Test]
         public void GotActionRefNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -59,7 +59,7 @@ namespace Tests.Node
             Assert.IsNotNull(testBulletNode);
         }
 
-        [Test()]
+        [Test]
         public void GotActionRefNode3()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -75,7 +75,7 @@ namespace Tests.Node
             Assert.IsNotNull(testBulletNode.GetChild(NodeName.actionRef));
         }
 
-        [Test()]
+        [Test]
         public void GotActionRefNode4()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -91,7 +91,7 @@ namespace Tests.Node
             Assert.IsNotNull(testBulletNode.GetChild(NodeName.actionRef) as ActionRefNode);
         }
 
-        [Test()]
+        [Test]
         public void FoundActionNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -109,7 +109,7 @@ namespace Tests.Node
             Assert.IsNotNull(testActionRefNode.ReferencedActionNode);
         }
 
-        [Test()]
+        [Test]
         public void FoundActionNode1()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -127,7 +127,7 @@ namespace Tests.Node
             Assert.IsNotNull(testActionRefNode.ReferencedActionNode);
         }
 
-        [Test()]
+        [Test]
         public void FoundActionNode2()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefEmpty.xml");
@@ -147,7 +147,7 @@ namespace Tests.Node
             Assert.AreEqual("test", refNode.Label);
         }
 
-        [Test()]
+        [Test]
         public void FoundCorrectActionNode()
         {
             var filename = TestUtils.GetFilePath(@"Content\ActionRefParam.xml");

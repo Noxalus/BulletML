@@ -8,13 +8,13 @@ namespace Tests
     [TestFixture()]
     public class XmlParsingTest
     {
-        [SetUp()]
+        [SetUp]
         public void SetupHarness()
         {
             TestUtils.Initialize();
         }
 
-        [Test()]
+        [Test]
         public void ValidateTestData()
         {
             // Get all XML test files
@@ -26,7 +26,7 @@ namespace Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void MakeSureNothingCrashes()
         {
             // Get all XML test files

@@ -9,13 +9,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class TaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-        [Test()]
+        [Test]
 		public void OneAction()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -28,7 +28,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, mover.Tasks.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void NoChildTasks()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -40,7 +40,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, mover.Tasks[0].ChildTasks.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void NoParams()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -52,7 +52,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, mover.Tasks[0].Params.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void NoOwner()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -64,7 +64,7 @@ namespace Tests.Task
 			Assert.IsNull(mover.Tasks[0].Owner);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -76,7 +76,7 @@ namespace Tests.Task
 			Assert.IsNotNull(mover.Tasks[0].Node);
 		}
 
-		[Test()]
+		[Test]
 		public void NotFinished()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -88,7 +88,7 @@ namespace Tests.Task
 			Assert.IsFalse(mover.Tasks[0].Finished);
 		}
 
-		[Test()]
+		[Test]
 		public void OkFinished()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
@@ -100,7 +100,7 @@ namespace Tests.Task
 			Assert.AreEqual(TaskRunStatus.End, mover.Tasks[0].Run(mover));
 		}
 
-		[Test()]
+		[Test]
 		public void TaskFinishedFlag()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");

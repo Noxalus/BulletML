@@ -11,13 +11,13 @@ namespace Tests.Task
     [Category("TaskTest")]
     public class SpeedTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectNode()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -29,7 +29,7 @@ namespace Tests.Task
 			Assert.IsNotNull(mover.Tasks[0].Node is ActionNode);
 		}
 
-		[Test()]
+		[Test]
 		public void RepeatOnce()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -42,7 +42,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, testNode.RepeatNum(myAction, mover));
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectAction()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -53,7 +53,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, myTask.ChildTasks.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectAction1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -65,7 +65,7 @@ namespace Tests.Task
 			Assert.IsTrue(myTask.ChildTasks[0] is BulletML.Tasks.FireTask);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectAction2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -79,7 +79,7 @@ namespace Tests.Task
 			Assert.IsTrue(testTask.Node.Name == NodeName.fire);
 		}
 
-		[Test()]
+		[Test]
 		public void NoSubTasks()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -92,7 +92,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, testTask.ChildTasks.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedInitInitCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -105,7 +105,7 @@ namespace Tests.Task
 			Assert.IsNotNull(testTask.SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedInitInitCorrect1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -118,7 +118,7 @@ namespace Tests.Task
 			Assert.IsTrue(testTask.SpeedTask is SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedTaskValue()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -132,7 +132,7 @@ namespace Tests.Task
 			Assert.IsNotNull(speedTask.Node);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedTaskValue1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -146,7 +146,7 @@ namespace Tests.Task
 			Assert.IsTrue(speedTask.Node is SpeedNode);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedTaskValue2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -161,7 +161,7 @@ namespace Tests.Task
 			Assert.IsNotNull(speedNode);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedTaskValue3()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -176,7 +176,7 @@ namespace Tests.Task
 			Assert.AreEqual(5.0f, speedNode.GetValue(speedTask));
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedInitCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeed.xml");
@@ -189,7 +189,7 @@ namespace Tests.Task
 			Assert.AreEqual(5.0f, testTask.FireSpeed);
 		}
 
-		[Test()]
+		[Test]
 		public void FireSpeedInitCorrect1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\FireSpeedBulletSpeed.xml");
@@ -202,7 +202,7 @@ namespace Tests.Task
 			Assert.AreEqual(5.0f, testTask.FireSpeed);
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedInitInitCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -215,7 +215,7 @@ namespace Tests.Task
 			Assert.IsNotNull(testTask.SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedInitInitCorrect1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -228,7 +228,7 @@ namespace Tests.Task
 			Assert.IsTrue(testTask.SpeedTask is SpeedTask);
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedTaskValue()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -242,7 +242,7 @@ namespace Tests.Task
 			Assert.IsNotNull(speedTask.Node);
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedTaskValue1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -256,7 +256,7 @@ namespace Tests.Task
 			Assert.IsTrue(speedTask.Node is SpeedNode);
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedTaskValue2()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -271,7 +271,7 @@ namespace Tests.Task
 			Assert.IsNotNull(speedNode);
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedTaskValue3()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");
@@ -286,7 +286,7 @@ namespace Tests.Task
 			Assert.AreEqual(10.0f, speedNode.GetValue(speedTask));
 		}
 
-		[Test()]
+		[Test]
 		public void BulletSpeedInitCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\BulletSpeed.xml");

@@ -8,13 +8,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class ChangeSpeedTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
 			TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeed.xml");
@@ -24,7 +24,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, mover.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void CorrectSpeed1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeed.xml");
@@ -37,7 +37,7 @@ namespace Tests.Task
 			Assert.AreEqual(1, mover.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeSpeedAbs()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeedAbs.xml");
@@ -59,7 +59,7 @@ namespace Tests.Task
 			Assert.AreEqual(10, mover.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeSpeedRel()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeedRel.xml");
@@ -80,7 +80,7 @@ namespace Tests.Task
 			Assert.AreEqual(110, mover.Speed);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeSpeedSeq()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeedSeq.xml");

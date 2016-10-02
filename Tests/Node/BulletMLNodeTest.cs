@@ -9,11 +9,11 @@ namespace Tests.Node
     [Category("NodeTest")]
     public class BulletMLNodeTest
     {
-        [Test()]
+        [Test]
         public void TestEmpty()
         {
             var filename = TestUtils.GetFilePath(@"Content\Empty.xml");
-            BulletPattern pattern = new BulletPattern();
+            var pattern = new BulletPattern();
             pattern.Parse(filename);
 
             Assert.AreEqual(filename, pattern.Filename);
@@ -26,11 +26,11 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.unknown, pattern.RootNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void TestEmptyHoriz()
         {
             var filename = TestUtils.GetFilePath(@"Content\EmptyHoriz.xml");
-            BulletPattern pattern = new BulletPattern();
+            var pattern = new BulletPattern();
             pattern.Parse(filename);
 
             Assert.AreEqual(filename, pattern.Filename);
@@ -43,11 +43,11 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.unknown, pattern.RootNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void TestEmptyVert()
         {
             var filename = TestUtils.GetFilePath(@"Content\EmptyVert.xml");
-            BulletPattern pattern = new BulletPattern();
+            var pattern = new BulletPattern();
             pattern.Parse(filename);
 
             Assert.AreEqual(filename, pattern.Filename);
@@ -60,11 +60,11 @@ namespace Tests.Node
             Assert.AreEqual(NodeType.unknown, pattern.RootNode.NodeType);
         }
 
-        [Test()]
+        [Test]
         public void TestIsParent()
         {
             var filename = TestUtils.GetFilePath(@"Content\Empty.xml");
-            BulletPattern pattern = new BulletPattern();
+            var pattern = new BulletPattern();
             pattern.Parse(filename);
 
             Assert.AreEqual(pattern.RootNode.GetRootNode(), pattern.RootNode);

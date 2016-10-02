@@ -10,13 +10,13 @@ namespace Tests.Task
     [Category("TaskTest")]
 	public class ChangeDirectionTaskTest
 	{
-		[SetUp()]
+		[SetUp]
 		public void SetupHarness()
 		{
             TestUtils.Initialize();
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionAbsSetupCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAbs.xml");
@@ -29,7 +29,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionAbs()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAbs.xml");
@@ -43,7 +43,7 @@ namespace Tests.Task
 			Assert.AreEqual(45, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionAbs1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAbs.xml");
@@ -60,7 +60,7 @@ namespace Tests.Task
 			Assert.AreEqual(90, (int)direction);
 		}
 
-        [Test()]
+        [Test]
         public void ChangeDirectionAbs2()
         {
             var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAbs2.xml");
@@ -84,7 +84,7 @@ namespace Tests.Task
             Assert.AreEqual(90, (int)direction);
         }
 
-        [Test()]
+        [Test]
 		public void ChangeDirectionAimSetupCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAim.xml");
@@ -97,7 +97,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionAim()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAim.xml");
@@ -112,7 +112,7 @@ namespace Tests.Task
             Assert.AreEqual(90, (int)direction);
         }
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionAim1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionAim.xml");
@@ -132,7 +132,7 @@ namespace Tests.Task
             Assert.AreEqual(180, (int)direction);
         }
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionRelSetupCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionRel.xml");
@@ -144,7 +144,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionRel()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionRel.xml");
@@ -157,7 +157,7 @@ namespace Tests.Task
 			Assert.AreEqual(-45, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionRel1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionRel.xml");
@@ -172,7 +172,7 @@ namespace Tests.Task
 			Assert.AreEqual(-90, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionSeqSetupCorrect()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionSeq.xml");
@@ -184,7 +184,7 @@ namespace Tests.Task
 			Assert.AreEqual(0, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionSeq()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionSeq.xml");
@@ -197,7 +197,7 @@ namespace Tests.Task
 			Assert.AreEqual(90, (int)direction);
 		}
 
-		[Test()]
+		[Test]
 		public void ChangeDirectionSeq1()
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeDirectionSeq.xml");
