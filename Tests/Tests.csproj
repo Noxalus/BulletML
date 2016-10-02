@@ -139,9 +139,6 @@
     <None Include="Content\BulletDirectionSequence.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\bulletml.dtd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Content\BulletRef.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -313,13 +310,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Test\Accel\AccelNodeEmpty.xml" />
-    <Content Include="Content\Test\Accel\AccelNodeHorizontal.xml" />
-    <Content Include="Content\Test\Accel\AccelNodeHorizontalVertical.xml" />
-    <Content Include="Content\Test\Accel\AccelNodeVertical.xml" />
-    <Content Include="Content\Test\Accel\AccelNodeVerticalHorizontal.xml" />
+    <None Include="Content\Test\Accel\AccelNodeEmpty.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Test\Accel\AccelNodeHorizontal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Test\Accel\AccelNodeHorizontalVertical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Test\Accel\AccelNodeVertical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Test\Accel\AccelNodeVerticalHorizontal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

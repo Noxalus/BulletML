@@ -1,4 +1,3 @@
-
 <!ELEMENT vertical (#PCDATA)>
 <!ATTLIST vertical type (absolute|relative|sequence) "absolute">
 

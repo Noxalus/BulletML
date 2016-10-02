@@ -111,8 +111,12 @@
     <Compile Include="Tasks\SpeedTask.cs" />
     <Compile Include="Tasks\VanishTask.cs" />
     <Compile Include="Tasks\WaitTask.cs" />
+    <Compile Include="XmlDtdResolver.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bulletml.dtd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

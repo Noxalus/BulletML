@@ -6,10 +6,10 @@ using BulletML.Nodes;
 
 namespace BulletML
 {
-	/// <summary>
-	/// This is a complete document that describes a bullet pattern.
-	/// </summary>
-	public class BulletPattern
+    /// <summary>
+    /// This is a complete document that describes a bullet pattern.
+    /// </summary>
+    public class BulletPattern
 	{
 		#region Members
 
@@ -63,10 +63,13 @@ namespace BulletML
 		    var settings = new XmlReaderSettings
 		    {
 		        ValidationType = ValidationType.DTD,
-		        DtdProcessing = DtdProcessing.Parse
-		    };
+		        DtdProcessing = DtdProcessing.Parse,
+                // Used to load the same DTD file, no matters 
+                // where is the BulletML file that we parse
+                XmlResolver = new XmlDtdResolver("bulletml.dtd")
+            };
 
-		    settings.ValidationEventHandler += PatternValidationEventHandler;
+            settings.ValidationEventHandler += PatternValidationEventHandler;
 
 			using (var reader = XmlReader.Create(xmlFilename, settings))
 			{
