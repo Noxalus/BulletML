@@ -1,0 +1,18 @@
+namespace BulletML.Equationator
+{
+	/// <summary>
+	/// All the different types of values that might be stored in a Token object
+	/// </summary>
+	public enum TokenType
+	{
+		Number,
+		Operator,
+		OpenParen,
+		CloseParen,
+		Function,
+		Param,
+		Tier,
+        Rand,
+		Invalid
+	}
+}

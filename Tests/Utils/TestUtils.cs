@@ -1,0 +1,29 @@
+﻿using System;
+using System.IO;
+using System.Reflection;
+using BulletML;
+
+namespace Tests.Utils
+{
+    public static class TestUtils
+    {
+        public static MoverManager Manager;
+        public static Player Player;
+        public static BulletPattern Pattern;
+
+        public static void Initialize()
+        {
+            Player = new Player();
+            Manager = new MoverManager(Player.GetPosition);
+            Pattern = new BulletPattern();
+        }
+
+        public static string GetFilePath(string file)
+        {
+            var path = new Uri(Assembly.GetExecutingAssembly().GetName().CodeBase);
+            var projectPath = Path.GetDirectoryName(path.LocalPath);
+
+            return (projectPath == null) ? "" : Path.Combine(projectPath, file);
+        }
+    }
+}
