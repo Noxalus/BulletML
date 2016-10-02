@@ -3,12 +3,12 @@
 <bulletml>
   <action label="top">
       <fire>
-        <direction type="absolute">10</direction>
+        <direction type="absolute">90</direction>
         <speed>1</speed>
         <bullet />
       </fire>
       <fire>
-        <direction type="sequence">0</direction>
+        <direction type="sequence">10</direction>
         <speed>1</speed>
         <bullet />
       </fire>

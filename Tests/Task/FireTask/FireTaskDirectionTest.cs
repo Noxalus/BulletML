@@ -147,9 +147,6 @@ namespace Tests.Task.FireTask
 		[Test]
 		public void InitDirectionWithSequence()
 		{
-			TestUtils.Player.Position.X = 0.0f;
-			TestUtils.Player.Position.Y = -100.0f;
-
 			var filename = TestUtils.GetFilePath(@"Content\FireDirectionBulletDirection.xml");
 			TestUtils.Pattern.Parse(filename);
 
@@ -161,7 +158,7 @@ namespace Tests.Task.FireTask
 			var bullet = TestUtils.Manager.Movers[1];
 			float direction = MathHelper.ToDegrees(bullet.Direction);
 
-			Assert.AreEqual(20.0f, direction);
+			Assert.AreEqual(10.0f, direction);
 		}
 	}
 }

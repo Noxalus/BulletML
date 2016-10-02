@@ -76,7 +76,7 @@ namespace BulletML.Tasks
 				default:
 				{
                     // Absolute
-					return ((_nodeSpeed - bullet.Speed) / Duration);
+					return (_nodeSpeed - bullet.Speed) / Duration;
 				}
 			}
 		}
@@ -91,11 +91,13 @@ namespace BulletML.Tasks
 		{
 			bullet.Speed += GetSpeed(bullet);
 
-		    if (Duration > 0) return TaskRunStatus.Continue;
+		    Duration--;
+
+            if (Duration > 0) return TaskRunStatus.Continue;
 
 		    Finished = true;
 		    return TaskRunStatus.End;
-
+            
 		    // Since this task isn't finished, run it again next time
 		}
 

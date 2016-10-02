@@ -331,8 +331,8 @@ namespace Tests.Task.FireTask
             Assert.IsNotNull(bullet1);
             Assert.IsNotNull(bullet2);
 
-            Assert.AreEqual(10f, MathHelper.ToDegrees(bullet1.Direction));
-            Assert.AreEqual(MathHelper.ToDegrees(bullet1.Direction), MathHelper.ToDegrees(bullet2.Direction));
+            Assert.AreEqual(90f, MathHelper.ToDegrees(bullet1.Direction));
+            Assert.AreEqual(MathHelper.ToDegrees(bullet1.Direction) + 10f, MathHelper.ToDegrees(bullet2.Direction));
         }
 
         [Test]

@@ -176,23 +176,6 @@ namespace Tests.Task.FireTask
         }
 
         [Test]
-        public void IgnoreSequenceInitSpeed()
-        {
-            var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
-            TestUtils.Pattern.Parse(filename);
-
-            var mover = (Mover)TestUtils.Manager.CreateBullet();
-            mover.InitTopNode(TestUtils.Pattern.RootNode);
-            mover.Speed = 100;
-
-            var myTask = mover.Tasks[0];
-            var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
-
-            Assert.IsNotNull(fireTask);
-            Assert.IsNull(fireTask.SpeedTask);
-        }
-
-        [Test]
         public void IgnoreSequenceInitSpeed1()
         {
             var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
@@ -222,25 +205,6 @@ namespace Tests.Task.FireTask
             var myTask = mover.Tasks[0];
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
 
-            Assert.AreEqual(100.0f, mover.Speed);
-            Assert.IsNotNull(fireTask);
-            Assert.IsFalse(fireTask.InitialRun);
-            Assert.AreEqual(5.0f, fireTask.SpeedTask.Node.GetValue(fireTask));
-        }
-
-        [Test]
-        public void IgnoreSequenceInitSpeed23()
-        {
-            var filename = TestUtils.GetFilePath(@"Content\FireSpeedSequence.xml");
-            TestUtils.Pattern.Parse(filename);
-
-            var mover = (Mover)TestUtils.Manager.CreateBullet();
-            mover.InitTopNode(TestUtils.Pattern.RootNode);
-            mover.Speed = 100;
-
-            var myTask = mover.Tasks[0];
-            var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
-
             Assert.IsNotNull(fireTask);
             Assert.IsNotNull(fireTask.SpeedTask);
             Assert.AreEqual(NodeType.sequence, fireTask.SpeedTask.Node.NodeType);
@@ -256,14 +220,14 @@ namespace Tests.Task.FireTask
             TestUtils.Pattern.Parse(filename);
 
             var mover = (Mover)TestUtils.Manager.CreateBullet();
-            //mover.Speed = 100;
+            mover.Speed = 100;
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             var myTask = mover.Tasks[0];
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
 
             Assert.IsNotNull(fireTask);
-            Assert.AreEqual(100.0f, fireTask.FireSpeed);
+            Assert.AreEqual(100f, fireTask.FireSpeed);
         }
 
         [Test]
@@ -280,7 +244,7 @@ namespace Tests.Task.FireTask
 
             var testDude = TestUtils.Manager.Movers[1];
 
-            Assert.AreEqual(100.0f, testDude.Speed);
+            Assert.AreEqual(100f, testDude.Speed);
         }
 
         [Test]
