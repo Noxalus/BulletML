@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml>
+  <action label="top">
+    <accel>
+      <horizontal>10</horizontal>
+      <vertical>10</vertical>
+    </accel>
+  </action>
+</bulletml>

@@ -310,21 +310,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Test\Accel\AccelNodeEmpty.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Test\Accel\AccelNodeHorizontal.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Test\Accel\AccelNodeHorizontalVertical.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Test\Accel\AccelNodeVertical.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Test\Accel\AccelNodeVerticalHorizontal.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Content\Test\Accel\Invalid\AccelNodeEmpty.xml" />
+    <None Include="Content\Test\Accel\Invalid\AccelNodeHorizontalNoTerm.xml" />
+    <None Include="Content\Test\Accel\Invalid\AccelNodeHorizontalVerticalNoTerm.xml" />
+    <None Include="Content\Test\Accel\Invalid\AccelNodeTermOnly.xml" />
+    <None Include="Content\Test\Accel\Invalid\AccelNodeVerticalHorizontalNoTerm.xml" />
+    <None Include="Content\Test\Accel\Invalid\AccelNodeVerticalNoTerm.xml" />
+    <None Include="Content\Test\Accel\Valid\AccelNodeHorizontal.xml" />
+    <None Include="Content\Test\Accel\Valid\AccelNodeHorizontalVertical.xml" />
+    <None Include="Content\Test\Accel\Valid\AccelNodeVertical.xml" />
+    <None Include="Content\Test\Accel\Valid\AccelNodeVerticalHorizontal.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

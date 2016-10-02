@@ -3,9 +3,8 @@
 <bulletml>
   <action label="top">
     <accel>
-      <vertical type="absolute">10</vertical>
-      <horizontal type="absolute">10</horizontal>
-      <term>0</term>
+      <vertical>10</vertical>
+      <horizontal>10</horizontal>
     </accel>
   </action>
 </bulletml>
