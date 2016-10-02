@@ -20,10 +20,11 @@ namespace Tests.Utils
 
         public static string GetFilePath(string file)
         {
-            var path = new Uri(Assembly.GetExecutingAssembly().GetName().CodeBase);
-            var projectPath = Path.GetDirectoryName(path.LocalPath);
+            var dllPathUri = new Uri(Assembly.GetExecutingAssembly().GetName().CodeBase);
+            var projectPathUri = new Uri(dllPathUri, "../..");
+            var projectPath = projectPathUri.LocalPath;
 
-            return (projectPath == null) ? "" : Path.Combine(projectPath, file);
+            return Path.Combine(projectPath, file);
         }
     }
 }
