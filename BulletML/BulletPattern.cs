@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Xml;
 using System.Xml.Schema;
 using BulletML.Enums;
@@ -122,7 +123,7 @@ namespace BulletML
 				}
 				catch (Exception ex)
 				{
-					throw new Exception("Error parsing \"" + xmlFilename + "\": " + ex.Message);
+					throw new InvalidDataException("Error parsing \"" + xmlFilename + "\": " + ex.Message);
 				}
 			}
 
