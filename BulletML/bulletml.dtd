@@ -17,7 +17,13 @@
 
 <!ELEMENT repeat (times, (action | actionRef)+)>
 
-<!ELEMENT accel (horizontal?, vertical?, term)>
+<!ELEMENT accel ((horizontal?, vertical?, term) |
+                 (horizontal?, term, vertical?) |
+                 (vertical?, horizontal?, term) |
+                 (vertical?, term, horizontal?) |
+                 (term, horizontal?, vertical?) |
+                 (term, vertical?, horizontal?)
+                                                )>
 <!ATTLIST accel label CDATA #IMPLIED>
 
 <!ELEMENT times (#PCDATA)>
