@@ -1,4 +1,3 @@
-
 using BulletML.Enums;
 
 namespace BulletML.Nodes

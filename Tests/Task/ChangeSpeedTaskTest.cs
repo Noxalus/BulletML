@@ -42,7 +42,8 @@ namespace Tests.Task
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeedAbs.xml");
 			TestUtils.Pattern.Parse(filename);
-			Mover mover = (Mover)TestUtils.Manager.CreateBullet();
+
+			var mover = (Mover)TestUtils.Manager.CreateBullet();
 			mover.InitTopNode(TestUtils.Pattern.RootNode);
 			mover.Speed = 110;
 			mover.InitTopNode(TestUtils.Pattern.RootNode);
@@ -52,9 +53,7 @@ namespace Tests.Task
 			Assert.AreEqual(100, mover.Speed);
 
 			for (int i = 0; i < 10; i++)
-			{
 				TestUtils.Manager.Update();
-			}
 
 			Assert.AreEqual(10, mover.Speed);
 		}
@@ -64,7 +63,8 @@ namespace Tests.Task
 		{
 			var filename = TestUtils.GetFilePath(@"Content\ChangeSpeedRel.xml");
 			TestUtils.Pattern.Parse(filename);
-			Mover mover = (Mover)TestUtils.Manager.CreateBullet();
+
+			var mover = (Mover)TestUtils.Manager.CreateBullet();
 			mover.Speed = 100;
 			mover.InitTopNode(TestUtils.Pattern.RootNode);
 
@@ -73,9 +73,7 @@ namespace Tests.Task
 			Assert.AreEqual(101, mover.Speed);
 
 			for (int i = 0; i < 10; i++)
-			{
 				TestUtils.Manager.Update();
-			}
 
 			Assert.AreEqual(110, mover.Speed);
 		}

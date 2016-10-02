@@ -22,21 +22,23 @@ namespace BulletML.Tasks
 		/// </summary>
 		private NodeType _changeType;
 
-		/// <summary>
-		/// How long to run this task, measured in frames.
-		/// </summary>
-		private float Duration { get; set; }
+        private float _initialDuration;
 
-		#endregion // Members
+        /// <summary>
+        /// How long to run this task, measured in frames.
+        /// </summary>
+        private float Duration { get; set; }
 
-		#region Methods
+        #endregion // Members
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="ChangeSpeedTask"/> class.
-		/// </summary>
-		/// <param name="node">Node.</param>
-		/// <param name="owner">Owner.</param>
-		public ChangeSpeedTask(ChangeSpeedNode node, BulletMLTask owner) : base(node, owner)
+        #region Methods
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChangeSpeedTask"/> class.
+        /// </summary>
+        /// <param name="node">Node.</param>
+        /// <param name="owner">Owner.</param>
+        public ChangeSpeedTask(ChangeSpeedNode node, BulletMLTask owner) : base(node, owner)
 		{
 			Debug.Assert(null != Node);
 			Debug.Assert(null != Owner);
@@ -55,7 +57,9 @@ namespace BulletML.Tasks
 			if (Math.Abs(Duration) < float.Epsilon)
 				Duration = 1.0f;
 
-			_nodeSpeed = Node.GetChildValue(NodeName.speed, this, bullet);
+            _initialDuration = Duration;
+
+            _nodeSpeed = Node.GetChildValue(NodeName.speed, this, bullet);
 			_changeType = Node.GetChild(NodeName.speed).NodeType;
 		}
 
@@ -70,7 +74,7 @@ namespace BulletML.Tasks
 
 				case NodeType.relative:
 				{
-					return _nodeSpeed / Duration;
+					return _nodeSpeed / _initialDuration;
 				}
 
 				default:
@@ -89,7 +93,7 @@ namespace BulletML.Tasks
 		/// <param name="bullet">The bullet to update this task against.</param>
 		public override TaskRunStatus Run(Bullet bullet)
 		{
-			bullet.Speed += GetSpeed(bullet);
+            bullet.Speed += GetSpeed(bullet);
 
 		    Duration--;
 
