@@ -234,12 +234,12 @@ namespace BulletML.Tasks
 		{
 			Finished = false;
 
-			foreach (BulletMLTask task in ChildTasks)
-			{
-				task.InitTask(bullet);
-			}
+            foreach (BulletMLTask task in ChildTasks)
+            {
+                task.InitTask(bullet);
+            }
 
-			SetupTask(bullet);
+            SetupTask(bullet);
 		}
 
 		/// <summary>

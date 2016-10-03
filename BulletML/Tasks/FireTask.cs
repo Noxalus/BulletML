@@ -45,8 +45,12 @@ namespace BulletML.Tasks
 		/// <value>The speed node.</value>
 		public SpeedTask SpeedTask { get; private set; }
 
-	    private static float LastFireDirection;
-	    private static float LastFireSpeed;
+	    private static float _lastFireDirection;
+	    private static float _lastFireSpeed;
+
+	    private static float _lastSetupDirection;
+	    private static float _lastSetupSpeed;
+        private bool _isRunning;
 
         #endregion // Members
 
@@ -62,9 +66,12 @@ namespace BulletML.Tasks
 			Debug.Assert(null != Node);
 			Debug.Assert(null != Owner);
 
-		    LastFireDirection = 0f;
-		    LastFireSpeed = 0f;
-        }
+		    _lastFireDirection = 0f;
+		    _lastFireSpeed = 0f;
+		    _lastSetupDirection = 0f;
+            _lastSetupSpeed = 0f;
+            _isRunning = false;
+		}
 
 		/// <summary>
 		/// Parse a specified node and bullet into this task.
@@ -95,7 +102,7 @@ namespace BulletML.Tasks
 		{
 			// Get the direction to shoot the bullet
 
-            // Do we have an initial direction node?
+            // Does this fire node contain a direction node?
             if (DirectionTask != null)
 			{
 				// Set the fire direction to the "initial" value
@@ -127,8 +134,16 @@ namespace BulletML.Tasks
                     case NodeType.sequence:
                     {
                         // The new bullet's direction will be relative to the last fired bullet's one
-                        var lastFireDirection = MathHelper.ToDegrees(LastFireDirection);
-                        FireDirection = lastFireDirection + newBulletDirection;
+                        if (_isRunning)
+                        {
+                            var lastFireDirection = MathHelper.ToDegrees(_lastFireDirection);
+                            FireDirection = lastFireDirection + newBulletDirection;
+                        }
+                        else
+                        {
+                            var lastSetupDirection = MathHelper.ToDegrees(_lastSetupDirection);
+                            FireDirection = lastSetupDirection + newBulletDirection;
+                        }
                     }
                     break;
 
@@ -148,11 +163,11 @@ namespace BulletML.Tasks
 
 			// Set the speed to shoot the bullet
 
-			// Do we have an initial speed node?
+            // Does this fire node contain a speed node?
 			if (SpeedTask != null)
 			{
 				// Set the shoot speed to the "initial" value.
-				float newBulletSpeed = SpeedTask.GetNodeValue(bullet);
+				var newBulletSpeed = SpeedTask.GetNodeValue(bullet);
 
 				switch (SpeedTask.Node.NodeType)
 				{
@@ -164,11 +179,14 @@ namespace BulletML.Tasks
 					break;
 
                     case NodeType.sequence:
-					{
-                        // If there is a sequence node, add the value to the bullet's speed
-				        FireSpeed = LastFireSpeed + newBulletSpeed;
-					}
-					break;
+				    {
+				        // If there is a sequence node, add the value to the bullet's speed
+				        if (_isRunning)
+				            FireSpeed = _lastFireSpeed + newBulletSpeed;
+				        else
+				            FireSpeed = _lastSetupSpeed + newBulletSpeed;
+				    }
+				    break;
 
 					default:
 					{
@@ -186,6 +204,9 @@ namespace BulletML.Tasks
 
             // Convert from degrees to radians
             FireDirection = MathHelper.ToRadians(FireDirection);
+
+		    _lastSetupDirection = FireDirection;
+		    _lastSetupSpeed = FireSpeed;
 		}
 
 		/// <summary>
@@ -196,14 +217,10 @@ namespace BulletML.Tasks
 		/// <param name="bullet">The bullet to update this task against.</param>
 		public override TaskRunStatus Run(Bullet bullet)
 		{
-			// Create the new bullet
-			var newBullet = bullet.BulletManager.CreateBullet();
+		    _isRunning = true;
 
-			if (newBullet == null)
-			{
-				Finished = true;
-				return TaskRunStatus.End;
-			}
+            // Create the new bullet
+            var newBullet = bullet.BulletManager.CreateBullet();
 
 			// Set the new bullet's location
 			newBullet.X = bullet.X;
@@ -215,8 +232,9 @@ namespace BulletML.Tasks
 			// Set the new bullet's speed
 			newBullet.Speed = FireSpeed;
 
-            LastFireDirection = FireDirection;
-            LastFireSpeed = FireSpeed;
+            // Store the new bullet's direction and speed for the sequence type
+            _lastFireDirection = FireDirection;
+            _lastFireSpeed = FireSpeed;
 
             // Initialize the bullet with the bullet node stored in the fire node
             var fireNode = Node as FireNode;

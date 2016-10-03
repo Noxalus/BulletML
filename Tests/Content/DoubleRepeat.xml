@@ -4,21 +4,20 @@
   <action label="top">
     <repeat>
       <times>2</times>
-      <actionRef label="circle" />
-    </repeat>
-    <vanish/>
-  </action>
-  <action label="circle">
-    <repeat>
-      <times>10</times>
-      <action>
-        <fire label="testfire">
-          <speed type="sequence">1</speed>
-          <bullet label="test">
-            <speed>1</speed>
-          </bullet>
-        </fire>
+      <action label="circle">
+        <repeat>
+          <times>10</times>
+          <action>
+            <fire label="testfire">
+              <speed type="sequence">1</speed>
+              <bullet label="test">
+                <speed>1</speed>
+              </bullet>
+            </fire>
+          </action>
+        </repeat>
       </action>
     </repeat>
+    <vanish/>
   </action>
 </bulletml>

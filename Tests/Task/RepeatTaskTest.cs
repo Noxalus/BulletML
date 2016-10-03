@@ -180,11 +180,13 @@ namespace Tests.Task
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
             TestUtils.Pattern.Parse(filename);
-            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
+
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
+
             TestUtils.Manager.Update();
 
-            Assert.AreEqual(1, TestUtils.Manager.Movers[10].Speed);
+            Assert.AreEqual(11f, TestUtils.Manager.Movers[10].Speed);
         }
 
         [Test]
@@ -196,7 +198,7 @@ namespace Tests.Task
             mover.InitTopNode(TestUtils.Pattern.RootNode);
             TestUtils.Manager.Update();
 
-            Assert.AreEqual(2, TestUtils.Manager.Movers[11].Speed);
+            Assert.AreEqual(12f, TestUtils.Manager.Movers[11].Speed);
         }
 
         [Test]
