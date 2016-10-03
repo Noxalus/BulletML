@@ -240,7 +240,6 @@ namespace Tests.Task.FireTask
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
 
             Assert.IsNotNull(fireTask);
-            Assert.AreEqual(false, fireTask.InitialRun);
         }
 
         [Test]

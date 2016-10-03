@@ -158,7 +158,6 @@ namespace Tests.Task
 			BulletML.Tasks.FireTask fireTask = mover.FindTaskByLabel("fireTask") as BulletML.Tasks.FireTask;
 
             Assert.IsNotNull(fireTask);
-            Assert.AreEqual(1, fireTask.NumTimesInitialized);
 		}
 
 		[Test]

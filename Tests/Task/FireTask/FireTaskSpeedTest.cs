@@ -65,7 +65,6 @@ namespace Tests.Task.FireTask
             Assert.IsNotNull(fireTask);
 
             var fireTask2 = new BulletML.Tasks.FireTask(fireTask.Node as FireNode, fireTask);
-            Assert.IsTrue(fireTask2.InitialRun);
             fireTask2.InitTask(mover);
 
             Assert.IsNull(fireTask2.SpeedTask);
@@ -209,7 +208,6 @@ namespace Tests.Task.FireTask
             Assert.IsNotNull(fireTask.SpeedTask);
             Assert.AreEqual(NodeType.sequence, fireTask.SpeedTask.Node.NodeType);
             Assert.AreEqual(100.0f, mover.Speed);
-            Assert.IsFalse(fireTask.InitialRun);
             Assert.AreEqual(5.0f, fireTask.SpeedTask.Node.GetValue(fireTask));
         }
 

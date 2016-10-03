@@ -115,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bulletml.dtd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

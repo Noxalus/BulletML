@@ -217,13 +217,13 @@ namespace BulletML.Tasks
 		/// <param name="bullet">bullet.</param>
 		public virtual void HardReset(Bullet bullet)
 		{
-			Finished = false;
+            Finished = false;
 
-			foreach (BulletMLTask task in ChildTasks)
-				task.HardReset(bullet);
+            foreach (BulletMLTask task in ChildTasks)
+                task.HardReset(bullet);
 
-			SetupTask(bullet);
-		}
+            SetupTask(bullet);
+        }
 
 		/// <summary>
 		/// Init this task and all its sub tasks.  

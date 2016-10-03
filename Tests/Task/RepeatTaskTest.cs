@@ -1,3 +1,4 @@
+using System;
 using BulletML;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
@@ -96,9 +97,6 @@ namespace Tests.Task
             {
                 var bullet = TestUtils.Manager.Movers[i];
                 var dir = MathHelper.ToDegrees(bullet.Direction);
-
-                //if (dir < 0)
-                //    dir += 360;
 
                 Assert.AreEqual((118 * i), dir, 10e-3);
             }
@@ -206,30 +204,16 @@ namespace Tests.Task
         {
             var filename = TestUtils.GetFilePath(@"Content\DoubleRepeat.xml");
             TestUtils.Pattern.Parse(filename);
-            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
+
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
+
             TestUtils.Manager.Update();
 
-            Assert.AreEqual(TestUtils.Manager.Movers[0].Speed, 1);
-            Assert.AreEqual(TestUtils.Manager.Movers[1].Speed, 2);
-            Assert.AreEqual(TestUtils.Manager.Movers[2].Speed, 3);
-            Assert.AreEqual(TestUtils.Manager.Movers[3].Speed, 4);
-            Assert.AreEqual(TestUtils.Manager.Movers[4].Speed, 5);
-            Assert.AreEqual(TestUtils.Manager.Movers[5].Speed, 6);
-            Assert.AreEqual(TestUtils.Manager.Movers[6].Speed, 7);
-            Assert.AreEqual(TestUtils.Manager.Movers[7].Speed, 8);
-            Assert.AreEqual(TestUtils.Manager.Movers[8].Speed, 9);
-            Assert.AreEqual(TestUtils.Manager.Movers[9].Speed, 10);
-            Assert.AreEqual(TestUtils.Manager.Movers[10].Speed, 1);
-            Assert.AreEqual(TestUtils.Manager.Movers[11].Speed, 2);
-            Assert.AreEqual(TestUtils.Manager.Movers[12].Speed, 3);
-            Assert.AreEqual(TestUtils.Manager.Movers[13].Speed, 4);
-            Assert.AreEqual(TestUtils.Manager.Movers[14].Speed, 5);
-            Assert.AreEqual(TestUtils.Manager.Movers[15].Speed, 6);
-            Assert.AreEqual(TestUtils.Manager.Movers[16].Speed, 7);
-            Assert.AreEqual(TestUtils.Manager.Movers[17].Speed, 8);
-            Assert.AreEqual(TestUtils.Manager.Movers[18].Speed, 9);
-            Assert.AreEqual(TestUtils.Manager.Movers[19].Speed, 10);
+            for (int i = 0; i < 20; i++)
+            {
+                Assert.AreEqual(i + 1, TestUtils.Manager.Movers[i].Speed);
+            }
         }
     }
 }
