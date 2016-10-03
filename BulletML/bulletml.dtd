@@ -8,7 +8,7 @@
 
 <!ELEMENT bulletml (bullet | fire | action)*>
 <!ATTLIST bulletml xmlns CDATA #IMPLIED>
-<!ATTLIST bulletml type (none|vertical|horizontal) "none">
+<!ATTLIST bulletml type (none | vertical | horizontal) "none">
 
 <!ELEMENT param (#PCDATA)>
 
@@ -17,12 +17,13 @@
 
 <!ELEMENT repeat (times, (action | actionRef)+)>
 
-<!ELEMENT accel ((horizontal?, vertical?, term) |
-                 (horizontal?, term, vertical?) |
-                 (vertical?, horizontal?, term) |
-                 (vertical?, term, horizontal?) |
-                 (term, horizontal?, vertical?) |
-                 (term, vertical?, horizontal?)
+<!ELEMENT accel (
+                 (((horizontal, vertical?) | (horizontal?, vertical)), term) |
+                 (((vertical, horizontal?) | (vertical?, horizontal)), term) |
+                 ((horizontal, term, vertical?) | (horizontal?, term, vertical)) |
+                 ((vertical, term, horizontal?) | (vertical?, term, horizontal)) |
+                 (term, ((horizontal, vertical?) | (horizontal?, vertical))) |
+                 (term, ((vertical, horizontal?) | (vertical?, horizontal)))
                                                 )>
 <!ATTLIST accel label CDATA #IMPLIED>
 
