@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BulletML;
+using System;
 using System.IO;
 using System.Reflection;
-using BulletML;
 
 namespace Tests.Utils
 {

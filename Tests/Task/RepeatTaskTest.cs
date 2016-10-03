@@ -1,60 +1,58 @@
-using System;
-using BulletML;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using Tests.Utils;
 
 namespace Tests.Task
 {
-	[TestFixture()]
+    [TestFixture()]
     [Category("TaskTest")]
-	public class RepeatTaskTest
-	{
-		[SetUp]
-		public void SetupHarness()
-		{
-			TestUtils.Initialize();
-		}
+    public class RepeatTaskTest
+    {
+        [SetUp]
+        public void SetupHarness()
+        {
+            TestUtils.Initialize();
+        }
 
-		[Test]
-		public void CorrectSpeed()
-		{
-			var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
-			TestUtils.Pattern.Parse(filename);
+        [Test]
+        public void CorrectSpeed()
+        {
+            var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
+            TestUtils.Pattern.Parse(filename);
 
-			var mover = (Mover)TestUtils.Manager.CreateBullet();
-			mover.InitTopNode(TestUtils.Pattern.RootNode);
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
+            mover.InitTopNode(TestUtils.Pattern.RootNode);
 
-			Assert.AreEqual(0, mover.Speed);
-		}
+            Assert.AreEqual(0, mover.Speed);
+        }
 
-		[Test]
-		public void CorrectSpeed1()
-		{
-			var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
-			TestUtils.Pattern.Parse(filename);
-			var mover = (Mover)TestUtils.Manager.CreateBullet();
-			mover.InitTopNode(TestUtils.Pattern.RootNode);
+        [Test]
+        public void CorrectSpeed1()
+        {
+            var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
+            TestUtils.Pattern.Parse(filename);
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
+            mover.InitTopNode(TestUtils.Pattern.RootNode);
 
-			for (var i = 0; i < 10; i++)
-				TestUtils.Manager.Update();
+            for (var i = 0; i < 10; i++)
+                TestUtils.Manager.Update();
 
-			Assert.AreEqual(10, mover.Speed);
-		}
+            Assert.AreEqual(10, mover.Speed);
+        }
 
-		[Test]
-		public void CorrectSpeed2()
-		{
-			var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
-			TestUtils.Pattern.Parse(filename);
+        [Test]
+        public void CorrectSpeed2()
+        {
+            var filename = TestUtils.GetFilePath(@"Content\RepeatSequence.xml");
+            TestUtils.Pattern.Parse(filename);
 
-			var mover = (Mover)TestUtils.Manager.CreateBullet();
-			mover.InitTopNode(TestUtils.Pattern.RootNode);
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
+            mover.InitTopNode(TestUtils.Pattern.RootNode);
 
-			TestUtils.Manager.Update();
+            TestUtils.Manager.Update();
 
-			Assert.AreEqual(1, mover.Speed);
-		}
+            Assert.AreEqual(1, mover.Speed);
+        }
 
         [Test]
         public void RepeatDirectionSequence()
@@ -86,7 +84,7 @@ namespace Tests.Task
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             // 2 repeat loop + the root node
-            float expectedBulletNumber = (3 * 3) + 1; 
+            float expectedBulletNumber = (3 * 3) + 1;
 
             for (var i = 0; i < expectedBulletNumber; i++)
                 TestUtils.Manager.Update();

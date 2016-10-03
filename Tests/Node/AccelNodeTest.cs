@@ -1,8 +1,8 @@
-﻿using System.IO;
-using BulletML;
+﻿using BulletML;
 using BulletML.Enums;
 using BulletML.Nodes;
 using NUnit.Framework;
+using System.IO;
 using Tests.Utils;
 
 namespace Tests.Node
@@ -67,7 +67,7 @@ namespace Tests.Node
             Assert.Throws<InvalidDataException>(() => pattern.Parse(filename));
         }
 
-        #endregion
+        #endregion Invalid
 
         #region Valid
 
@@ -171,6 +171,6 @@ namespace Tests.Node
             Assert.IsNotNull(termNode);
         }
 
-        #endregion
+        #endregion Valid
     }
 }

@@ -7,9 +7,9 @@ namespace BulletML.Enums
     /// Different types of bullet patterns.
     /// </summary>
     public enum PatternType
-	{
-		vertical,
-		horizontal,
-		none
-	}
+    {
+        vertical,
+        horizontal,
+        none
+    }
 }

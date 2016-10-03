@@ -4,15 +4,15 @@ namespace BulletML.Enums
     // please keep the actual case, the one used in the XML file.
 
     /// <summary>
-    /// Type of node. 
+    /// Type of node.
     /// Used to parse the string in the "type" attribute.
     /// </summary>
     public enum NodeType
-	{
-		unknown,
-		aim,
-		absolute,
-		relative,
-		sequence
-	}
+    {
+        unknown,
+        aim,
+        absolute,
+        relative,
+        sequence
+    }
 }

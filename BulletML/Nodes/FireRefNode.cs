@@ -1,56 +1,56 @@
+using BulletML.Enums;
 using System;
 using System.Diagnostics;
-using BulletML.Enums;
 
 namespace BulletML.Nodes
 {
-	public class FireRefNode : FireNode
-	{
-		#region Members
+    public class FireRefNode : FireNode
+    {
+        #region Members
 
-		/// <summary>
-		/// Gets the referenced fire node.
-		/// </summary>
-		/// <value>The referenced fire node.</value>
-		public FireNode ReferencedFireNode { get; private set; }
+        /// <summary>
+        /// Gets the referenced fire node.
+        /// </summary>
+        /// <value>The referenced fire node.</value>
+        public FireNode ReferencedFireNode { get; private set; }
 
-		#endregion //Members
+        #endregion Members
 
-		#region Methods
+        #region Methods
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="FireRefNode"/> class.
-		/// </summary>
-		public FireRefNode() : base(NodeName.fireRef)
-		{
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FireRefNode"/> class.
+        /// </summary>
+        public FireRefNode() : base(NodeName.fireRef)
+        {
+        }
 
-		/// <summary>
-		/// Validates the node.
-		/// Overloaded in child classes to validate that each type of node follows the correct business logic.
-		/// This checks stuff that isn't validated by the XML validation
-		/// </summary>
-		public override void ValidateNode()
-		{
-			//Find the action node this dude 
-			Debug.Assert(null != GetRootNode());
-			BulletMLNode refNode = GetRootNode().FindLabelNode(Label, NodeName.fire);
+        /// <summary>
+        /// Validates the node.
+        /// Overloaded in child classes to validate that each type of node follows the correct business logic.
+        /// This checks stuff that isn't validated by the XML validation
+        /// </summary>
+        public override void ValidateNode()
+        {
+            //Find the action node this dude
+            Debug.Assert(null != GetRootNode());
+            BulletMLNode refNode = GetRootNode().FindLabelNode(Label, NodeName.fire);
 
-			//make sure we foud something
-			if (null == refNode)
-			{
-				throw new NullReferenceException("Couldn't find the fire node \"" + Label + "\"");
-			}
+            //make sure we foud something
+            if (null == refNode)
+            {
+                throw new NullReferenceException("Couldn't find the fire node \"" + Label + "\"");
+            }
 
-			ReferencedFireNode = refNode as FireNode;
-			if (null == ReferencedFireNode)
-			{
-				throw new NullReferenceException("The BulletMLNode \"" + Label + "\" isn't a fire node");
-			}
+            ReferencedFireNode = refNode as FireNode;
+            if (null == ReferencedFireNode)
+            {
+                throw new NullReferenceException("The BulletMLNode \"" + Label + "\" isn't a fire node");
+            }
 
-			//Do not validate the base class of this dude... it will crap out trying to find the bullet node!
-		}
+            //Do not validate the base class of this dude... it will crap out trying to find the bullet node!
+        }
 
-		#endregion //Methods
-	}
+        #endregion Methods
+    }
 }

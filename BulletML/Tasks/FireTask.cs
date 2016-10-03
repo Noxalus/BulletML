@@ -1,18 +1,18 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using BulletML.Enums;
+﻿using BulletML.Enums;
 using BulletML.Nodes;
 using Microsoft.Xna.Framework;
+using System;
+using System.Diagnostics;
+using System.IO;
 
 namespace BulletML.Tasks
 {
-	/// <summary>
-	/// A task to shoot a bullet
-	/// </summary>
-	public class FireTask : BulletMLTask
-	{
-		#region Members
+    /// <summary>
+    /// A task to shoot a bullet
+    /// </summary>
+    public class FireTask : BulletMLTask
+    {
+        #region Members
 
         /// <summary>
         /// The direction that this task will fire a bullet.
@@ -20,39 +20,39 @@ namespace BulletML.Tasks
         /// <value>The fire direction in degrees.</value>
         public float FireDirection { get; private set; }
 
-		/// <summary>
-		/// The speed that this task will fire a bullet.
-		/// </summary>
-		/// <value>The fire speed.</value>
-		public float FireSpeed { get; private set; }
+        /// <summary>
+        /// The speed that this task will fire a bullet.
+        /// </summary>
+        /// <value>The fire speed.</value>
+        public float FireSpeed { get; private set; }
 
-	    /// <summary>
-		/// If this fire node shoots from a bullet/bulletRef node, this will be a task created for it.
-		/// This is needed so the params of the bulletRef can be set correctly.
-		/// </summary>
-		/// <value>The bullet reference task.</value>
-		public BulletMLTask BulletTask { get; private set; }
+        /// <summary>
+        /// If this fire node shoots from a bullet/bulletRef node, this will be a task created for it.
+        /// This is needed so the params of the bulletRef can be set correctly.
+        /// </summary>
+        /// <value>The bullet reference task.</value>
+        public BulletMLTask BulletTask { get; private set; }
 
-		/// <summary>
-		/// The node we are going to use to set the direction of any bullets shot with this task.
-		/// </summary>
-		/// <value>The direction node.</value>
-		public DirectionTask DirectionTask { get; private set; }
+        /// <summary>
+        /// The node we are going to use to set the direction of any bullets shot with this task.
+        /// </summary>
+        /// <value>The direction node.</value>
+        public DirectionTask DirectionTask { get; private set; }
 
-		/// <summary>
-		/// The node we are going to use to set the speed of any bullets shot with this task.
-		/// </summary>
-		/// <value>The speed node.</value>
-		public SpeedTask SpeedTask { get; private set; }
+        /// <summary>
+        /// The node we are going to use to set the speed of any bullets shot with this task.
+        /// </summary>
+        /// <value>The speed node.</value>
+        public SpeedTask SpeedTask { get; private set; }
 
-	    private static float _lastFireDirection;
-	    private static float _lastFireSpeed;
+        private static float _lastFireDirection;
+        private static float _lastFireSpeed;
 
-	    private static float _lastSetupDirection;
-	    private static float _lastSetupSpeed;
+        private static float _lastSetupDirection;
+        private static float _lastSetupSpeed;
         private bool _isRunning;
 
-        #endregion // Members
+        #endregion Members
 
         #region Methods
 
@@ -62,32 +62,32 @@ namespace BulletML.Tasks
         /// <param name="node">Node.</param>
         /// <param name="owner">Owner.</param>
         public FireTask(FireNode node, BulletMLTask owner) : base(node, owner)
-		{
-			Debug.Assert(null != Node);
-			Debug.Assert(null != Owner);
+        {
+            Debug.Assert(null != Node);
+            Debug.Assert(null != Owner);
 
-		    _lastFireDirection = 0f;
-		    _lastFireSpeed = 0f;
-		    _lastSetupDirection = 0f;
+            _lastFireDirection = 0f;
+            _lastFireSpeed = 0f;
+            _lastSetupDirection = 0f;
             _lastSetupSpeed = 0f;
             _isRunning = false;
-		}
+        }
 
-		/// <summary>
-		/// Parse a specified node and bullet into this task.
-		/// </summary>
-		/// <param name="bullet">The bullet that launched this task.</param>
-		public override void ParseTasks(Bullet bullet)
-		{
-			if (bullet == null)
-				throw new NullReferenceException("Bullet argument cannot be null.");
+        /// <summary>
+        /// Parse a specified node and bullet into this task.
+        /// </summary>
+        /// <param name="bullet">The bullet that launched this task.</param>
+        public override void ParseTasks(Bullet bullet)
+        {
+            if (bullet == null)
+                throw new NullReferenceException("Bullet argument cannot be null.");
 
             // Setup the bullet node
-		    GetBulletNode(this, bullet);
+            GetBulletNode(this, bullet);
 
-			// Setup all the direction and speed nodes of the current fire node
-			GetDirectionTasks(this);
-			GetSpeedNodes(this);
+            // Setup all the direction and speed nodes of the current fire node
+            GetDirectionTasks(this);
+            GetSpeedNodes(this);
 
             // Setup all the direction and speed nodes of the bullet/bulletRef subnode
             GetDirectionTasks(BulletTask);
@@ -97,143 +97,143 @@ namespace BulletML.Tasks
             _lastSetupSpeed = bullet.Speed;
         }
 
-		/// <summary>
-		/// Sets up the task to be run.
-		/// </summary>
-		/// <param name="bullet">The bullet.</param>
-		protected override void SetupTask(Bullet bullet)
-		{
-			// Get the direction to shoot the bullet
+        /// <summary>
+        /// Sets up the task to be run.
+        /// </summary>
+        /// <param name="bullet">The bullet.</param>
+        protected override void SetupTask(Bullet bullet)
+        {
+            // Get the direction to shoot the bullet
 
             // Does this fire node contain a direction node?
             if (DirectionTask != null)
-			{
-				// Set the fire direction to the "initial" value
-				var newBulletDirection = DirectionTask.GetNodeValue(bullet);
+            {
+                // Set the fire direction to the "initial" value
+                var newBulletDirection = DirectionTask.GetNodeValue(bullet);
 
                 switch (DirectionTask.Node.NodeType)
-				{
-					case NodeType.absolute:
-					{
-						// The new bullet points right at a particular direction
-						FireDirection = newBulletDirection;
-					}
-					break;
+                {
+                    case NodeType.absolute:
+                        {
+                            // The new bullet points right at a particular direction
+                            FireDirection = newBulletDirection;
+                        }
+                        break;
 
-					case NodeType.relative:
-					{
-						// The new bullet's direction will be relative to the old bullet's one
-						FireDirection = MathHelper.ToDegrees(bullet.Direction) + newBulletDirection;
-					}
-					break;
+                    case NodeType.relative:
+                        {
+                            // The new bullet's direction will be relative to the old bullet's one
+                            FireDirection = MathHelper.ToDegrees(bullet.Direction) + newBulletDirection;
+                        }
+                        break;
 
-					case NodeType.aim:
-					{
-					    // Aim the bullet at the player
-						FireDirection = MathHelper.ToDegrees(bullet.GetAimDirection()) + newBulletDirection;
-					}
-					break;
+                    case NodeType.aim:
+                        {
+                            // Aim the bullet at the player
+                            FireDirection = MathHelper.ToDegrees(bullet.GetAimDirection()) + newBulletDirection;
+                        }
+                        break;
 
                     case NodeType.sequence:
-                    {
-                        // The new bullet's direction will be relative to the last fired bullet's one
-                        if (_isRunning)
                         {
-                            var lastFireDirection = MathHelper.ToDegrees(_lastFireDirection);
-                            FireDirection = lastFireDirection + newBulletDirection;
+                            // The new bullet's direction will be relative to the last fired bullet's one
+                            if (_isRunning)
+                            {
+                                var lastFireDirection = MathHelper.ToDegrees(_lastFireDirection);
+                                FireDirection = lastFireDirection + newBulletDirection;
+                            }
+                            else
+                            {
+                                var lastSetupDirection = MathHelper.ToDegrees(_lastSetupDirection);
+                                FireDirection = lastSetupDirection + newBulletDirection;
+                            }
                         }
-                        else
-                        {
-                            var lastSetupDirection = MathHelper.ToDegrees(_lastSetupDirection);
-                            FireDirection = lastSetupDirection + newBulletDirection;
-                        }
-                    }
-                    break;
+                        break;
 
                     default:
-					{
-						// Aim the bullet at the player
-						FireDirection = MathHelper.ToDegrees(bullet.GetAimDirection()) + newBulletDirection;
-					}
-					break;
-				}
-			}
-			else
+                        {
+                            // Aim the bullet at the player
+                            FireDirection = MathHelper.ToDegrees(bullet.GetAimDirection()) + newBulletDirection;
+                        }
+                        break;
+                }
+            }
+            else
             {
                 // There isn't direction task, so just aim at the player.
                 FireDirection = MathHelper.ToDegrees(bullet.GetAimDirection());
             }
 
-			// Set the speed to shoot the bullet
+            // Set the speed to shoot the bullet
 
             // Does this fire node contain a speed node?
-			if (SpeedTask != null)
-			{
-				// Set the shoot speed to the "initial" value.
-				var newBulletSpeed = SpeedTask.GetNodeValue(bullet);
+            if (SpeedTask != null)
+            {
+                // Set the shoot speed to the "initial" value.
+                var newBulletSpeed = SpeedTask.GetNodeValue(bullet);
 
-				switch (SpeedTask.Node.NodeType)
-				{
-					case NodeType.relative:
-					{
-						// The new bullet speed will be relative to the old bullet
-						FireSpeed = bullet.Speed + newBulletSpeed;
-					}
-					break;
+                switch (SpeedTask.Node.NodeType)
+                {
+                    case NodeType.relative:
+                        {
+                            // The new bullet speed will be relative to the old bullet
+                            FireSpeed = bullet.Speed + newBulletSpeed;
+                        }
+                        break;
 
                     case NodeType.sequence:
-				    {
-				        // If there is a sequence node, add the value to the bullet's speed
-				        if (_isRunning)
-				            FireSpeed = _lastFireSpeed + newBulletSpeed;
-				        else
-				            FireSpeed = _lastSetupSpeed + newBulletSpeed;
-				    }
-				    break;
+                        {
+                            // If there is a sequence node, add the value to the bullet's speed
+                            if (_isRunning)
+                                FireSpeed = _lastFireSpeed + newBulletSpeed;
+                            else
+                                FireSpeed = _lastSetupSpeed + newBulletSpeed;
+                        }
+                        break;
 
-					default:
-					{
-						// The new bullet shoots at a predeterminde speed
-						FireSpeed = newBulletSpeed;
-					}
-					break;
-				}
-			}
-			else
-			{
-				// There is no speed node in the fire node
-				FireSpeed = Math.Abs(bullet.Speed) > float.Epsilon ? bullet.Speed : 0f;
-			}
+                    default:
+                        {
+                            // The new bullet shoots at a predeterminde speed
+                            FireSpeed = newBulletSpeed;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                // There is no speed node in the fire node
+                FireSpeed = Math.Abs(bullet.Speed) > float.Epsilon ? bullet.Speed : 0f;
+            }
 
             // Convert from degrees to radians
             FireDirection = MathHelper.ToRadians(FireDirection);
 
-		    _lastSetupDirection = FireDirection;
-		    _lastSetupSpeed = FireSpeed;
-		}
+            _lastSetupDirection = FireDirection;
+            _lastSetupSpeed = FireSpeed;
+        }
 
-		/// <summary>
-		/// Run this task and all subtasks against a bullet.
-		/// This is called once per frame during runtime.
-		/// </summary>
-		/// <returns>TaskRunStatus: whether this task is done, paused, or still running.</returns>
-		/// <param name="bullet">The bullet to update this task against.</param>
-		public override TaskRunStatus Run(Bullet bullet)
-		{
-		    _isRunning = true;
+        /// <summary>
+        /// Run this task and all subtasks against a bullet.
+        /// This is called once per frame during runtime.
+        /// </summary>
+        /// <returns>TaskRunStatus: whether this task is done, paused, or still running.</returns>
+        /// <param name="bullet">The bullet to update this task against.</param>
+        public override TaskRunStatus Run(Bullet bullet)
+        {
+            _isRunning = true;
 
             // Create the new bullet
             var newBullet = bullet.BulletManager.CreateBullet();
 
-			// Set the new bullet's location
-			newBullet.X = bullet.X;
-			newBullet.Y = bullet.Y;
+            // Set the new bullet's location
+            newBullet.X = bullet.X;
+            newBullet.Y = bullet.Y;
 
-			// Set the new bullet's direction
-			newBullet.Direction = FireDirection;
+            // Set the new bullet's direction
+            newBullet.Direction = FireDirection;
 
-			// Set the new bullet's speed
-			newBullet.Speed = FireSpeed;
+            // Set the new bullet's speed
+            newBullet.Speed = FireSpeed;
 
             // Store the new bullet's direction and speed for the sequence type
             _lastFireDirection = FireDirection;
@@ -241,24 +241,24 @@ namespace BulletML.Tasks
 
             // Initialize the bullet with the bullet node stored in the fire node
             var fireNode = Node as FireNode;
-			Debug.Assert(null != fireNode);
-			newBullet.InitNode(fireNode.BulletDescriptionNode);
+            Debug.Assert(null != fireNode);
+            newBullet.InitNode(fireNode.BulletDescriptionNode);
 
-			// Set the owner of all the top level tasks for the new bullet to this task
-			foreach (var task in newBullet.Tasks)
-			    task.Owner = this;
+            // Set the owner of all the top level tasks for the new bullet to this task
+            foreach (var task in newBullet.Tasks)
+                task.Owner = this;
 
-			Finished = true;
+            Finished = true;
 
-			return TaskRunStatus.End;
-		}
+            return TaskRunStatus.End;
+        }
 
         /// <summary>
-	    /// Retrieve the bullet or bulletRef nodes from a fire task.
-	    /// </summary>
-	    /// <param name="task">Task to check if has a child bullet or bulletRef node.</param>
-	    /// <param name="bullet">Associated bullet.</param>
-	    private void GetBulletNode(BulletMLTask task, Bullet bullet)
+        /// Retrieve the bullet or bulletRef nodes from a fire task.
+        /// </summary>
+        /// <param name="task">Task to check if has a child bullet or bulletRef node.</param>
+        /// <param name="bullet">Associated bullet.</param>
+        private void GetBulletNode(BulletMLTask task, Bullet bullet)
         {
             if (task == null)
                 return;
@@ -269,14 +269,14 @@ namespace BulletML.Tasks
 
             if (bulletNode != null)
             {
-                // Create a task for the bullet ref 
+                // Create a task for the bullet ref
                 BulletTask = new BulletMLTask(bulletNode, this);
                 BulletTask.ParseTasks(bullet);
                 ChildTasks.Add(BulletTask);
             }
             else if (bulletRefNode != null)
             {
-                // Create a task for the bullet ref 
+                // Create a task for the bullet ref
                 BulletTask = new BulletMLTask(bulletRefNode.ReferencedBulletNode, this);
 
                 // Populate the params of the bullet ref
@@ -297,31 +297,31 @@ namespace BulletML.Tasks
         /// </summary>
         /// <param name="taskToCheck">task to check if has a child direction node.</param>
         private void GetDirectionTasks(BulletMLTask taskToCheck)
-		{
+        {
             // Check if this fire task has a direction node
             var directionNode = taskToCheck?.Node.GetChild(NodeName.direction) as DirectionNode;
 
-		    if (directionNode == null) return;
+            if (directionNode == null) return;
 
             if (DirectionTask == null)
-		        DirectionTask = new DirectionTask(directionNode, taskToCheck);
-		}
+                DirectionTask = new DirectionTask(directionNode, taskToCheck);
+        }
 
         /// <summary>
         /// Given a node, pull the speed nodes out from underneath it and store them if necessary.
         /// </summary>
         /// <param name="taskToCheck">Node to check.</param>
         private void GetSpeedNodes(BulletMLTask taskToCheck)
-		{
-		    // Check if this fire task has a speed node
-			var speedNode = taskToCheck?.Node.GetChild(NodeName.speed) as SpeedNode;
+        {
+            // Check if this fire task has a speed node
+            var speedNode = taskToCheck?.Node.GetChild(NodeName.speed) as SpeedNode;
 
-		    if (speedNode == null) return;
+            if (speedNode == null) return;
 
             if (SpeedTask == null)
-		        SpeedTask = new SpeedTask(speedNode, taskToCheck);
-		}
+                SpeedTask = new SpeedTask(speedNode, taskToCheck);
+        }
 
-		#endregion // Methods
-	}
+        #endregion Methods
+    }
 }

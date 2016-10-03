@@ -7,8 +7,8 @@ namespace BulletML.Enums
     /// Each enum correspond to an available attribute in the XML file.
     /// </summary>
     public enum AttributeName
-	{
-		label,
+    {
+        label,
         type
-	}
+    }
 }

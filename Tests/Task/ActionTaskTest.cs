@@ -23,7 +23,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             Assert.IsNotNull(mover.Tasks[0].Node);
@@ -36,7 +36,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionOneTop.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             ActionTask myAction = mover.Tasks[0] as ActionTask;
 
@@ -50,7 +50,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             BulletMLTask myTask = mover.Tasks[0];
             Assert.AreEqual(1, myTask.ChildTasks.Count);
@@ -62,7 +62,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             BulletMLTask myTask = mover.Tasks[0];
             Assert.AreEqual(1, myTask.ChildTasks.Count);
@@ -75,7 +75,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             BulletMLTask myTask = mover.Tasks[0];
             ActionTask testTask = myTask.ChildTasks[0] as ActionTask;
@@ -91,7 +91,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             BulletMLTask myTask = mover.Tasks[0];
             ActionTask testTask = myTask.ChildTasks[0] as ActionTask;
@@ -104,7 +104,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatOnce.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             BulletMLTask myTask = mover.Tasks[0];
             ActionTask testTask = myTask.ChildTasks[0] as ActionTask;
@@ -119,7 +119,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatMany.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             ActionTask testTask = mover.FindTaskByLabel("test") as ActionTask;
             Assert.IsNotNull(testTask);
@@ -131,7 +131,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\ActionRepeatMany.xml");
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             ActionTask testTask = mover.FindTaskByLabel("test") as ActionTask;
             ActionNode actionNode = testTask.Node as ActionNode;

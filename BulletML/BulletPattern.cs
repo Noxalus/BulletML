@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BulletML.Enums;
+using BulletML.Nodes;
+using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Schema;
-using BulletML.Enums;
-using BulletML.Nodes;
 
 namespace BulletML
 {
@@ -11,89 +11,89 @@ namespace BulletML
     /// This is a complete document that describes a bullet pattern.
     /// </summary>
     public class BulletPattern
-	{
-		#region Members
+    {
+        #region Members
 
-		/// <summary>
-		/// The root node of a tree structure that describes the bullet pattern.
-		/// </summary>
-		public BulletMLNode RootNode { get; private set; }
+        /// <summary>
+        /// The root node of a tree structure that describes the bullet pattern.
+        /// </summary>
+        public BulletMLNode RootNode { get; private set; }
 
-		/// <summary>
-		/// Gets the filename.
-		/// This property is only set by calling the parse method.
-		/// </summary>
-		/// <value>The filename.</value>
-		public string Filename { get; private set; }
+        /// <summary>
+        /// Gets the filename.
+        /// This property is only set by calling the parse method.
+        /// </summary>
+        /// <value>The filename.</value>
+        public string Filename { get; private set; }
 
-		/// <summary>
-		/// The orientation of this bullet pattern: horizontal or veritcal
-		/// This is read in from the xml.
-		/// </summary>
-		/// <value>The orientation.</value>
-		public PatternType Orientation { get; private set; }
+        /// <summary>
+        /// The orientation of this bullet pattern: horizontal or veritcal
+        /// This is read in from the xml.
+        /// </summary>
+        /// <value>The orientation.</value>
+        public PatternType Orientation { get; private set; }
 
-		#endregion // Members
+        #endregion Members
 
-		#region Methods
+        #region Methods
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BulletML.BulletPattern"/> class.
-		/// </summary>
-		public BulletPattern()
-		{
-			RootNode = null;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BulletML.BulletPattern"/> class.
+        /// </summary>
+        public BulletPattern()
+        {
+            RootNode = null;
+        }
 
-		/// <summary>
-		/// Convert a string to a pattern type enum.
-		/// </summary>
-		/// <returns>The type to name.</returns>
-		/// <param name="enumString">Enum string.</param>
-		private static PatternType StringToPatternType(string enumString)
-		{
-			return (PatternType)Enum.Parse(typeof(PatternType), enumString);
-		}
+        /// <summary>
+        /// Convert a string to a pattern type enum.
+        /// </summary>
+        /// <returns>The type to name.</returns>
+        /// <param name="enumString">Enum string.</param>
+        private static PatternType StringToPatternType(string enumString)
+        {
+            return (PatternType)Enum.Parse(typeof(PatternType), enumString);
+        }
 
         /// <summary>
         /// Parses a BulletML document into this bullet pattern.
         /// </summary>
         /// <param name="xmlFilename">XML file name.</param>
         public void Parse(string xmlFilename)
-		{
-		    var settings = new XmlReaderSettings
-		    {
-		        ValidationType = ValidationType.DTD,
-		        DtdProcessing = DtdProcessing.Parse,
-                // Used to load the same DTD file, no matters 
+        {
+            var settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.DTD,
+                DtdProcessing = DtdProcessing.Parse,
+                // Used to load the same DTD file, no matters
                 // where is the BulletML file that we parse
                 XmlResolver = new XmlDtdResolver("bulletml.dtd")
             };
 
             settings.ValidationEventHandler += PatternValidationEventHandler;
 
-			using (var reader = XmlReader.Create(xmlFilename, settings))
-			{
-				try
-				{
-					// Open XML the file
-					var xmlDoc = new XmlDocument();
-					xmlDoc.Load(reader);
+            using (var reader = XmlReader.Create(xmlFilename, settings))
+            {
+                try
+                {
+                    // Open XML the file
+                    var xmlDoc = new XmlDocument();
+                    xmlDoc.Load(reader);
 
-					XmlNode rootXmlNode = xmlDoc.DocumentElement;
+                    XmlNode rootXmlNode = xmlDoc.DocumentElement;
 
                     // Make sure it's actually an XML node
                     if (rootXmlNode != null && rootXmlNode.NodeType == XmlNodeType.Element)
-					{
-						// Eat up the name of that XML node
-						var strElementName = rootXmlNode.Name;
+                    {
+                        // Eat up the name of that XML node
+                        var strElementName = rootXmlNode.Name;
 
-						if (strElementName != NodeName.bulletml.ToString())
-						{
-							// The first node HAS to be a bulletml node
-							throw new Exception("Error reading \"" + xmlFilename + "\": XML root node needs to be a <" 
-                                + NodeName.bulletml + "> tag, found a <" + strElementName + "> tag instead."); 
-						}
+                        if (strElementName != NodeName.bulletml.ToString())
+                        {
+                            // The first node HAS to be a bulletml node
+                            throw new Exception("Error reading \"" + xmlFilename + "\": XML root node needs to be a <"
+                                + NodeName.bulletml + "> tag, found a <" + strElementName + "> tag instead.");
+                        }
 
                         // Find what kind of pattern this is: horizontal or vertical
                         XmlNamedNodeMap mapAttributes = rootXmlNode.Attributes;
@@ -117,43 +117,43 @@ namespace BulletML
                         // Create the root node of the bulletml tree
                         RootNode = new BulletMLNode(NodeName.bulletml);
 
-						// Read in the whole BulletML tree
-						RootNode.Parse(rootXmlNode, null);
-					}
-				}
-				catch (Exception ex)
-				{
-					throw new InvalidDataException("Error parsing \"" + xmlFilename + "\": " + ex.Message);
-				}
-			}
+                        // Read in the whole BulletML tree
+                        RootNode.Parse(rootXmlNode, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidDataException("Error parsing \"" + xmlFilename + "\": " + ex.Message);
+                }
+            }
 
-			// Grab that filename 
-			Filename = xmlFilename;
+            // Grab that filename
+            Filename = xmlFilename;
 
-			// Validate that the bullet nodes are all valid
-			try
-			{
-				RootNode.ValidateNode();
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-		}
+            // Validate that the bullet nodes are all valid
+            try
+            {
+                RootNode.ValidateNode();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
-		/// <summary>
-		/// Delegate method that gets called when a validation error occurs.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="args">Arguments.</param>
-		private static void PatternValidationEventHandler(object sender, ValidationEventArgs args)
-		{
-			throw new XmlSchemaException("Error validating BulletML document: " + args.Message, 
-			                             args.Exception, 
-			                             args.Exception.LineNumber,
-			                             args.Exception.LinePosition);
-		}
+        /// <summary>
+        /// Delegate method that gets called when a validation error occurs.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="args">Arguments.</param>
+        private static void PatternValidationEventHandler(object sender, ValidationEventArgs args)
+        {
+            throw new XmlSchemaException("Error validating BulletML document: " + args.Message,
+                                         args.Exception,
+                                         args.Exception.LineNumber,
+                                         args.Exception.LinePosition);
+        }
 
-		#endregion // Methods
-	}
+        #endregion Methods
+    }
 }

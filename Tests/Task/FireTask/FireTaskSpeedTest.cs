@@ -1,4 +1,3 @@
-using BulletML;
 using BulletML.Enums;
 using BulletML.Nodes;
 using NUnit.Framework;

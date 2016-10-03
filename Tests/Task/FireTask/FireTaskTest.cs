@@ -1,9 +1,9 @@
-using NUnit.Framework;
 using BulletML;
 using BulletML.Enums;
 using BulletML.Nodes;
 using BulletML.Tasks;
 using Microsoft.Xna.Framework;
+using NUnit.Framework;
 using Tests.Utils;
 
 namespace Tests.Task.FireTask
@@ -26,7 +26,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             Assert.IsNotNull(mover.Tasks[0].Node);
@@ -40,7 +40,7 @@ namespace Tests.Task.FireTask
             BulletPattern pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var myAction = mover.Tasks[0] as ActionTask;
 
@@ -56,7 +56,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -70,7 +70,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var myTask = mover.Tasks[0];
 
@@ -85,7 +85,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -104,7 +104,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -121,7 +121,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -138,7 +138,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -158,7 +158,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -179,7 +179,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -200,7 +200,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var myTask = mover.Tasks[0];
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
@@ -217,7 +217,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var task = mover.Tasks[0];
             var fireTask = task.ChildTasks[0] as BulletML.Tasks.FireTask;
@@ -233,7 +233,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -249,7 +249,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -266,7 +266,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var myTask = mover.Tasks[0];
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
@@ -282,7 +282,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var myTask = mover.Tasks[0];
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
@@ -298,7 +298,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
             var myTask = mover.Tasks[0];
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
@@ -314,7 +314,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             Assert.AreEqual(1, mover.Tasks.Count);
@@ -341,7 +341,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -358,7 +358,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];
@@ -375,7 +375,7 @@ namespace Tests.Task.FireTask
             var pattern = new BulletPattern();
             pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(pattern.RootNode);
 
             var myTask = mover.Tasks[0];

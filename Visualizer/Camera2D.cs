@@ -15,7 +15,7 @@ namespace Visualizer
             Zoom = 1;
             Origin = new Vector2(viewport.Width / 2f, viewport.Height / 2f);
             Position = new Vector2(
-                (Config.GameAeraSize.X / 2f) - (viewport.Width / 2f), 
+                (Config.GameAeraSize.X / 2f) - (viewport.Width / 2f),
                 (Config.GameAeraSize.Y / 2f) - (viewport.Height / 2f)
             );
         }

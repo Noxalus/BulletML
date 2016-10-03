@@ -1,6 +1,6 @@
-using System.IO;
 using BulletML;
 using NUnit.Framework;
+using System.IO;
 using Tests.Utils;
 
 namespace Tests

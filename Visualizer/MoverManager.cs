@@ -4,22 +4,22 @@ using System.Collections.Generic;
 
 namespace Visualizer
 {
-	public class MoverManager : IBulletManager
-	{
-	    public readonly List<Mover> Movers = new List<Mover>();
-	    private readonly List<Mover> _topLevelMovers = new List<Mover>();
-	    private readonly PositionDelegate _getPlayerPosition;
+    public class MoverManager : IBulletManager
+    {
+        public readonly List<Mover> Movers = new List<Mover>();
+        private readonly List<Mover> _topLevelMovers = new List<Mover>();
+        private readonly PositionDelegate _getPlayerPosition;
 
-		public MoverManager(PositionDelegate playerDelegate)
-		{
-			_getPlayerPosition = playerDelegate;
-		}
+        public MoverManager(PositionDelegate playerDelegate)
+        {
+            _getPlayerPosition = playerDelegate;
+        }
 
-		public Vector2 PlayerPosition(IBullet targettedBullet)
-		{
-			return _getPlayerPosition();
-		}
-		
+        public Vector2 PlayerPosition(IBullet targettedBullet)
+        {
+            return _getPlayerPosition();
+        }
+
         public IBullet CreateBullet(bool topBullet = false)
         {
             var mover = new Mover(this);
@@ -34,49 +34,49 @@ namespace Visualizer
         }
 
         public void RemoveBullet(IBullet deadBullet)
-		{
-			var mover = deadBullet as Mover;
+        {
+            var mover = deadBullet as Mover;
 
-			if (mover != null)
-				mover.Used = false;
-		}
+            if (mover != null)
+                mover.Used = false;
+        }
 
-		public void Update()
-		{
-			for (int i = 0; i < Movers.Count; i++)
-				Movers[i].Update();
+        public void Update()
+        {
+            for (int i = 0; i < Movers.Count; i++)
+                Movers[i].Update();
 
-			for (int i = 0; i < _topLevelMovers.Count; i++)
-				_topLevelMovers[i].Update();
+            for (int i = 0; i < _topLevelMovers.Count; i++)
+                _topLevelMovers[i].Update();
 
-			FreeMovers();
-		}
+            FreeMovers();
+        }
 
-	    private void FreeMovers()
-		{
-			for (int i = 0; i < Movers.Count; i++)
-			{
-				if (!Movers[i].Used)
-				{
-					Movers.Remove(Movers[i]);
-					i--;
-				}
-			}
+        private void FreeMovers()
+        {
+            for (int i = 0; i < Movers.Count; i++)
+            {
+                if (!Movers[i].Used)
+                {
+                    Movers.Remove(Movers[i]);
+                    i--;
+                }
+            }
 
-			for (int i = 0; i < _topLevelMovers.Count; i++)
-			{
-				if (_topLevelMovers[i].TasksFinished())
-				{
-					_topLevelMovers.RemoveAt(i);
-					i--;
-				}
-			}
-		}
+            for (int i = 0; i < _topLevelMovers.Count; i++)
+            {
+                if (_topLevelMovers[i].TasksFinished())
+                {
+                    _topLevelMovers.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
 
-		public void Clear()
-		{
-			Movers.Clear();
-			_topLevelMovers.Clear();
-		}
-	}
+        public void Clear()
+        {
+            Movers.Clear();
+            _topLevelMovers.Clear();
+        }
+    }
 }

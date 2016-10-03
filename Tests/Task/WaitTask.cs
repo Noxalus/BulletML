@@ -1,4 +1,3 @@
-using BulletML;
 using NUnit.Framework;
 using Tests.Utils;
 
@@ -20,7 +19,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitOne.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
@@ -32,7 +31,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitOne.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();
@@ -46,7 +45,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitOne.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();
@@ -61,7 +60,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitZero.xml");
             TestUtils.Pattern.Parse(filename);
 
-            Mover mover = (Mover) TestUtils.Manager.CreateBullet();
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();
@@ -75,7 +74,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             Assert.AreEqual(1, TestUtils.Manager.Movers.Count);
@@ -87,7 +86,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();
@@ -101,7 +100,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();
@@ -115,7 +114,7 @@ namespace Tests.Task
         {
             var filename = TestUtils.GetFilePath(@"Content\WaitTwo.xml");
             TestUtils.Pattern.Parse(filename);
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();

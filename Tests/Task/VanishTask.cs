@@ -1,4 +1,3 @@
-using BulletML;
 using NUnit.Framework;
 using Tests.Utils;
 
@@ -20,7 +19,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\Vanish.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();
@@ -34,7 +33,7 @@ namespace Tests.Task
             var filename = TestUtils.GetFilePath(@"Content\NestedVanish.xml");
             TestUtils.Pattern.Parse(filename);
 
-            var mover = (Mover) TestUtils.Manager.CreateBullet();
+            var mover = (Mover)TestUtils.Manager.CreateBullet();
             mover.InitTopNode(TestUtils.Pattern.RootNode);
 
             TestUtils.Manager.Update();

@@ -9,7 +9,7 @@ namespace BulletML
     /// This class is used to load the DTD file copied from this library,
     /// no matter the BulletML file's location during parsing.
     /// </summary>
-    class XmlDtdResolver : XmlUrlResolver
+    internal class XmlDtdResolver : XmlUrlResolver
     {
         private readonly string _dtdName;
 

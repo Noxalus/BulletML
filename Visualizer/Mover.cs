@@ -3,39 +3,39 @@ using Microsoft.Xna.Framework;
 
 namespace Visualizer
 {
-	public class Mover : Bullet
-	{
-		public Vector2 Position;
+    public class Mover : Bullet
+    {
+        public Vector2 Position;
 
-		public override float X
-		{
-			get { return Position.X; }
-			set { Position.X = value; }
-		}
-		
-		public override float Y
-		{
-			get { return Position.Y; }
-			set { Position.Y = value; }
-		}
+        public override float X
+        {
+            get { return Position.X; }
+            set { Position.X = value; }
+        }
 
-		public bool Used { get; set; }
+        public override float Y
+        {
+            get { return Position.Y; }
+            set { Position.Y = value; }
+        }
 
-		public Mover(IBulletManager bulletManager) : base(bulletManager)
-		{
-		}
+        public bool Used { get; set; }
 
-		public void Init()
-		{
-			Used = true;
-		}
+        public Mover(IBulletManager bulletManager) : base(bulletManager)
+        {
+        }
 
-		public override void Update()
-		{
+        public void Init()
+        {
+            Used = true;
+        }
+
+        public override void Update()
+        {
             base.Update();
 
-			if (X < 0 || X > Config.GameAeraSize.X || Y < 0 || Y > Config.GameAeraSize.Y)
-				Used = false;
-		}
-	}
+            if (X < 0 || X > Config.GameAeraSize.X || Y < 0 || Y > Config.GameAeraSize.Y)
+                Used = false;
+        }
+    }
 }

@@ -7,26 +7,26 @@ namespace BulletML.Enums
     /// Each enum correspond to an available tag in the XML file.
     /// </summary>
     public enum NodeName
-	{
-		bullet, 
-		action, 
-		fire,
+    {
+        bullet,
+        action,
+        fire,
         changeDirection,
         changeSpeed,
         accel,
-		wait, 
-		repeat, 
-		bulletRef, 
-		actionRef, 
-		fireRef, 
-		vanish,
-		horizontal, 
-		vertical, 
-		term,
-		times, 
-		direction, 
-		speed, 
-		param,
-		bulletml
-	}
+        wait,
+        repeat,
+        bulletRef,
+        actionRef,
+        fireRef,
+        vanish,
+        horizontal,
+        vertical,
+        term,
+        times,
+        direction,
+        speed,
+        param,
+        bulletml
+    }
 }

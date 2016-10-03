@@ -1,8 +1,8 @@
-using System;
 using BulletML;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
@@ -12,22 +12,22 @@ namespace Visualizer
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    class Game1 : Game
+    internal class Game1 : Game
     {
         public static GraphicsDeviceManager Graphics;
-        SpriteBatch _spriteBatch;
+        private SpriteBatch _spriteBatch;
 
-        Texture2D _playerTexture;
-        Texture2D _bulletTexture;
+        private Texture2D _playerTexture;
+        private Texture2D _bulletTexture;
         private SpriteFont _mainFont;
 
         private Camera2D _camera;
 
         private Player _player;
-        MoverManager _moverManager;
+        private MoverManager _moverManager;
         private Mover _mover;
 
-        float _rank = 0.0f;
+        private float _rank = 0.0f;
         private bool _pause = false;
 
         private readonly List<BulletPattern> _patterns = new List<BulletPattern>();
@@ -55,7 +55,7 @@ namespace Visualizer
             Content.RootDirectory = "Content";
         }
 
-        void Window_ClientSizeChanged(object sender, EventArgs e)
+        private void Window_ClientSizeChanged(object sender, EventArgs e)
         {
             Graphics.PreferredBackBufferWidth = Window.ClientBounds.Width;
             Graphics.PreferredBackBufferHeight = Window.ClientBounds.Height;
@@ -119,7 +119,7 @@ namespace Visualizer
             AddBullet(true);
         }
 
-        // Define the event handlers. 
+        // Define the event handlers.
         private void OnChanged(object source, FileSystemEventArgs e)
         {
             try
@@ -173,31 +173,31 @@ namespace Visualizer
             }
             catch (Exception ex)
             {
-                _currentPatternErrors.Insert(_currentPattern, ex.Message); 
+                _currentPatternErrors.Insert(_currentPattern, ex.Message);
             }
         }
 
         protected override void UnloadContent()
-		{
-		}
+        {
+        }
 
-		protected override void Update(GameTime gameTime)
-		{
-		    HandleInput(gameTime);
+        protected override void Update(GameTime gameTime)
+        {
+            HandleInput(gameTime);
 
             if (!_pause)
                 _moverManager.Update();
 
-			_player.Update(gameTime);
+            _player.Update(gameTime);
 
             _previousKeyboardState = Keyboard.GetState();
 
             base.Update(gameTime);
-		}
+        }
 
-		protected override void Draw(GameTime gameTime)
-		{
-			GraphicsDevice.Clear(Color.Black);
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix());
 
@@ -218,10 +218,10 @@ namespace Visualizer
 
             _spriteBatch.End();
 
-		    DrawStrings();
+            DrawStrings();
 
             base.Draw(gameTime);
-		}
+        }
 
         private void DrawStrings()
         {
@@ -253,7 +253,7 @@ namespace Visualizer
             if (keyboardState.IsKeyDown(Keys.P) && _previousKeyboardState.IsKeyUp(Keys.P))
                 _pause = !_pause;
 
-                if (keyboardState.IsKeyDown(Keys.PageUp) && _previousKeyboardState.IsKeyUp(Keys.PageUp))
+            if (keyboardState.IsKeyDown(Keys.PageUp) && _previousKeyboardState.IsKeyUp(Keys.PageUp))
             {
                 _currentPattern = (_currentPattern + 1) % _patterns.Count;
                 AddBullet(true);
@@ -321,18 +321,18 @@ namespace Visualizer
         }
 
         private void AddBullet(bool clear = false)
-		{
-		    if (clear)
-		        _moverManager.Clear();
+        {
+            if (clear)
+                _moverManager.Clear();
 
             if (!string.IsNullOrEmpty(_currentPatternErrors[_currentPattern]))
-		        return;
+                return;
 
             // Add a new bullet in the center of the screen
             _mover = (Mover)_moverManager.CreateBullet(true);
-			_mover.Position = new Vector2(Config.GameAeraSize.X / 2f, Config.GameAeraSize.Y / 2f);
-			_mover.InitTopNode(_patterns[_currentPattern].RootNode);
-		}
+            _mover.Position = new Vector2(Config.GameAeraSize.X / 2f, Config.GameAeraSize.Y / 2f);
+            _mover.InitTopNode(_patterns[_currentPattern].RootNode);
+        }
 
         private string WrapString(String text, float width, SpriteFont font)
         {
@@ -355,5 +355,5 @@ namespace Visualizer
 
             return returnString + currentLine;
         }
-	}
+    }
 }
