@@ -225,7 +225,7 @@ namespace Tests.Task.FireTask
             var fireTask = myTask.ChildTasks[0] as BulletML.Tasks.FireTask;
 
             Assert.IsNotNull(fireTask);
-            Assert.AreEqual(100f, fireTask.FireSpeed);
+            Assert.AreEqual(105f, fireTask.FireSpeed);
         }
 
         [Test]
@@ -242,7 +242,7 @@ namespace Tests.Task.FireTask
 
             var testDude = TestUtils.Manager.Movers[1];
 
-            Assert.AreEqual(100f, testDude.Speed);
+            Assert.AreEqual(105f, testDude.Speed);
         }
 
         [Test]

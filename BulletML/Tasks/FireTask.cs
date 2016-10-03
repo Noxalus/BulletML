@@ -92,7 +92,10 @@ namespace BulletML.Tasks
             // Setup all the direction and speed nodes of the bullet/bulletRef subnode
             GetDirectionTasks(BulletTask);
             GetSpeedNodes(BulletTask);
-		}
+
+            _lastSetupDirection = bullet.Direction;
+            _lastSetupSpeed = bullet.Speed;
+        }
 
 		/// <summary>
 		/// Sets up the task to be run.
