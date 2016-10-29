@@ -76,50 +76,7 @@ namespace BulletML
             {
                 try
                 {
-                    // Open XML the file
-                    var xmlDoc = new XmlDocument();
-                    xmlDoc.Load(reader);
-
-                    XmlNode rootXmlNode = xmlDoc.DocumentElement;
-
-                    // Make sure it's actually an XML node
-                    if (rootXmlNode != null && rootXmlNode.NodeType == XmlNodeType.Element)
-                    {
-                        // Eat up the name of that XML node
-                        var strElementName = rootXmlNode.Name;
-
-                        if (strElementName != NodeName.bulletml.ToString())
-                        {
-                            // The first node HAS to be a bulletml node
-                            throw new Exception("Error reading \"" + xmlFilename + "\": XML root node needs to be a <"
-                                + NodeName.bulletml + "> tag, found a <" + strElementName + "> tag instead.");
-                        }
-
-                        // Find what kind of pattern this is: horizontal or vertical
-                        XmlNamedNodeMap mapAttributes = rootXmlNode.Attributes;
-
-                        if (mapAttributes != null)
-                        {
-                            for (var i = 0; i < mapAttributes.Count; i++)
-                            {
-                                // Will only have the name attribute
-                                var strName = mapAttributes.Item(i).Name;
-                                var strValue = mapAttributes.Item(i).Value;
-
-                                if (strName == AttributeName.type.ToString())
-                                {
-                                    // If this is a top level node, "type" will be vertical or horizontal
-                                    Orientation = StringToPatternType(strValue);
-                                }
-                            }
-                        }
-
-                        // Create the root node of the bulletml tree
-                        RootNode = new BulletMLNode(NodeName.bulletml);
-
-                        // Read in the whole BulletML tree
-                        RootNode.Parse(rootXmlNode, null);
-                    }
+                    ParsePattern(reader, xmlFilename);
                 }
                 catch (Exception ex)
                 {
@@ -138,6 +95,93 @@ namespace BulletML
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public void ParseStream(string filename, Stream fileStream)
+        {
+            var settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.None,
+                DtdProcessing = DtdProcessing.Ignore,
+                // Used to load the same DTD file, no matters
+                // where is the BulletML file that we parse
+                XmlResolver = new XmlDtdResolver("bulletml.dtd")
+            };
+
+            settings.ValidationEventHandler += PatternValidationEventHandler;
+
+            using (var reader = XmlReader.Create(fileStream, settings))
+            {
+                try
+                {
+                    ParsePattern(reader, filename);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidDataException("Error parsing \"" + filename + "\": " + ex.Message);
+                }
+            }
+
+            // Grab that filename
+            Filename = filename;
+
+            // Validate that the bullet nodes are all valid
+            try
+            {
+                RootNode.ValidateNode();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void ParsePattern(XmlReader reader, string filename)
+        {
+            // Open XML the file
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(reader);
+
+            XmlNode rootXmlNode = xmlDoc.DocumentElement;
+
+            // Make sure it's actually an XML node
+            if (rootXmlNode != null && rootXmlNode.NodeType == XmlNodeType.Element)
+            {
+                // Eat up the name of that XML node
+                var strElementName = rootXmlNode.Name;
+
+                if (strElementName != NodeName.bulletml.ToString())
+                {
+                    // The first node HAS to be a bulletml node
+                    throw new Exception("Error reading \"" + filename + "\": XML root node needs to be a <"
+                        + NodeName.bulletml + "> tag, found a <" + strElementName + "> tag instead.");
+                }
+
+                // Find what kind of pattern this is: horizontal or vertical
+                XmlNamedNodeMap mapAttributes = rootXmlNode.Attributes;
+
+                if (mapAttributes != null)
+                {
+                    for (var i = 0; i < mapAttributes.Count; i++)
+                    {
+                        // Will only have the name attribute
+                        var strName = mapAttributes.Item(i).Name;
+                        var strValue = mapAttributes.Item(i).Value;
+
+                        if (strName == AttributeName.type.ToString())
+                        {
+                            // If this is a top level node, "type" will be vertical or horizontal
+                            Orientation = StringToPatternType(strValue);
+                        }
+                    }
+                }
+
+                // Create the root node of the bulletml tree
+                RootNode = new BulletMLNode(NodeName.bulletml);
+
+                // Read in the whole BulletML tree
+                RootNode.Parse(rootXmlNode, null);
             }
         }
 
