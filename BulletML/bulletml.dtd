@@ -17,14 +17,16 @@
 
 <!ELEMENT repeat (times, (action | actionRef)+)>
 
-<!ELEMENT accel (
-                 (((horizontal, vertical?) | (horizontal?, vertical)), term) |
-                 (((vertical, horizontal?) | (vertical?, horizontal)), term) |
-                 ((horizontal, term, vertical?) | (horizontal?, term, vertical)) |
-                 ((vertical, term, horizontal?) | (vertical?, term, horizontal)) |
-                 (term, ((horizontal, vertical?) | (horizontal?, vertical))) |
-                 (term, ((vertical, horizontal?) | (vertical?, horizontal)))
-                                                )>
+<!ELEMENT accel
+  (
+    (((horizontal, vertical?) | (horizontal?, vertical)), term) |
+    (((vertical, horizontal?) | (vertical?, horizontal)), term) |
+    ((horizontal, term, vertical?) | (horizontal?, term, vertical)) |
+    ((vertical, term, horizontal?) | (vertical?, term, horizontal)) |
+    (term, ((horizontal, vertical?) | (horizontal?, vertical))) |
+    (term, ((vertical, horizontal?) | (vertical?, horizontal)))
+  )
+>
 <!ATTLIST accel label CDATA #IMPLIED>
 
 <!ELEMENT times (#PCDATA)>
@@ -52,7 +54,16 @@
 
 <!ELEMENT changeSpeed (speed, term)>
 
-<!ELEMENT fire (direction?, speed?, (bullet | bulletRef))>
+<!ELEMENT fire
+  (
+    (direction?, speed?, (bullet | bulletRef)) |
+    (speed?, direction?, (bullet | bulletRef)) |
+    (direction?, (bullet | bulletRef), speed?) |
+    (speed?, (bullet | bulletRef), direction?) |
+    ((bullet | bulletRef), direction?, speed?) |
+    ((bullet | bulletRef), speed?, direction?)
+  )
+>
 <!ATTLIST fire label CDATA #IMPLIED>
 
 <!ELEMENT bulletRef (param*)>
