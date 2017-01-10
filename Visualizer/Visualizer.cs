@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
@@ -12,14 +13,18 @@ namespace Visualizer
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    internal class Game1 : Game
+    internal sealed class Visualizer : Game
     {
         public static GraphicsDeviceManager Graphics;
         private SpriteBatch _spriteBatch;
 
+        private readonly FPSCounter _fpsCounter = new FPSCounter();
+
         private Texture2D _playerTexture;
         private Texture2D _bulletTexture;
         private SpriteFont _mainFont;
+
+        private Texture2D _pixel;
 
         private Camera2D _camera;
 
@@ -40,7 +45,12 @@ namespace Visualizer
 
         private KeyboardState _previousKeyboardState;
 
-        public Game1()
+        // Performance
+        private Stopwatch _stopWatch;
+        private TimeSpan _updateTime;
+        private TimeSpan _drawTime;
+
+        public Visualizer()
         {
             Graphics = new GraphicsDeviceManager(this)
             {
@@ -69,6 +79,9 @@ namespace Visualizer
             _moverManager = new MoverManager(_player.GetPosition);
             _camera = new Camera2D(GraphicsDevice.Viewport);
 
+            _stopWatch = new Stopwatch();
+            _stopWatch.Start();
+
             _player.Initialize();
 
             base.Initialize();
@@ -83,8 +96,14 @@ namespace Visualizer
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            _pixel = new Texture2D(Graphics.GraphicsDevice, 1, 1) { Name = "pixel" };
+            _pixel.SetData(new[] { Color.White });
+
             _playerTexture = Content.Load<Texture2D>("Sprites\\player");
             _bulletTexture = Content.Load<Texture2D>("Sprites\\player");
+
+            // Set the default bullet texture of the bullet manager
+            _moverManager.CurrentBulletTexture = _bulletTexture;
 
             _mainFont = Content.Load<SpriteFont>("Fonts\\main");
 
@@ -141,7 +160,7 @@ namespace Visualizer
             }
         }
 
-        protected virtual bool IsFileLocked(FileInfo file)
+        private bool IsFileLocked(FileInfo file)
         {
             FileStream stream = null;
 
@@ -183,6 +202,11 @@ namespace Visualizer
 
         protected override void Update(GameTime gameTime)
         {
+            _fpsCounter.Update(gameTime);
+
+            _stopWatch.Reset();
+            _stopWatch.Start();
+
             HandleInput(gameTime);
 
             if (!_pause)
@@ -192,14 +216,21 @@ namespace Visualizer
 
             _previousKeyboardState = Keyboard.GetState();
 
+            _updateTime = _stopWatch.Elapsed;
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            _stopWatch.Reset();
+            _stopWatch.Start();
+
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix());
+
+            _spriteBatch.Draw(_pixel, new Rectangle(0, 0, (int)Config.GameAeraSize.X, (int)Config.GameAeraSize.Y), Color.CornflowerBlue);
 
             foreach (var mover in _moverManager.Movers)
             {
@@ -210,25 +241,34 @@ namespace Visualizer
                 );
             }
 
-            _spriteBatch.Draw(_playerTexture,
+            _spriteBatch.Draw(
+                _playerTexture,
                 _player.Position, null,
                 Color.Red, 0f,
-                new Vector2(_playerTexture.Width / 2f, _playerTexture.Height / 2f), new Vector2(1.5f), SpriteEffects.None, 0f
+                new Vector2(_playerTexture.Width / 2f, _playerTexture.Height / 2f),
+                new Vector2(1f), SpriteEffects.None, 0f
             );
 
             _spriteBatch.End();
 
-            DrawStrings();
+            _drawTime = _stopWatch.Elapsed;
+
+            DrawStrings(gameTime);
 
             base.Draw(gameTime);
         }
 
-        private void DrawStrings()
+        private void DrawStrings(GameTime gameTime)
         {
             _spriteBatch.Begin();
 
-            _spriteBatch.DrawString(_mainFont, "Pattern: " + _patternNames[_currentPattern], Vector2.Zero, Color.White);
-            _spriteBatch.DrawString(_mainFont, "Bullets: " + _moverManager.Movers.Count, new Vector2(0, 20f), Color.White);
+            _fpsCounter.Draw(gameTime);
+            _spriteBatch.DrawString(_mainFont, $"FPS: {_fpsCounter.FramesPerSecond}", Vector2.Zero, Color.White);
+            _spriteBatch.DrawString(_mainFont, $"Pattern: {_patternNames[_currentPattern]}", new Vector2(0, 20f), Color.White);
+            _spriteBatch.DrawString(_mainFont, $"Update time: {_updateTime.TotalMilliseconds} ms", new Vector2(0, 40f), Color.White);
+            _spriteBatch.DrawString(_mainFont, $"Draw time: { _drawTime.TotalMilliseconds } ms", new Vector2(0, 60f), Color.White);
+            _spriteBatch.DrawString(_mainFont, $"Bullets: { _moverManager.Movers.Count }", new Vector2(0, 80f), Color.White);
+            _spriteBatch.DrawString(_mainFont, $"Bullets: { _moverManager.Movers.Count }", new Vector2(0, 100f), Color.White);
 
             if (!string.IsNullOrEmpty(_currentPatternErrors[_currentPattern]))
             {
@@ -296,6 +336,12 @@ namespace Visualizer
 
             if (keyboardState.IsKeyDown(Keys.NumPad6))
                 _camera.Position += new Vector2(250, 0) * dt;
+
+            if (keyboardState.IsKeyDown(Keys.NumPad1))
+                Config.GameAeraSize += Config.GameAeraSize  * (-0.01f);
+
+            if (keyboardState.IsKeyDown(Keys.NumPad3))
+                Config.GameAeraSize += Config.GameAeraSize * 0.01f;
         }
 
         private void EditCurrentPatternFile()

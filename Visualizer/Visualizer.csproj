@@ -40,7 +40,8 @@
   <ItemGroup>
     <Compile Include="Camera2D.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="FPSCounter.cs" />
+    <Compile Include="Visualizer.cs" />
     <Compile Include="Mover.cs" />
     <Compile Include="MoverManager.cs" />
     <Compile Include="Player.cs" />

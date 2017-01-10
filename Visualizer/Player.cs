@@ -16,7 +16,7 @@ namespace Visualizer
         public void Initialize()
         {
             Position.X = Config.GameAeraSize.X / 2f;
-            Position.Y = (Config.GameAeraSize.Y / 2f) + (Game1.Graphics.PreferredBackBufferHeight / 2f) - Game1.Graphics.PreferredBackBufferHeight / 10f;
+            Position.Y = (Config.GameAeraSize.Y / 2f) + (Visualizer.Graphics.PreferredBackBufferHeight / 2f) - Visualizer.Graphics.PreferredBackBufferHeight / 10f;
         }
 
         public void Update(GameTime gameTime)
@@ -31,6 +31,9 @@ namespace Visualizer
                 Position.Y -= _speed * dt;
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 Position.Y += _speed * dt;
+
+            Position.X = MathHelper.Clamp(Position.X, 0, Config.GameAeraSize.X);
+            Position.Y = MathHelper.Clamp(Position.Y, 0, Config.GameAeraSize.Y);
         }
     }
 }

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulletML", "BulletML\BulletML.csproj", "{B7092DB7-57E9-455C-B974-CDC1E0F49518}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1F044786-0BAB-4645-97D7-AD4CFA93FC21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualizer", "Visualizer\Visualizer.csproj", "{9F700A2C-399B-4598-841E-01D9F1A13CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualizer.Android", "Visualizer.Android\Visualizer.Android.csproj", "{D2160236-0C53-4489-BF94-BF87C82D1B20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,18 @@ Global
 		{9F700A2C-399B-4598-841E-01D9F1A13CB4}.Release|Any CPU.Build.0 = Release|x86
 		{9F700A2C-399B-4598-841E-01D9F1A13CB4}.Release|x86.ActiveCfg = Release|x86
 		{9F700A2C-399B-4598-841E-01D9F1A13CB4}.Release|x86.Build.0 = Release|x86
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Release|x86.Build.0 = Release|Any CPU
+		{D2160236-0C53-4489-BF94-BF87C82D1B20}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

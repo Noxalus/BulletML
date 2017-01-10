@@ -1,10 +1,12 @@
 ﻿using BulletML;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Visualizer
 {
     public class Mover : Bullet
     {
+        public Texture2D Texture;
         public Vector2 Position;
 
         public override float X
@@ -34,8 +36,12 @@ namespace Visualizer
         {
             base.Update();
 
-            if (X < 0 || X > Config.GameAeraSize.X || Y < 0 || Y > Config.GameAeraSize.Y)
+            if (X < Texture.Width / 2f || X > Config.GameAeraSize.X - (Texture.Width / 2f) ||
+                Y < Texture.Height / 2f || Y > Config.GameAeraSize.Y - (Texture.Height / 2f))
+            {
                 Used = false;
+                //Direction = (MathHelper.PiOver4 + Direction);
+            }
         }
     }
 }

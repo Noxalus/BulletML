@@ -1,6 +1,7 @@
 ﻿using BulletML;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Visualizer
 {
@@ -9,6 +10,7 @@ namespace Visualizer
         public readonly List<Mover> Movers = new List<Mover>();
         private readonly List<Mover> _topLevelMovers = new List<Mover>();
         private readonly PositionDelegate _getPlayerPosition;
+        public Texture2D CurrentBulletTexture;
 
         public MoverManager(PositionDelegate playerDelegate)
         {
@@ -22,7 +24,7 @@ namespace Visualizer
 
         public IBullet CreateBullet(bool topBullet = false)
         {
-            var mover = new Mover(this);
+            var mover = new Mover(this) { Texture = CurrentBulletTexture };
             mover.Init();
 
             if (topBullet)
