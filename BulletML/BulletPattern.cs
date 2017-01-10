@@ -137,7 +137,7 @@ namespace BulletML
             }
         }
 
-        private void ParsePattern(XmlReader reader, string filename)
+        public void ParsePattern(XmlReader reader, string filename)
         {
             // Open XML the file
             var xmlDoc = new XmlDocument();
@@ -198,6 +198,6 @@ namespace BulletML
                                          args.Exception.LinePosition);
         }
 
-        #endregion Methods
+#endregion Methods
     }
 }
