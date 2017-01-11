@@ -9,7 +9,7 @@ namespace BulletML.Nodes
         /// </summary>
         public DirectionNode() : base(NodeName.direction)
         {
-            //set the default type to "aim"
+            // Set the default type to "aim"
             NodeType = NodeType.aim;
         }
 

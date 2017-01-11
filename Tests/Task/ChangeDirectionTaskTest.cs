@@ -209,5 +209,22 @@ namespace Tests.Task
             float direction = mover.Direction * 180 / (float)Math.PI;
             Assert.AreEqual(180, (int)direction);
         }
+
+        [Test]
+        public void ChangeDirectionRepeatAim()
+        {
+            var filename = TestUtils.GetFilePath(@"Content\Test\Task\ChangeDirectionRepeatAim.xml");
+            TestUtils.Pattern.Parse(filename);
+            TestUtils.Player.Position = new Vector2(0f, 100f);
+            Mover mover = (Mover)TestUtils.Manager.CreateBullet();
+            mover.InitTopNode(TestUtils.Pattern.RootNode);
+
+            TestUtils.Manager.Update();
+
+            var targetMover = TestUtils.Manager.Movers[1];
+
+            var direction = MathHelper.ToDegrees(targetMover.Direction);
+            Assert.AreEqual(180, (int)direction);
+        }
     }
 }

@@ -46,6 +46,12 @@ namespace BulletML.Tasks
             Debug.Assert(null != Owner);
         }
 
+        public override void InitTask(Bullet bullet)
+        {
+            base.InitTask(bullet);
+            _firstTime = true;
+        }
+
         /// <summary>
         /// this sets up the task to be run.
         /// </summary>
