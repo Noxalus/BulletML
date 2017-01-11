@@ -6,5 +6,5 @@
 
 This project is a C# parser for BulletML files.
 
-[BulletML Reference](https://github.com/Noxalus/BulletML/wiki/BulletML-Reference)
-[Improvements](https://github.com/Noxalus/BulletML/wiki/Improvements)
+- [BulletML Reference](https://github.com/Noxalus/BulletML/wiki/BulletML-Reference)
+- [Improvements](https://github.com/Noxalus/BulletML/wiki/Improvements)
