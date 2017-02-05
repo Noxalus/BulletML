@@ -123,6 +123,9 @@ namespace BulletML
                 }
             }
 
+            // Seek back to the beginning of the stream
+            fileStream.Seek(0, SeekOrigin.Begin);
+
             // Grab that filename
             Filename = filename;
 
