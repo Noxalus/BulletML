@@ -1,4 +1,5 @@
-﻿using BulletML.Enums;
+﻿using System;
+using BulletML.Enums;
 using BulletML.Nodes;
 using System.Diagnostics;
 using System.IO;
@@ -60,8 +61,17 @@ namespace BulletML.Tasks
 
                 if (waitNode == null)
                 {
-                    throw new InvalidDataException("You have an infinite loop with no wait node, " +
-                                                   "this is bad because it will block the program.");
+                    if (actionNode.Name == NodeName.actionRef)
+                    {
+                        Console.WriteLine("Warning: A repeat node is used with an actionRef child, " +
+                                          "please make sure that this actionRef contains a wait node " +
+                                          "or it will block the program.");
+                    }
+                    else
+                    {
+                        throw new InvalidDataException("You have an infinite loop with no wait node, " +
+                                                       "this is bad because it will block the program.");
+                    }
                 }
             }
 
