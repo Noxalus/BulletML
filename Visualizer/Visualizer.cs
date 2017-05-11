@@ -100,7 +100,7 @@ namespace Visualizer
             _pixel.SetData(new[] { Color.White });
 
             _playerTexture = Content.Load<Texture2D>("Sprites\\player");
-            _bulletTexture = Content.Load<Texture2D>("Sprites\\player");
+            _bulletTexture = Content.Load<Texture2D>("Sprites\\bullet");
 
             // Set the default bullet texture of the bullet manager
             _moverManager.CurrentBulletTexture = _bulletTexture;
