@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace Visualizer.Core
+namespace Visualizer_Core
 {
     public class FPSCounter
     {

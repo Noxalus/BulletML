@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Visualizer.Desktop
+namespace Visualizer_Desktop
 {
     /// <summary>
     /// The main class.
@@ -13,7 +13,7 @@ namespace Visualizer.Desktop
         [STAThread]
         static void Main()
         {
-            using (var game = new Core.Visualizer())
+            using (var game = new Visualizer_Core.Visualizer())
                 game.Run();
         }
     }

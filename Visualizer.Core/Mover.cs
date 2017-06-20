@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Visualizer.Core
+namespace Visualizer_Core
 {
     public class Mover : Bullet
     {
@@ -36,11 +36,10 @@ namespace Visualizer.Core
         {
             base.Update();
 
-            if (X < Texture.Width / 2f || X > Config.GameAeraSize.X - (Texture.Width / 2f) ||
-                Y < Texture.Height / 2f || Y > Config.GameAeraSize.Y - (Texture.Height / 2f))
+            if (X < -Texture.Width / 2f || X > Config.GameAeraSize.X + (Texture.Width / 2f) ||
+                Y < -Texture.Height / 2f || Y > Config.GameAeraSize.Y + (Texture.Height / 2f))
             {
                 Used = false;
-                //Direction = (MathHelper.PiOver4 + Direction);
             }
         }
     }

@@ -11,10 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualizer.Desktop", "Visua
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Visualizer.Core", "Visualizer.Core\Visualizer.Core.shproj", "{31FA9520-C524-45C4-A438-CEB45B531312}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualizer.Android", "Visualizer.Android\Visualizer.Android.csproj", "{B03BEED8-5514-49A5-9E86-0FA08C6F9864}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Visualizer.Core\Visualizer.Core.projitems*{31fa9520-c524-45c4-a438-ceb45b531312}*SharedItemsImports = 13
 		Visualizer.Core\Visualizer.Core.projitems*{7fe12d3b-1647-4403-9557-ce805509f89d}*SharedItemsImports = 4
+		Visualizer.Core\Visualizer.Core.projitems*{b03beed8-5514-49a5-9e86-0fa08c6f9864}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +50,18 @@ Global
 		{7FE12D3B-1647-4403-9557-CE805509F89D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7FE12D3B-1647-4403-9557-CE805509F89D}.Release|x86.ActiveCfg = Release|Any CPU
 		{7FE12D3B-1647-4403-9557-CE805509F89D}.Release|x86.Build.0 = Release|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Debug|x86.Build.0 = Debug|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Release|x86.ActiveCfg = Release|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Release|x86.Build.0 = Release|Any CPU
+		{B03BEED8-5514-49A5-9E86-0FA08C6F9864}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

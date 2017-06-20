@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Visualizer.Core
+namespace Visualizer_Core
 {
     public class Player
     {

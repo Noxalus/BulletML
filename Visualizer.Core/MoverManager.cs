@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Visualizer.Core
+namespace Visualizer_Core
 {
     public class MoverManager : IBulletManager
     {

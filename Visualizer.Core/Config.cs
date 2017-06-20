@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Visualizer.Core
+namespace Visualizer_Core
 {
     public static class Config
     {

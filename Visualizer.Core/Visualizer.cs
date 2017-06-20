@@ -2,13 +2,18 @@ using BulletML;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
-namespace Visualizer.Core
+#if ANDROID
+using Visualizer_Android;
+#endif
+
+namespace Visualizer_Core
 {
     /// <summary>
     /// This is the main type for your game.
@@ -32,17 +37,16 @@ namespace Visualizer.Core
         private MoverManager _moverManager;
         private Mover _mover;
 
-        private float _rank = 0.0f;
+        private float _rank = 0.5f;
         private bool _pause = false;
 
         private readonly List<BulletPattern> _patterns = new List<BulletPattern>();
         private readonly List<string> _patternNames = new List<string>();
         private readonly List<String> _currentPatternErrors = new List<string>();
         private int _currentPattern;
-
         private readonly List<FileInfo> _patternFileInfos = new List<FileInfo>();
-        private FileSystemWatcher _watcher;
 
+        private FileSystemWatcher _watcher;
         private KeyboardState _previousKeyboardState;
 
         // Performance
@@ -50,31 +54,34 @@ namespace Visualizer.Core
         private TimeSpan _updateTime;
         private TimeSpan _drawTime;
 
+#if ANDROID
+        private VisualizerActivity _activity;
+
+        public Visualizer(VisualizerActivity activity)
+        {
+            _activity = activity;
+#else
         public Visualizer()
         {
+            // Allow window resizing
+            Window.AllowUserResizing = true;
+#endif
+
             Graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = 1280,
                 PreferredBackBufferHeight = 720
             };
 
-            // Allow window resizing
-            Window.AllowUserResizing = true;
-            //Window.ClientSizeChanged += Window_ClientSizeChanged;
-
             Content.RootDirectory = "Content";
-        }
-
-        private void Window_ClientSizeChanged(object sender, EventArgs e)
-        {
-            Graphics.PreferredBackBufferWidth = Window.ClientBounds.Width;
-            Graphics.PreferredBackBufferHeight = Window.ClientBounds.Height;
-            Graphics.ApplyChanges();
         }
 
         protected override void Initialize()
         {
+#if !ANDROID
             _previousKeyboardState = Keyboard.GetState();
+#endif
+
             _player = new Player();
             _moverManager = new MoverManager(_player.GetPosition);
             _camera = new Camera2D(GraphicsDevice.Viewport);
@@ -109,12 +116,19 @@ namespace Visualizer.Core
 
             // Get all the xml files in the samples directory
             var index = 0;
-            foreach (var source in Directory.GetFiles("Assets\\Patterns", "*.xml"))
-            {
-                // Store the name
-                _patternNames.Add(source);
 
-                _patternFileInfos.Add(new FileInfo(source));
+#if ANDROID
+            foreach (var source in _activity.ListFile(@"Patterns"))
+            {
+                var filename = @"Patterns/" + source;
+#else
+            foreach (var filename in Directory.GetFiles("Assets\\Patterns", "*.xml"))
+            {
+#endif
+                // Store the name
+                _patternNames.Add(filename);
+
+                _patternFileInfos.Add(new FileInfo(filename));
 
                 // Load the pattern
                 var pattern = new BulletPattern();
@@ -123,7 +137,12 @@ namespace Visualizer.Core
 
                 try
                 {
-                    pattern.Parse(source);
+#if ANDROID
+                    var stream = _activity.ApplicationContext.Assets.Open(filename);
+                    pattern.ParseStream(filename, stream);
+#else
+                    pattern.Parse(filename);
+#endif
                 }
                 catch (Exception ex)
                 {
@@ -134,50 +153,7 @@ namespace Visualizer.Core
             }
 
             GameManager.GameDifficulty = GetRank;
-
             AddBullet(true);
-        }
-
-        // Define the event handlers.
-        private void OnChanged(object source, FileSystemEventArgs e)
-        {
-            try
-            {
-                _watcher.EnableRaisingEvents = false;
-
-                // Wait until the file is not in used
-                while (IsFileLocked(_patternFileInfos[_currentPattern]))
-                {
-                    Thread.Sleep(10);
-                }
-
-                LoadPatternFile();
-                AddBullet(true);
-            }
-            finally
-            {
-                _watcher.EnableRaisingEvents = true;
-            }
-        }
-
-        private bool IsFileLocked(FileInfo file)
-        {
-            FileStream stream = null;
-
-            try
-            {
-                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
-            }
-            catch (IOException)
-            {
-                return true;
-            }
-            finally
-            {
-                stream?.Close();
-            }
-
-            return false;
         }
 
         private void LoadPatternFile()
@@ -213,8 +189,6 @@ namespace Visualizer.Core
                 _moverManager.Update();
 
             _player.Update(gameTime);
-
-            _previousKeyboardState = Keyboard.GetState();
 
             _updateTime = _stopWatch.Elapsed;
 
@@ -282,26 +256,63 @@ namespace Visualizer.Core
             _spriteBatch.End();
         }
 
+        private void HandleTouchInput(GameTime gameTime)
+        {
+            var touchState = TouchPanel.GetState();
+
+            foreach (var touch in touchState)
+            {
+                var normalizedTouchPosition = new Vector2(
+                    touch.Position.X / Graphics.GraphicsDevice.Viewport.Width,
+                    touch.Position.Y / Graphics.GraphicsDevice.Viewport.Height
+                );
+
+                if (touch.State == TouchLocationState.Pressed)
+                {
+                    if (normalizedTouchPosition.X < 0.25f)
+                        PreviousPattern();
+                    else if (normalizedTouchPosition.X > 0.75f)
+                        NextPattern();
+                    else
+                        AddBullet();
+                }
+                else
+                {
+                    if (normalizedTouchPosition.Y < 0.25f)
+                        _moverManager.Clear();
+                    else if (normalizedTouchPosition.Y > 0.75f)
+                        AddBullet(false);
+                }
+            }
+        }
+
         private void HandleInput(GameTime gameTime)
+        {
+#if ANDROID
+            HandleTouchInput(gameTime);
+#else
+            HandleKeyboardInput(gameTime);
+#endif
+        }
+
+        private void HandleKeyboardInput(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             var keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.Escape))
-                this.Exit();
+                Exit();
 
             if (keyboardState.IsKeyDown(Keys.P) && _previousKeyboardState.IsKeyUp(Keys.P))
                 _pause = !_pause;
 
             if (keyboardState.IsKeyDown(Keys.PageUp) && _previousKeyboardState.IsKeyUp(Keys.PageUp))
             {
-                _currentPattern = (_currentPattern + 1) % _patterns.Count;
-                AddBullet(true);
+                NextPattern();
             }
             else if (keyboardState.IsKeyDown(Keys.PageDown) && _previousKeyboardState.IsKeyUp(Keys.PageDown))
             {
-                _currentPattern = (_currentPattern - 1) < 0 ? _patterns.Count - 1 : _currentPattern - 1;
-                AddBullet(true);
+                PreviousPattern();
             }
 
             if (keyboardState.IsKeyDown(Keys.LeftControl) && _previousKeyboardState.IsKeyUp(Keys.LeftControl))
@@ -338,10 +349,55 @@ namespace Visualizer.Core
                 _camera.Position += new Vector2(250, 0) * dt;
 
             if (keyboardState.IsKeyDown(Keys.NumPad1))
-                Config.GameAeraSize += Config.GameAeraSize  * (-0.01f);
+                Config.GameAeraSize += Config.GameAeraSize * (-0.01f);
 
             if (keyboardState.IsKeyDown(Keys.NumPad3))
                 Config.GameAeraSize += Config.GameAeraSize * 0.01f;
+
+            _previousKeyboardState = Keyboard.GetState();
+        }
+
+        #region Pattern file edit
+        // Define the event handlers.
+        private void OnChanged(object source, FileSystemEventArgs e)
+        {
+            try
+            {
+                _watcher.EnableRaisingEvents = false;
+
+                // Wait until the file is not in used
+                while (IsFileLocked(_patternFileInfos[_currentPattern]))
+                {
+                    Thread.Sleep(10);
+                }
+
+                LoadPatternFile();
+                AddBullet(true);
+            }
+            finally
+            {
+                _watcher.EnableRaisingEvents = true;
+            }
+        }
+
+        private bool IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+            finally
+            {
+                stream?.Close();
+            }
+
+            return false;
         }
 
         private void EditCurrentPatternFile()
@@ -363,8 +419,9 @@ namespace Visualizer.Core
             // Begin watching
             _watcher.EnableRaisingEvents = true;
 
-            System.Diagnostics.Process.Start(_patternFileInfos[_currentPattern].FullName);
+            Process.Start(_patternFileInfos[_currentPattern].FullName);
         }
+        #endregion
 
         private void AddBullet(bool clear = false)
         {
@@ -378,6 +435,18 @@ namespace Visualizer.Core
             _mover = (Mover)_moverManager.CreateBullet(true);
             _mover.Position = new Vector2(Config.GameAeraSize.X / 2f, Config.GameAeraSize.Y / 2f);
             _mover.InitTopNode(_patterns[_currentPattern].RootNode);
+        }
+
+        private void NextPattern()
+        {
+            _currentPattern = (_currentPattern + 1) % _patterns.Count;
+            AddBullet(true);
+        }
+
+        private void PreviousPattern()
+        {
+            _currentPattern = (_currentPattern - 1) < 0 ? _patterns.Count - 1 : _currentPattern - 1;
+            AddBullet(true);
         }
 
         private string WrapString(String text, float width, SpriteFont font)
