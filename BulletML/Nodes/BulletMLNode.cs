@@ -200,7 +200,7 @@ namespace BulletML.Nodes
         /// </summary>
         /// <param name="bulletNodeElement">Bullet node element.</param>
         /// <param name="parentNode">Parent node element.</param>
-        public void Parse(XmlNode bulletNodeElement, BulletMLNode parentNode)
+        public virtual void Parse(XmlNode bulletNodeElement, BulletMLNode parentNode)
         {
             // Handle null argument.
             if (bulletNodeElement == null)
@@ -267,7 +267,7 @@ namespace BulletML.Nodes
         /// </summary>
         public virtual void ValidateNode()
         {
-            //validate all the childe nodes
+            // Validate all the child nodes
             foreach (var childnode in ChildNodes)
                 childnode.ValidateNode();
         }

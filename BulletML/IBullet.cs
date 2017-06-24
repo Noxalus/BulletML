@@ -1,5 +1,6 @@
 ﻿using BulletML.Nodes;
 using BulletML.Tasks;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace BulletML
@@ -40,6 +41,12 @@ namespace BulletML
         /// </summary>
         /// <value>The direction in radians.</value>
         float Direction { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bullet's color.
+        /// </summary>
+        /// <value>The RGBA color.</value>
+        Color Color { get; set; }
 
         /// <summary>
         /// Initialize this bullet with a top level node.

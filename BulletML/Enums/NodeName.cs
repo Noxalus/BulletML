@@ -27,6 +27,7 @@ namespace BulletML.Enums
         direction,
         speed,
         param,
-        bulletml
+        bulletml,
+        color
     }
 }

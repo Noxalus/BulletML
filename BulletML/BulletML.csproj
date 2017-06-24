@@ -87,6 +87,7 @@
     <Compile Include="Nodes\BulletRefNode.cs" />
     <Compile Include="Nodes\ChangeDirectionNode.cs" />
     <Compile Include="Nodes\ChangeSpeedNode.cs" />
+    <Compile Include="Nodes\ColorNode.cs" />
     <Compile Include="Nodes\DirectionNode.cs" />
     <Compile Include="Nodes\FireNode.cs" />
     <Compile Include="Nodes\FireRefNode.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Tasks\BulletMLTask.cs" />
     <Compile Include="Tasks\ChangeDirectionTask.cs" />
     <Compile Include="Tasks\ChangeSpeedTask.cs" />
+    <Compile Include="Tasks\ColorTask.cs" />
     <Compile Include="Tasks\FireTask.cs" />
     <Compile Include="Tasks\RepeatTask.cs" />
     <Compile Include="Tasks\DirectionTask.cs" />

@@ -43,10 +43,18 @@
 <!ELEMENT speed (#PCDATA)>
 <!ATTLIST speed type (absolute|relative|sequence) "absolute">
 
+<!ELEMENT color (#PCDATA)>
+<!ATTLIST color
+  red CDATA #IMPLIED
+  green CDATA #IMPLIED
+  blue CDATA #IMPLIED
+  alpha CDATA #IMPLIED
+>
+
 <!ELEMENT horizontal (#PCDATA)>
 <!ATTLIST horizontal type (absolute|relative|sequence) "absolute">
 
-<!ELEMENT bullet (direction?, speed?, (action | actionRef)*)>
+<!ELEMENT bullet (direction?, speed?, color?, (action | actionRef)*)>
 <!ATTLIST bullet label CDATA #IMPLIED>
 
 <!ELEMENT direction (#PCDATA)>

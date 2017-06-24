@@ -72,6 +72,12 @@ namespace BulletML
         public virtual float Speed { get; set; }
 
         /// <summary>
+        /// Gets or sets the color
+        /// </summary>
+        /// <value>The RGBA color.</value>
+        public virtual Color Color { get; set; }
+
+        /// <summary>
         /// A list of tasks that will define this bullet behavior.
         /// </summary>
         public List<BulletMLTask> Tasks { get; private set; }

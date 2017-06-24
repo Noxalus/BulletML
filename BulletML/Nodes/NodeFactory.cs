@@ -18,89 +18,93 @@ namespace BulletML.Nodes
             switch (nodeType)
             {
                 case NodeName.bullet:
-                    {
-                        return new BulletNode();
-                    }
+                {
+                    return new BulletNode();
+                }
                 case NodeName.action:
-                    {
-                        return new ActionNode();
-                    }
+                {
+                    return new ActionNode();
+                }
                 case NodeName.fire:
-                    {
-                        return new FireNode();
-                    }
+                {
+                    return new FireNode();
+                }
                 case NodeName.changeDirection:
-                    {
-                        return new ChangeDirectionNode();
-                    }
+                {
+                    return new ChangeDirectionNode();
+                }
                 case NodeName.changeSpeed:
                     {
                         return new ChangeSpeedNode();
                     }
                 case NodeName.accel:
-                    {
-                        return new AccelNode();
-                    }
+                {
+                    return new AccelNode();
+                }
                 case NodeName.wait:
-                    {
-                        return new WaitNode();
-                    }
+                {
+                    return new WaitNode();
+                }
                 case NodeName.repeat:
-                    {
-                        return new RepeatNode();
-                    }
+                {
+                    return new RepeatNode();
+                }
                 case NodeName.bulletRef:
-                    {
-                        return new BulletRefNode();
-                    }
+                {
+                    return new BulletRefNode();
+                }
                 case NodeName.actionRef:
-                    {
-                        return new ActionRefNode();
-                    }
+                {
+                    return new ActionRefNode();
+                }
                 case NodeName.fireRef:
-                    {
-                        return new FireRefNode();
-                    }
+                {
+                    return new FireRefNode();
+                }
                 case NodeName.vanish:
-                    {
-                        return new VanishNode();
-                    }
+                {
+                    return new VanishNode();
+                }
                 case NodeName.horizontal:
-                    {
-                        return new HorizontalNode();
-                    }
+                {
+                    return new HorizontalNode();
+                }
                 case NodeName.vertical:
-                    {
-                        return new VerticalNode();
-                    }
+                {
+                    return new VerticalNode();
+                }
                 case NodeName.term:
-                    {
-                        return new TermNode();
-                    }
+                {
+                    return new TermNode();
+                }
                 case NodeName.times:
-                    {
-                        return new TimesNode();
-                    }
+                {
+                    return new TimesNode();
+                }
                 case NodeName.direction:
-                    {
-                        return new DirectionNode();
-                    }
+                {
+                    return new DirectionNode();
+                }
                 case NodeName.speed:
-                    {
-                        return new SpeedNode();
-                    }
+                {
+                    return new SpeedNode();
+                }
+                case NodeName.color:
+                {
+                    return new ColorNode();
+                }
                 case NodeName.param:
-                    {
-                        return new ParamNode();
-                    }
+                {
+                    return new ParamNode();
+                }
                 case NodeName.bulletml:
-                    {
-                        return new BulletMLNode(NodeName.bulletml);
-                    }
+                {
+                    return new BulletMLNode(NodeName.bulletml);
+                }
                 default:
-                    {
-                        throw new Exception("Unhandled type of NodeName: \"" + nodeType.ToString() + "\"");
-                    }
+                {
+                    throw new Exception("Unhandled type of NodeName: \"" + nodeType.ToString() + "\"");
+                }
             }
         }
     }

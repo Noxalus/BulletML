@@ -202,7 +202,7 @@ namespace Visualizer_Core
 
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix());
+            _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix(), blendState: BlendState.AlphaBlend);
 
             _spriteBatch.Draw(_pixel, new Rectangle(0, 0, (int)Config.GameAeraSize.X, (int)Config.GameAeraSize.Y), Color.CornflowerBlue);
 
@@ -210,7 +210,8 @@ namespace Visualizer_Core
             {
                 _spriteBatch.Draw(_bulletTexture,
                     mover.Position, null,
-                    Color.White, mover.Direction,
+                    mover.Color, 
+                    mover.Direction,
                     new Vector2(_bulletTexture.Width / 2f, _bulletTexture.Height / 2f), 1f, SpriteEffects.None, 0f
                 );
             }
