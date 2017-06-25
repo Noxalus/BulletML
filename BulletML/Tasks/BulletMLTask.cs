@@ -213,6 +213,11 @@ namespace BulletML.Tasks
                         ChildTasks.Add(new ColorTask(childNode as ColorNode, this));
                     }
                     break;
+                case NodeName.changeColor:
+                    {
+                        ChildTasks.Add(new ChangeColorTask(childNode as ChangeColorNode, this));
+                    }
+                    break;
             }
         }
 

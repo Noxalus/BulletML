@@ -33,6 +33,7 @@ namespace BulletML.Enums
         green,
         blue,
         alpha,
-        opacity
+        opacity,
+        changeColor
     }
 }

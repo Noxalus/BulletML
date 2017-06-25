@@ -6,6 +6,10 @@
 
 <!ELEMENT changeDirection (direction, term)>
 
+<!ELEMENT changeSpeed (speed, term)>
+
+<!ELEMENT changeColor (color, term)>
+
 <!ELEMENT bulletml (bullet | fire | action)*>
 <!ATTLIST bulletml xmlns CDATA #IMPLIED>
 <!ATTLIST bulletml type (none | vertical | horizontal) "none">
@@ -35,7 +39,7 @@
 
 <!ELEMENT wait (#PCDATA)>
 
-<!ELEMENT action (changeDirection | accel | vanish | changeSpeed | repeat | wait | (fire | fireRef) | (action | actionRef))*>
+<!ELEMENT action (accel | changeDirection | changeSpeed | changeColor | repeat | wait | (fire | fireRef) | (action | actionRef) | vanish)*>
 <!ATTLIST action label CDATA #IMPLIED>
 
 <!ELEMENT vanish (#PCDATA)>
@@ -58,8 +62,6 @@
 
 <!ELEMENT direction (#PCDATA)>
 <!ATTLIST direction type (aim|absolute|relative|sequence) "aim">
-
-<!ELEMENT changeSpeed (speed, term)>
 
 <!ELEMENT fire
   (

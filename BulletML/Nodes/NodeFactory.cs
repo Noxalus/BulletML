@@ -113,6 +113,10 @@ namespace BulletML.Nodes
                     {
                         return new OpacityNode();
                     }
+                case NodeName.changeColor:
+                    {
+                        return new ChangeColorNode();
+                    }
                 case NodeName.param:
                     {
                         return new ParamNode();

@@ -27,12 +27,11 @@ namespace BulletML.Tasks
         /// <param name="bullet">The bullet.</param>
         public override void InitTask(Bullet bullet)
         {
-            // Set the length of time to run this task
-            float red = Node.GetChildValue(NodeName.red, this, bullet);
-            float green = Node.GetChildValue(NodeName.green, this, bullet);
-            float blue = Node.GetChildValue(NodeName.blue, this, bullet);
-            float alpha = Node.GetChildValue(NodeName.alpha, this, bullet);
-            float opacity = Node.GetChildValue(NodeName.opacity, this, bullet);
+            float red = (Node.GetChild(NodeName.red) != null) ? Node.GetChildValue(NodeName.red, this, bullet) : bullet.Color.R;
+            float green = (Node.GetChild(NodeName.green) != null) ? Node.GetChildValue(NodeName.green, this, bullet) : bullet.Color.G;
+            float blue = (Node.GetChild(NodeName.blue) != null) ? Node.GetChildValue(NodeName.blue, this, bullet) : bullet.Color.B;
+            float alpha = (Node.GetChild(NodeName.alpha) != null) ? Node.GetChildValue(NodeName.alpha, this, bullet) : bullet.Color.A;
+            float opacity = (Node.GetChild(NodeName.opacity) != null) ? Node.GetChildValue(NodeName.opacity, this, bullet) : 1f;
 
             bullet.Color = new Color(red, green, blue, alpha) * opacity;
         }
