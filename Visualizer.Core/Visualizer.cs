@@ -35,6 +35,7 @@ namespace Visualizer_Core
 
         private Player _player;
         private MoverManager _moverManager;
+        private Vector2 _moverManagerPosition;
         private Mover _mover;
 
         private float _rank = 0.5f;
@@ -90,6 +91,8 @@ namespace Visualizer_Core
             _stopWatch.Start();
 
             _player.Initialize();
+
+            _moverManagerPosition = new Vector2(Config.GameAeraSize.X / 2f, Config.GameAeraSize.Y / 2f);
 
             base.Initialize();
         }
@@ -218,6 +221,14 @@ namespace Visualizer_Core
 
             _spriteBatch.Draw(
                 _playerTexture,
+                _moverManagerPosition, null,
+                Color.White, 0f,
+                new Vector2(_playerTexture.Width / 2f, _playerTexture.Height / 2f),
+                new Vector2(1f), SpriteEffects.None, 0f
+            );
+
+            _spriteBatch.Draw(
+                _playerTexture,
                 _player.Position, null,
                 Color.Red, 0f,
                 new Vector2(_playerTexture.Width / 2f, _playerTexture.Height / 2f),
@@ -328,6 +339,20 @@ namespace Visualizer_Core
             if (keyboardState.IsKeyDown(Keys.E) && _previousKeyboardState.IsKeyUp(Keys.E))
                 EditCurrentPatternFile();
 
+            // Mover manager position
+
+            if (keyboardState.IsKeyDown(Keys.I))
+                _moverManagerPosition -= new Vector2(0, 250) * dt;
+
+            if (keyboardState.IsKeyDown(Keys.K))
+                _moverManagerPosition += new Vector2(0, 250) * dt;
+
+            if (keyboardState.IsKeyDown(Keys.J))
+                _moverManagerPosition -= new Vector2(250, 0) * dt;
+
+            if (keyboardState.IsKeyDown(Keys.L))
+                _moverManagerPosition += new Vector2(250, 0) * dt;
+
             // Camera
             if (keyboardState.IsKeyDown(Keys.NumPad7))
                 _camera.Zoom -= dt * 0.5f;
@@ -434,7 +459,7 @@ namespace Visualizer_Core
 
             // Add a new bullet in the center of the screen
             _mover = (Mover)_moverManager.CreateBullet(true);
-            _mover.Position = new Vector2(Config.GameAeraSize.X / 2f, Config.GameAeraSize.Y / 2f);
+            _mover.Position = _moverManagerPosition;
             _mover.InitTopNode(_patterns[_currentPattern].RootNode);
         }
 
