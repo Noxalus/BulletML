@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml>
+  <action label="top">
+    <repeat>
+      <times>0</times>
+      <action>
+        <repeat>
+          <times>8</times>
+          <action>
+            <fire>
+              <direction type="sequence">46</direction>
+              <bulletRef label="color" />
+            </fire>
+          </action>
+        </repeat>
+        <wait>10</wait>
+      </action>
+    </repeat>
+  </action>
+
+  <bullet label="color">
+      <speed>1</speed>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+        <alpha>1.0</alpha>
+        <opacity>1.0</opacity>
+      </color>
+      <action>
+        <changeColor>
+          <color>
+            <opacity>0.0</opacity>
+          </color>
+          <term>20</term>
+        </changeColor>
+        <wait>50</wait>
+        <changeColor>
+          <color>
+            <red>0.0</red>
+            <green>1.0</green>
+            <blue>0.0</blue>
+            <alpha>1.0</alpha>
+            <opacity>1.0</opacity>
+          </color>
+          <term>20</term>
+        </changeColor>
+        <wait>50</wait>
+        <changeColor>
+          <color>
+            <opacity>0.0</opacity>
+          </color>
+          <term>20</term>
+        </changeColor>
+        <wait>50</wait>
+        <changeColor>
+          <color>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>1.0</blue>
+            <alpha>1.0</alpha>
+            <opacity>1.0</opacity>
+          </color>
+          <term>20</term>
+        </changeColor>
+        <wait>50</wait>
+        <changeColor>
+          <color>
+            <red>$rand</red>
+            <green>$rand</green>
+            <blue>$rand</blue>
+            <alpha>1.0</alpha>
+            <opacity>1.0</opacity>
+          </color>
+          <term>100</term>
+        </changeColor>
+      </action>
+  </bullet>
+</bulletml>

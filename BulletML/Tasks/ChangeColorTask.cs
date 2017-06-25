@@ -54,7 +54,6 @@ namespace BulletML.Tasks
             if (Math.Abs(Duration) < float.Epsilon)
                 Duration = 1.0f;
 
-            _initialColor = bullet.Color;
             _initialDuration = Duration;
 
             var colorNode = Node.GetChild(NodeName.color);
@@ -63,7 +62,7 @@ namespace BulletML.Tasks
             float green = (colorNode.GetChild(NodeName.green) != null) ? colorNode.GetChildValue(NodeName.green, this, bullet) : (bullet.Color.G / 255f);
             float blue = (colorNode.GetChild(NodeName.blue) != null) ? colorNode.GetChildValue(NodeName.blue, this, bullet) : (bullet.Color.B / 255f);
             float alpha = (colorNode.GetChild(NodeName.alpha) != null) ? colorNode.GetChildValue(NodeName.alpha, this, bullet) : (bullet.Color.A / 255f);
-            float opacity = (colorNode.GetChild(NodeName.opacity) != null) ? Node.GetChildValue(NodeName.opacity, this, bullet) : 1f;
+            float opacity = (colorNode.GetChild(NodeName.opacity) != null) ? colorNode.GetChildValue(NodeName.opacity, this, bullet) : 1f;
 
             _nodeColor = new Color(red, green, blue, alpha) * opacity;
         }
@@ -81,6 +80,9 @@ namespace BulletML.Tasks
         /// <param name="bullet">The bullet to update this task against.</param>
         public override TaskRunStatus Run(Bullet bullet)
         {
+            if (Duration == _initialDuration)
+                _initialColor = bullet.Color;
+
             bullet.Color = GetColor(bullet);
 
             Duration--;
