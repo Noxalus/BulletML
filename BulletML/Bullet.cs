@@ -124,6 +124,7 @@ namespace BulletML
             _bulletManager = bulletManager;
             Acceleration = Vector2.Zero;
             Tasks = new List<BulletMLTask>();
+            Color = Color.White;
         }
 
         /// <summary>
