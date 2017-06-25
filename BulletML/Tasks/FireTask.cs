@@ -27,12 +27,6 @@ namespace BulletML.Tasks
         public float FireSpeed { get; private set; }
 
         /// <summary>
-        /// The bullet's color that this task will fire.
-        /// </summary>
-        /// <value>The bullet's color.</value>
-        public Color FireColor { get; private set; }
-
-        /// <summary>
         /// If this fire node shoots from a bullet/bulletRef node, this will be a task created for it.
         /// This is needed so the params of the bulletRef can be set correctly.
         /// </summary>
@@ -50,12 +44,6 @@ namespace BulletML.Tasks
         /// </summary>
         /// <value>The speed node.</value>
         public SpeedTask SpeedTask { get; private set; }
-
-        /// <summary>
-        /// The node we are going to use to set the color of any bullets shot with this task.
-        /// </summary>
-        /// <value>The color node.</value>
-        public ColorTask ColorTask { get; private set; }
 
         private static float _lastFireDirection;
         private static float _lastFireSpeed;
@@ -104,7 +92,6 @@ namespace BulletML.Tasks
             // Setup all the direction and speed nodes of the bullet/bulletRef subnode
             GetDirectionTasks(BulletTask);
             GetSpeedNodes(BulletTask);
-            GetColorNodes(BulletTask);
 
             _lastSetupDirection = bullet.Direction;
             _lastSetupSpeed = bullet.Speed;
@@ -221,17 +208,6 @@ namespace BulletML.Tasks
                 FireSpeed = Math.Abs(bullet.Speed) > float.Epsilon ? bullet.Speed : 0f;
             }
 
-
-            if (ColorTask != null)
-            {
-                //ColorTask.GetParamValue();
-                FireColor = ColorTask.Color;
-            }
-            else
-            {
-                FireColor = Color.White;
-            }
-
             // Store setup direction/speed for sequence type
             _lastSetupDirection = FireDirection;
             _lastSetupSpeed = FireSpeed;
@@ -259,9 +235,6 @@ namespace BulletML.Tasks
 
             // Set the new bullet's speed
             newBullet.Speed = FireSpeed;
-
-            // Set the new bullet's color
-            newBullet.Color = FireColor;
 
             // Store the new bullet's direction and speed for the sequence type
             _lastFireDirection = FireDirection;
@@ -348,21 +321,6 @@ namespace BulletML.Tasks
 
             if (SpeedTask == null)
                 SpeedTask = new SpeedTask(speedNode, taskToCheck);
-        }
-
-        /// <summary>
-        /// Given a node, pull the color nodes out from underneath it and store them if necessary.
-        /// </summary>
-        /// <param name="taskToCheck">Node to check.</param>
-        private void GetColorNodes(BulletMLTask taskToCheck)
-        {
-            // Check if this fire task has a speed node
-            var colorNode = taskToCheck?.Node.GetChild(NodeName.color) as ColorNode;
-
-            if (colorNode == null) return;
-
-            if (ColorTask == null)
-                ColorTask = new ColorTask(colorNode, taskToCheck);
         }
 
         #endregion Methods

@@ -9,10 +9,6 @@ namespace BulletML.Enums
     public enum AttributeName
     {
         label,
-        type,
-        red,
-        green,
-        blue,
-        alpha
+        type
     }
 }

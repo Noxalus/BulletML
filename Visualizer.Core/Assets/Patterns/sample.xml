@@ -5,7 +5,13 @@
     <fire>
       <bullet>
         <speed>1</speed>
-        <color red="152" green="2" blue="85" alpha="255" />
+        <color>
+          <red>$rand</red>
+          <green>$rand</green>
+          <blue>$rand</blue>
+          <alpha>1.0</alpha>
+          <opacity>0.5</opacity>
+        </color>
       </bullet>
     </fire>
   </action>

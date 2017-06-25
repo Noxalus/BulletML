@@ -82,6 +82,9 @@
     <Compile Include="Nodes\AccelNode.cs" />
     <Compile Include="Nodes\ActionNode.cs" />
     <Compile Include="Nodes\ActionRefNode.cs" />
+    <Compile Include="Nodes\OpacityNode.cs" />
+    <Compile Include="Nodes\AlphaNode.cs" />
+    <Compile Include="Nodes\BlueNode.cs" />
     <Compile Include="Nodes\BulletMLNode.cs" />
     <Compile Include="Nodes\BulletNode.cs" />
     <Compile Include="Nodes\BulletRefNode.cs" />
@@ -91,9 +94,11 @@
     <Compile Include="Nodes\DirectionNode.cs" />
     <Compile Include="Nodes\FireNode.cs" />
     <Compile Include="Nodes\FireRefNode.cs" />
+    <Compile Include="Nodes\GreenNode.cs" />
     <Compile Include="Nodes\HorizontalNode.cs" />
     <Compile Include="Nodes\NodeFactory.cs" />
     <Compile Include="Nodes\ParamNode.cs" />
+    <Compile Include="Nodes\RedNode.cs" />
     <Compile Include="Nodes\RepeatNode.cs" />
     <Compile Include="Nodes\SpeedNode.cs" />
     <Compile Include="Nodes\TermNode.cs" />

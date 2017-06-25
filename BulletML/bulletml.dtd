@@ -43,13 +43,12 @@
 <!ELEMENT speed (#PCDATA)>
 <!ATTLIST speed type (absolute|relative|sequence) "absolute">
 
-<!ELEMENT color (#PCDATA)>
-<!ATTLIST color
-  red CDATA #IMPLIED
-  green CDATA #IMPLIED
-  blue CDATA #IMPLIED
-  alpha CDATA #IMPLIED
->
+<!ELEMENT red (#PCDATA)>
+<!ELEMENT green (#PCDATA)>
+<!ELEMENT blue (#PCDATA)>
+<!ELEMENT alpha (#PCDATA)>
+<!ELEMENT opacity (#PCDATA)>
+<!ELEMENT color (red?, green?, blue?, alpha?, opacity?)>
 
 <!ELEMENT horizontal (#PCDATA)>
 <!ATTLIST horizontal type (absolute|relative|sequence) "absolute">

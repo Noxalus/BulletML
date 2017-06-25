@@ -208,6 +208,11 @@ namespace BulletML.Tasks
                         ChildTasks.Add(new AccelTask(childNode as AccelNode, this));
                     }
                     break;
+                case NodeName.color:
+                    {
+                        ChildTasks.Add(new ColorTask(childNode as ColorNode, this));
+                    }
+                    break;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using BulletML.Nodes;
+﻿using BulletML.Enums;
+using BulletML.Nodes;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 
@@ -9,13 +10,6 @@ namespace BulletML.Tasks
     /// </summary>
     public class ColorTask : BulletMLTask
     {
-        private ColorNode _colorNode;
-
-        public Color Color
-        {
-            get { return _colorNode.Color; }
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ColorTask"/> class.
         /// </summary>
@@ -25,12 +19,22 @@ namespace BulletML.Tasks
         {
             Debug.Assert(null != Node);
             Debug.Assert(null != Owner);
+        }
 
-            var colorNode = node as ColorNode;
+        /// <summary>
+        /// This sets up the task to be run.
+        /// </summary>
+        /// <param name="bullet">The bullet.</param>
+        public override void InitTask(Bullet bullet)
+        {
+            // Set the length of time to run this task
+            float red = Node.GetChildValue(NodeName.red, this, bullet);
+            float green = Node.GetChildValue(NodeName.green, this, bullet);
+            float blue = Node.GetChildValue(NodeName.blue, this, bullet);
+            float alpha = Node.GetChildValue(NodeName.alpha, this, bullet);
+            float opacity = Node.GetChildValue(NodeName.opacity, this, bullet);
 
-            Debug.Assert(null != colorNode);
-
-            _colorNode = colorNode;
+            bullet.Color = new Color(red, green, blue, alpha) * opacity;
         }
     }
 }

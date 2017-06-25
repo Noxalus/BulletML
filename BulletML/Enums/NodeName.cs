@@ -28,6 +28,11 @@ namespace BulletML.Enums
         speed,
         param,
         bulletml,
-        color
+        color,
+        red,
+        green,
+        blue,
+        alpha,
+        opacity
     }
 }
