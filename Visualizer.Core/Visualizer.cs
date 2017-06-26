@@ -218,9 +218,9 @@ namespace Visualizer_Core
             {
                 _spriteBatch.Draw(_bulletTexture,
                     mover.Position, null,
-                    mover.Color, 
+                    mover.Color,
                     mover.Direction,
-                    new Vector2(_bulletTexture.Width / 2f, _bulletTexture.Height / 2f), 1f, SpriteEffects.None, 0f
+                    new Vector2(_bulletTexture.Width / 2f, _bulletTexture.Height / 2f), mover.Scale, SpriteEffects.None, 0f
                 );
             }
 

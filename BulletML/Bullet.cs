@@ -78,6 +78,12 @@ namespace BulletML
         public virtual Color Color { get; set; }
 
         /// <summary>
+        /// Gets or sets the scale
+        /// </summary>
+        /// <value>The scale.</value>
+        public virtual float Scale { get; set; }
+
+        /// <summary>
         /// A list of tasks that will define this bullet behavior.
         /// </summary>
         public List<BulletMLTask> Tasks { get; private set; }
@@ -125,6 +131,7 @@ namespace BulletML
             Acceleration = Vector2.Zero;
             Tasks = new List<BulletMLTask>();
             Color = Color.White;
+            Scale = 1f;
         }
 
         /// <summary>

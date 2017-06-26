@@ -27,6 +27,12 @@ namespace BulletML.Tasks
         public float FireSpeed { get; private set; }
 
         /// <summary>
+        /// The scale that this task will fire a bullet.
+        /// </summary>
+        /// <value>The fire scale.</value>
+        public float FireScale { get; private set; }
+
+        /// <summary>
         /// If this fire node shoots from a bullet/bulletRef node, this will be a task created for it.
         /// This is needed so the params of the bulletRef can be set correctly.
         /// </summary>
@@ -44,6 +50,12 @@ namespace BulletML.Tasks
         /// </summary>
         /// <value>The speed node.</value>
         public SpeedTask SpeedTask { get; private set; }
+
+        /// <summary>
+        /// The node we are going to use to set the scale of any bullets shot with this task.
+        /// </summary>
+        /// <value>The scale node.</value>
+        public ScaleTask ScaleTask { get; private set; }
 
         private static float _lastFireDirection;
         private static float _lastFireSpeed;
@@ -92,6 +104,7 @@ namespace BulletML.Tasks
             // Setup all the direction and speed nodes of the bullet/bulletRef subnode
             GetDirectionTasks(BulletTask);
             GetSpeedNodes(BulletTask);
+            GetScaleNodes(BulletTask);
 
             _lastSetupDirection = bullet.Direction;
             _lastSetupSpeed = bullet.Speed;
@@ -208,6 +221,15 @@ namespace BulletML.Tasks
                 FireSpeed = Math.Abs(bullet.Speed) > float.Epsilon ? bullet.Speed : 0f;
             }
 
+            if (ScaleTask != null)
+            {
+                FireScale = ScaleTask.GetNodeValue(bullet);
+            }
+            else
+            {
+                FireScale = 1f;
+            }
+
             // Store setup direction/speed for sequence type
             _lastSetupDirection = FireDirection;
             _lastSetupSpeed = FireSpeed;
@@ -225,8 +247,6 @@ namespace BulletML.Tasks
 
             // Create the new bullet
             var newBullet = bullet.BulletManager.CreateBullet();
-
-            // Set the new bullet's location
             newBullet.X = bullet.X;
             newBullet.Y = bullet.Y;
 
@@ -235,6 +255,9 @@ namespace BulletML.Tasks
 
             // Set the new bullet's speed
             newBullet.Speed = FireSpeed;
+
+            // Set the new bullet's speed
+            newBullet.Scale = FireScale;
 
             // Store the new bullet's direction and speed for the sequence type
             _lastFireDirection = FireDirection;
@@ -321,6 +344,21 @@ namespace BulletML.Tasks
 
             if (SpeedTask == null)
                 SpeedTask = new SpeedTask(speedNode, taskToCheck);
+        }
+
+        /// <summary>
+        /// Given a node, pull the scale nodes out from underneath it and store them if necessary.
+        /// </summary>
+        /// <param name="taskToCheck">Node to check.</param>
+        private void GetScaleNodes(BulletMLTask taskToCheck)
+        {
+            // Check if this fire task has a speed node
+            var scaleNode = taskToCheck?.Node.GetChild(NodeName.scale) as ScaleNode;
+
+            if (scaleNode == null) return;
+
+            if (ScaleTask == null)
+                ScaleTask = new ScaleTask(scaleNode, taskToCheck);
         }
 
         #endregion Methods

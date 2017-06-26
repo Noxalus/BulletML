@@ -49,6 +49,12 @@ namespace BulletML
         Color Color { get; set; }
 
         /// <summary>
+        /// Gets or sets the bullet's scale.
+        /// </summary>
+        /// <value>The scale.</value>
+        float Scale { get; set; }
+
+        /// <summary>
         /// Initialize this bullet with a top level node.
         /// </summary>
         /// <param name="rootNode">This is a top level node. Find the first "top" node and use it to define this bullet.</param>

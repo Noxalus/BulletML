@@ -82,6 +82,7 @@
     <Compile Include="Nodes\AccelNode.cs" />
     <Compile Include="Nodes\ActionNode.cs" />
     <Compile Include="Nodes\ActionRefNode.cs" />
+    <Compile Include="Nodes\ScaleNode.cs" />
     <Compile Include="Nodes\ChangeColorNode.cs" />
     <Compile Include="Nodes\OpacityNode.cs" />
     <Compile Include="Nodes\AlphaNode.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Tasks\FireTask.cs" />
     <Compile Include="Tasks\RepeatTask.cs" />
     <Compile Include="Tasks\DirectionTask.cs" />
+    <Compile Include="Tasks\ScaleTask.cs" />
     <Compile Include="Tasks\SpeedTask.cs" />
     <Compile Include="Tasks\VanishTask.cs" />
     <Compile Include="Tasks\WaitTask.cs" />
