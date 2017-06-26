@@ -59,9 +59,11 @@ namespace BulletML.Tasks
 
         private static float _lastFireDirection;
         private static float _lastFireSpeed;
+        private static float _lastFireScale;
 
         private static float _lastSetupDirection;
         private static float _lastSetupSpeed;
+        private static float _lastSetupScale;
         private bool _isRunning;
 
         #endregion Members
@@ -80,8 +82,10 @@ namespace BulletML.Tasks
 
             _lastFireDirection = 0f;
             _lastFireSpeed = 0f;
+            _lastFireScale = 0f;
             _lastSetupDirection = 0f;
             _lastSetupSpeed = 0f;
+            _lastSetupScale = 0f;
             _isRunning = false;
         }
 
@@ -109,6 +113,7 @@ namespace BulletML.Tasks
 
             _lastSetupDirection = bullet.Direction;
             _lastSetupSpeed = bullet.Speed;
+            _lastSetupScale = bullet.Scale;
         }
 
         /// <summary>
@@ -224,7 +229,31 @@ namespace BulletML.Tasks
 
             if (ScaleTask != null)
             {
-                FireScale = ScaleTask.GetNodeValue(bullet);
+                var newBulletScale = ScaleTask.GetNodeValue(bullet);
+
+                switch (ScaleTask.Node.NodeType)
+                {
+                    case NodeType.relative:
+                        {
+                            FireScale = bullet.Scale + newBulletScale;
+                        }
+                        break;
+
+                    case NodeType.sequence:
+                        {
+                            if (_isRunning)
+                                FireScale = _lastFireScale + newBulletScale;
+                            else
+                                FireScale = _lastSetupScale + newBulletScale;
+                        }
+                        break;
+
+                    default:
+                        {
+                            FireScale = newBulletScale;
+                        }
+                        break;
+                }
             }
             else
             {
@@ -234,6 +263,7 @@ namespace BulletML.Tasks
             // Store setup direction/speed for sequence type
             _lastSetupDirection = FireDirection;
             _lastSetupSpeed = FireSpeed;
+            _lastSetupScale = FireScale;
         }
 
         /// <summary>
@@ -263,6 +293,7 @@ namespace BulletML.Tasks
             // Store the new bullet's direction and speed for the sequence type
             _lastFireDirection = FireDirection;
             _lastFireSpeed = FireSpeed;
+            _lastFireScale = FireScale;
 
             // Initialize the bullet with the bullet node stored in the fire node
             var fireNode = Node as FireNode;
