@@ -82,6 +82,7 @@
     <Compile Include="Nodes\AccelNode.cs" />
     <Compile Include="Nodes\ActionNode.cs" />
     <Compile Include="Nodes\ActionRefNode.cs" />
+    <Compile Include="Nodes\ChangeScaleNode.cs" />
     <Compile Include="Nodes\ScaleNode.cs" />
     <Compile Include="Nodes\ChangeColorNode.cs" />
     <Compile Include="Nodes\OpacityNode.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Tasks\BulletMLTask.cs" />
     <Compile Include="Tasks\ChangeDirectionTask.cs" />
     <Compile Include="Tasks\ChangeColorTask.cs" />
+    <Compile Include="Tasks\ChangeScaleTask.cs" />
     <Compile Include="Tasks\ChangeSpeedTask.cs" />
     <Compile Include="Tasks\ColorTask.cs" />
     <Compile Include="Tasks\FireTask.cs" />

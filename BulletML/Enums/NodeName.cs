@@ -35,6 +35,7 @@ namespace BulletML.Enums
         alpha,
         opacity,
         changeColor,
-        scale
+        scale,
+        changeScale
     }
 }

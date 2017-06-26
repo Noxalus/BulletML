@@ -10,6 +10,8 @@
 
 <!ELEMENT changeColor (color, term)>
 
+<!ELEMENT changeScale (scale, term)>
+
 <!ELEMENT bulletml (bullet | fire | action)*>
 <!ATTLIST bulletml xmlns CDATA #IMPLIED>
 <!ATTLIST bulletml type (none | vertical | horizontal) "none">
@@ -39,7 +41,7 @@
 
 <!ELEMENT wait (#PCDATA)>
 
-<!ELEMENT action (accel | changeDirection | changeSpeed | changeColor | repeat | wait | (fire | fireRef) | (action | actionRef) | vanish)*>
+<!ELEMENT action (accel | changeDirection | changeSpeed | changeColor | changeScale | repeat | wait | (fire | fireRef) | (action | actionRef) | vanish)*>
 <!ATTLIST action label CDATA #IMPLIED>
 
 <!ELEMENT vanish (#PCDATA)>

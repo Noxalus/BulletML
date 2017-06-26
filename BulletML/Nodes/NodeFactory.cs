@@ -121,6 +121,10 @@ namespace BulletML.Nodes
                     {
                         return new ScaleNode();
                     }
+                case NodeName.changeScale:
+                    {
+                        return new ChangeScaleNode();
+                    }
                 case NodeName.param:
                     {
                         return new ParamNode();
