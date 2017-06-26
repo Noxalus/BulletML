@@ -3,7 +3,7 @@
 
 # BulletML
 
-**BulletML** is a language created by *Kenta Cho* for [ABA Games](https://en.wikipedia.org/wiki/ABA_Games) to design bullet patterns in shoot'em up games.
+**BulletML** is a language created by *Kenta Cho* for [ABA Games](http://www.asahi-net.or.jp/~cs8k-cyu/index.html) to design bullet patterns in shoot'em up games.
 
 This project is a C# parser for BulletML files.
 
