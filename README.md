@@ -1,4 +1,5 @@
 [![](https://travis-ci.org/Noxalus/BulletML.svg?branch=master)](https://travis-ci.org/Noxalus/BulletML)
+[![Build status](https://ci.appveyor.com/api/projects/status/dvho3li7f5po9x04/branch/improvements?svg=true)](https://ci.appveyor.com/project/Noxalus/bulletml/branch/improvements)
 
 # BulletML
 
