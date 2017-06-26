@@ -7,7 +7,7 @@ environment:
   HOCKEYAPP_APP_ID: af7568909d5b465eb20b731bf9c52666
   HOCKEYAPP_API_TOKEN: 3e6ff831b9234fbdb6633c1a839d768b
   ANDROID_KEYSTORE_ALIAS: Noxalus
-  ANDROID_PROJECT_PATH: Visualizer\Visualizer.Android
+  ANDROID_PROJECT_PATH: Visualizer.Android
 install:
   - ps: '& ./Scripts/InstallDependencies.ps1'
 before_build:
