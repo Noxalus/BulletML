@@ -195,6 +195,11 @@ namespace Visualizer_Core
 
             _updateTime = _stopWatch.Elapsed;
 
+            if (_mover != null)
+            {
+                _mover.Position = _moverManagerPosition;
+            }
+
             base.Update(gameTime);
         }
 
