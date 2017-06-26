@@ -259,7 +259,6 @@ namespace Visualizer_Core
             _spriteBatch.DrawString(_mainFont, $"Update time: {_updateTime.TotalMilliseconds} ms", new Vector2(0, 40f), Color.White);
             _spriteBatch.DrawString(_mainFont, $"Draw time: { _drawTime.TotalMilliseconds } ms", new Vector2(0, 60f), Color.White);
             _spriteBatch.DrawString(_mainFont, $"Bullets: { _moverManager.Movers.Count }", new Vector2(0, 80f), Color.White);
-            _spriteBatch.DrawString(_mainFont, $"Bullets: { _moverManager.Movers.Count }", new Vector2(0, 100f), Color.White);
 
             if (!string.IsNullOrEmpty(_currentPatternErrors[_currentPattern]))
             {
