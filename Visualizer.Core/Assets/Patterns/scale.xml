@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml>
+  <action label="top">
+    <repeat>
+      <times>10</times>
+      <actionRef label="increaseScale" />
+    </repeat>
+  </action>
+
+  <action label="increaseScale">
+    <repeat>
+      <times>25</times>
+      <action>
+        <fire>
+          <bullet>
+            <direction type="sequence">14.4</direction>
+            <speed type="sequence">0.01</speed>
+            <color>
+              <red>$rand</red>
+              <green>$rand</green>
+              <blue>$rand</blue>
+            </color>
+            <scale type="sequence">0.01</scale>
+          </bullet>
+        </fire>
+      </action>
+    </repeat>
+    <wait>10</wait>
+  </action>
+</bulletml>

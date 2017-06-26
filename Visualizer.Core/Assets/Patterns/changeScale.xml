@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml>
+  <action label="top">
+    <repeat>
+      <times>0</times>
+      <action>
+        <fire>
+          <bulletRef label="pulse">
+          </bulletRef>
+        </fire>
+        <wait>1</wait>
+      </action>
+    </repeat>
+  </action>
+
+  <bullet label="pulse">
+    <direction type="sequence">5</direction>
+    <speed>1</speed>
+    <scale>0.5</scale>
+    <action>
+      <repeat>
+        <times>0</times>
+        <action>
+          <changeScale>
+            <scale>1.5</scale>
+            <term>50</term>
+          </changeScale>
+          <wait>50</wait>
+          <changeScale>
+            <scale>0.5</scale>
+            <term>50</term>
+          </changeScale>
+          <wait>50</wait>
+        </action>
+      </repeat>
+    </action>
+  </bullet>
+</bulletml>
