@@ -73,7 +73,8 @@
     (direction?, (bullet | bulletRef), speed?) |
     (speed?, (bullet | bulletRef), direction?) |
     ((bullet | bulletRef), direction?, speed?) |
-    ((bullet | bulletRef), speed?, direction?)
+    ((bullet | bulletRef), speed?, direction?) |
+    (direction?, speed?, scale?, (bullet | bulletRef))
   )
 >
 <!ATTLIST fire label CDATA #IMPLIED>
