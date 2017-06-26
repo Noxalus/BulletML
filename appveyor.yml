@@ -1,0 +1,24 @@
+version: 0.0.{build}
+environment:
+  XAMARIN_COOKIE:
+    secure: Ut8C5dcSVEh3A8IZHlj39DBV/bP4KCxzsnovjgt55gYc0OYlWQwP/fAwl7DFtdR4
+  ANDROID_KEYSTORE_PASSWORD:
+    secure: vCt3VttSDKvDmKmtNCqB4ufbBxhbvzALFXZ8unuvDU8=
+  HOCKEYAPP_APP_ID: af7568909d5b465eb20b731bf9c52666
+  HOCKEYAPP_API_TOKEN: 3e6ff831b9234fbdb6633c1a839d768b
+  ANDROID_KEYSTORE_ALIAS: Noxalus
+  ANDROID_PROJECT_PATH: Visualizer\Visualizer.Android
+install:
+  - ps: '& ./Scripts/InstallDependencies.ps1'
+before_build:
+  - xamarin-component.exe restore "%ANDROID_PROJECT_PATH%\%ANDROID_PROJECT_FILENAME%"
+  - nuget restore "%ANDROID_PROJECT_PATH%"\packages.config -PackagesDirectory "%ANDROID_PROJECT_PATH%/../packages"
+  - ps: '& ./Scripts/UpdateAndroidVersion.ps1'
+build_script:
+  - msbuild "%ANDROID_PROJECT_PATH%\%ANDROID_PROJECT_FILENAME%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /t:SignAndroidPackage /p:Configuration=Release /p:Platform=AnyCPU /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias="%ANDROID_KEYSTORE_ALIAS%" /p:AndroidSigningKeyPass="%ANDROID_KEYSTORE_PASSWORD%" /p:AndroidSigningKeyStore="%APPVEYOR_BUILD_FOLDER%\%ANDROID_KEYSTORE_PATH%" /p:AndroidSigningStorePass="%ANDROID_KEYSTORE_PASSWORD%"
+  - rename "%APPVEYOR_BUILD_FOLDER%\%ANDROID_PROJECT_PATH%\bin\Android\AnyCPU\Release\Visualizer.Android-Signed.apk" "BulletML-Visualizer-%APPVEYOR_BUILD_NUMBER%.apk"
+artifacts:
+  - path: '%ANDROID_PROJECT_PATH%\bin\Android\AnyCPU\Release\-%APPVEYOR_BUILD_NUMBER%.apk'
+    name: BulletML Visualizer
+deploy_script:
+  - ps: '& ./Scripts/AndroidHockeyAppUpload.ps1'
