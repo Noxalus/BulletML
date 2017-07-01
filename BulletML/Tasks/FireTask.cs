@@ -111,6 +111,7 @@ namespace BulletML.Tasks
             GetDirectionTasks(this);
             GetSpeedNodes(this);
             GetScaleNodes(this);
+            GetSpriteNodes(this);
 
             // Setup all the direction and speed nodes of the bullet/bulletRef subnode
             GetDirectionTasks(BulletTask);

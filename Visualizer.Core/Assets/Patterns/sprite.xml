@@ -5,7 +5,16 @@
     <fire>
       <bullet>
         <speed>1</speed>
-        <sprite>0</sprite>
+        <sprite>1</sprite>
+        <action>
+          <wait>100</wait>
+          <fire>
+              <direction type="absolute">$rand * 360</direction>
+              <speed>1</speed>
+              <sprite>3</sprite>
+            <bullet />
+          </fire>
+        </action>
       </bullet>
     </fire>
   </action>
