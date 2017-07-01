@@ -72,6 +72,12 @@ namespace BulletML
         public virtual float Speed { get; set; }
 
         /// <summary>
+        /// Gets or sets the bullet's sprite index.
+        /// </summary>
+        /// <value>The sprite index.</value>
+        public virtual short SpriteIndex { get; set; }
+
+        /// <summary>
         /// Gets or sets the color
         /// </summary>
         /// <value>The RGBA color.</value>

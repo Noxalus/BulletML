@@ -10,7 +10,7 @@ namespace Visualizer_Core
         public readonly List<Mover> Movers = new List<Mover>();
         private readonly List<Mover> _topLevelMovers = new List<Mover>();
         private readonly PositionDelegate _getPlayerPosition;
-        public Texture2D CurrentBulletTexture;
+        public List<Texture2D> BulletTextures;
 
         public MoverManager(PositionDelegate playerDelegate)
         {
@@ -24,7 +24,7 @@ namespace Visualizer_Core
 
         public IBullet CreateBullet(bool topBullet = false)
         {
-            var mover = new Mover(this) { Texture = CurrentBulletTexture };
+            var mover = new Mover(this);
             mover.Init();
 
             if (topBullet)

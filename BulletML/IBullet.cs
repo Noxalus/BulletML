@@ -43,6 +43,12 @@ namespace BulletML
         float Direction { get; set; }
 
         /// <summary>
+        /// Gets or sets the bullet's sprite index.
+        /// </summary>
+        /// <value>The sprite index.</value>
+        short SpriteIndex { get; set; }
+
+        /// <summary>
         /// Gets or sets the bullet's color.
         /// </summary>
         /// <value>The RGBA color.</value>

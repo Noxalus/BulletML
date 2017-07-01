@@ -52,6 +52,12 @@ namespace BulletML.Tasks
         public SpeedTask SpeedTask { get; private set; }
 
         /// <summary>
+        /// The node we are going to use to set the sprite index of any bullets shot with this task.
+        /// </summary>
+        /// <value>The sprite node.</value>
+        public SpriteTask SpriteTask { get; private set; }
+
+        /// <summary>
         /// The node we are going to use to set the scale of any bullets shot with this task.
         /// </summary>
         /// <value>The scale node.</value>
@@ -110,6 +116,7 @@ namespace BulletML.Tasks
             GetDirectionTasks(BulletTask);
             GetSpeedNodes(BulletTask);
             GetScaleNodes(BulletTask);
+            GetSpriteNodes(BulletTask);
 
             _lastSetupDirection = bullet.Direction;
             _lastSetupSpeed = bullet.Speed;
@@ -290,6 +297,10 @@ namespace BulletML.Tasks
             // Set the new bullet's speed
             newBullet.Scale = FireScale;
 
+            // Set the new bullet's sprite index
+            if (SpriteTask != null)
+                newBullet.SpriteIndex = (short)SpriteTask.GetNodeValue(bullet);
+
             // Store the new bullet's direction and speed for the sequence type
             _lastFireDirection = FireDirection;
             _lastFireSpeed = FireSpeed;
@@ -384,13 +395,28 @@ namespace BulletML.Tasks
         /// <param name="taskToCheck">Node to check.</param>
         private void GetScaleNodes(BulletMLTask taskToCheck)
         {
-            // Check if this fire task has a speed node
+            // Check if this fire task has a scale node
             var scaleNode = taskToCheck?.Node.GetChild(NodeName.scale) as ScaleNode;
 
             if (scaleNode == null) return;
 
             if (ScaleTask == null)
                 ScaleTask = new ScaleTask(scaleNode, taskToCheck);
+        }
+
+        /// <summary>
+        /// Given a node, pull the sprite nodes out from underneath it and store them if necessary.
+        /// </summary>
+        /// <param name="taskToCheck">Node to check.</param>
+        private void GetSpriteNodes(BulletMLTask taskToCheck)
+        {
+            // Check if this fire task has a sprite node
+            var spriteNode = taskToCheck?.Node.GetChild(NodeName.sprite) as SpriteNode;
+
+            if (spriteNode == null) return;
+
+            if (SpriteTask == null)
+                SpriteTask = new SpriteTask(spriteNode, taskToCheck);
         }
 
         #endregion Methods

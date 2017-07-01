@@ -95,6 +95,7 @@
     <Compile Include="Nodes\ParamNode.cs" />
     <Compile Include="Nodes\RedNode.cs" />
     <Compile Include="Nodes\RepeatNode.cs" />
+    <Compile Include="Nodes\SpriteNode.cs" />
     <Compile Include="Nodes\SpeedNode.cs" />
     <Compile Include="Nodes\TermNode.cs" />
     <Compile Include="Nodes\TimesNode.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Tasks\RepeatTask.cs" />
     <Compile Include="Tasks\DirectionTask.cs" />
     <Compile Include="Tasks\ScaleTask.cs" />
+    <Compile Include="Tasks\SpriteTask.cs" />
     <Compile Include="Tasks\SpeedTask.cs" />
     <Compile Include="Tasks\VanishTask.cs" />
     <Compile Include="Tasks\WaitTask.cs" />

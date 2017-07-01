@@ -26,7 +26,6 @@ namespace Visualizer_Core
         private readonly FPSCounter _fpsCounter = new FPSCounter();
 
         private Texture2D _playerTexture;
-        private Texture2D _bulletTexture;
         private SpriteFont _mainFont;
 
         private Texture2D _pixel;
@@ -109,11 +108,19 @@ namespace Visualizer_Core
             _pixel = new Texture2D(Graphics.GraphicsDevice, 1, 1) { Name = "pixel" };
             _pixel.SetData(new[] { Color.White });
 
-            _playerTexture = Content.Load<Texture2D>("Sprites\\player");
-            _bulletTexture = Content.Load<Texture2D>("Sprites\\bullet");
+            _playerTexture = Content.Load<Texture2D>("Sprites\\bullet1");
+            var bulletTextures = new List<Texture2D>() {
+                Content.Load<Texture2D>("Sprites\\bullet1"),
+                Content.Load<Texture2D>("Sprites\\bullet2"),
+                Content.Load<Texture2D>("Sprites\\bullet3"),
+                Content.Load<Texture2D>("Sprites\\bullet4"),
+                Content.Load<Texture2D>("Sprites\\bullet5"),
+                Content.Load<Texture2D>("Sprites\\bullet6"),
+                Content.Load<Texture2D>("Sprites\\bullet7")
+            };
 
-            // Set the default bullet texture of the bullet manager
-            _moverManager.CurrentBulletTexture = _bulletTexture;
+            // Set the list of usable textures to spawn bullets with
+            _moverManager.BulletTextures = bulletTextures;
 
             _mainFont = Content.Load<SpriteFont>("Fonts\\main");
 
@@ -216,11 +223,12 @@ namespace Visualizer_Core
 
             foreach (var mover in _moverManager.Movers)
             {
-                _spriteBatch.Draw(_bulletTexture,
+                _spriteBatch.Draw(
+                    mover.Texture,
                     mover.Position, null,
                     mover.Color,
                     mover.Direction,
-                    new Vector2(_bulletTexture.Width / 2f, _bulletTexture.Height / 2f), mover.Scale, SpriteEffects.None, 0f
+                    new Vector2(mover.Texture.Width / 2f, mover.Texture.Height / 2f), mover.Scale, SpriteEffects.None, 0f
                 );
             }
 

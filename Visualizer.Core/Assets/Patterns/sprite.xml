@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+<bulletml>
+  <action label="top">
+    <fire>
+      <bullet>
+        <speed>1</speed>
+        <sprite>0</sprite>
+      </bullet>
+    </fire>
+  </action>
+</bulletml>

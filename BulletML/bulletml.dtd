@@ -5,11 +5,8 @@
 <!ATTLIST fireRef label CDATA #REQUIRED>
 
 <!ELEMENT changeDirection (direction, term)>
-
 <!ELEMENT changeSpeed (speed, term)>
-
 <!ELEMENT changeColor (color, term)>
-
 <!ELEMENT changeScale (scale, term)>
 
 <!ELEMENT bulletml (bullet | fire | action)*>
@@ -59,10 +56,12 @@
 <!ELEMENT opacity (#PCDATA)>
 <!ELEMENT color (red?, green?, blue?, alpha?, opacity?)>
 
+<!ELEMENT sprite (#PCDATA)>
+
 <!ELEMENT horizontal (#PCDATA)>
 <!ATTLIST horizontal type (absolute|relative|sequence) "absolute">
 
-<!ELEMENT bullet (direction?, speed?, color?, scale?, (action | actionRef)*)>
+<!ELEMENT bullet (direction?, speed?, sprite?, color?, scale?, (action | actionRef)*)>
 <!ATTLIST bullet label CDATA #IMPLIED>
 
 <!ELEMENT direction (#PCDATA)>
