@@ -20,6 +20,7 @@ namespace BulletML
             // Add the specific functions we will use for BulletML grammar.
             AddFunction("rand", RandomValue);
             AddFunction("rank", GameDifficulty);
+            AddFunction("sign", RandomSign);
         }
 
         /// <summary>
@@ -38,6 +39,16 @@ namespace BulletML
             Debug.Assert(GameManager.GameDifficulty != null);
 
             return GameManager.GameDifficulty();
+        }
+
+        /// <summary>
+        /// used as a callback function in bulletml euqations
+        /// </summary>
+        /// <returns>The value.</returns>
+        private double RandomSign()
+        {
+            // This value is "$rand", return a random sign (-1 or 1)
+            return Random.Next(0, 2) * 2 - 1;
         }
     }
 }

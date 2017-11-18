@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!DOCTYPE bulletml SYSTEM "http://www.asahi-net.or.jp/~cs8k-cyu/bulletml/bulletml.dtd">
+<bulletml xmlns="http://www.asahi-net.or.jp/~cs8k-cyu/bulletml">
+  <action label="top">
+    <fire>
+      <bullet>
+        <direction type="absolute">($rand * 50) - 25</direction>
+        <speed>10</speed>
+        <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>0</blue>
+        </color>
+        <sprite>1</sprite>
+        <actionRef label="fall">
+          <param>$sign</param>
+        </actionRef>
+      </bullet>
+    </fire>
+  </action>
+
+  <action label="fall">
+    <changeDirection>
+      <direction type="absolute">($1 * 180 + ($rand * 50 * $1)</direction>
+      <term>100</term>
+    </changeDirection>
+  </action>
+</bulletml>
